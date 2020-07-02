@@ -7,9 +7,8 @@
 @use '../settings';
 
 
-$spacing-sizes: settings.$spacing-sizes !default;
-$spacing-breakpoints: settings.$breakpoints !default;
-$spacing-namespace: #{
+$breakpoints: settings.$breakpoints !default;
+$sizing-namespace: #{
   map.get(settings.$namespaces, utilities) +
   'spacing-'
 } !default;
