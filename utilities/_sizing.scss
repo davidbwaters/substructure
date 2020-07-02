@@ -1,0 +1,20 @@
+/*
+ *  Utilities - Spacing
+ */
+
+
+@use 'sass:map';
+@use '../settings';
+
+
+$spacing-sizes: settings.$spacing-sizes !default;
+$spacing-breakpoints: settings.$breakpoints !default;
+$spacing-namespace: #{
+  map.get(settings.$namespaces, utilities) +
+  'spacing-'
+} !default;
+
+
+@each $spacing, $spacing-size in $spacing-sizes {
+  
+}

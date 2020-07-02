@@ -1,0 +1,94 @@
+/*
+ *  Settings - Global
+ */
+
+
+// Enables responsive framework features.
+
+$responsive: true !default;
+
+
+// Defines the default breakpoints
+
+$breakpoints: (
+  tablet  : "screen and ( min-width: 768px )",
+  desktop : "screen and ( min-width: 1000px )"
+) !default;
+
+
+// Defines the default breakpoint separator.
+
+$breakpoint-separator: \@ !default;
+
+
+// Defines the root sizing for REM calculation.
+// Set in pixels.
+
+$sizing-root: 16px !default;
+
+
+// Defines the default sizing unit.
+
+$sizing-unit: .5rem !default;
+
+
+// Defines the default sizing factors for sizing utilities.
+
+$sizing-factors: (
+  2, 3, 4, 6
+) !default;
+
+
+// Defines the default spacing sizes.
+
+$spacing-sizes: (
+  tiny   : $sizing-unit,
+  small  : $sizing-unit * 2,
+  large  : $sizing-unit * 4
+  huge   : $sizing-unit * 8
+) !default;
+
+
+// Defines the default separator for sizing utilities.
+
+$sizing-separator: \/;
+
+
+// Defines the default text size.
+
+$text-size-normal: 1rem !default;
+
+
+// Defines the default sizes for large text.
+// Order from smallest to largest.
+
+$text-sizes-large: (
+  medium   : $text-size-normal * 1.25,
+  large    : $text-size-normal * 1.5,
+  huge     : $text-size-normal * 2,
+  gigantic : $text-size-normal * 3,
+  enormous : $text-size-normal * 4
+) !default;
+
+
+// Defines the default sizes for large text.
+// Order from smallest to largest.
+
+$text-sizes-small: (
+  tiny  : $text-size-normal * .75,
+  small : $text-size-normal * .875;
+) !default;
+
+
+// Defines the default line height as a unitless value.
+
+$line-height-normal: 1.5 !default;
+
+
+// Defines the default ITCSS layer namespaces.
+
+$layer-namespaces: (
+  objects    : 'o-',
+  utilities  : 'u-',
+  components : 'c-'
+) !default;

@@ -1,0 +1,9 @@
+{
+  "name": "substructure",
+  "version": "0.1.0",
+  "main": "main.scss",
+  "repository": "https://github.com/davidbwaters/substructure.git",
+  "author": "David B. Waters <mrdavidbwaters@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
