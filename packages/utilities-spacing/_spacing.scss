@@ -8,7 +8,6 @@
 @use 'node_modules/@substructure/settings';
 @use 'node_modules/@substructure/tools';
 
-$spacing-sizes: settings.$spacing-sizes !default;
 
 $directions: (
   all        : '',
@@ -20,9 +19,11 @@ $directions: (
   right      : 'right-'
 ) !default;
 
-$responsive: settings.$responsive !default;
-
 $padding: true !default;
+
+$spacing-sizes: settings.$spacing-sizes !default;
+
+$responsive: settings.$responsive !default;
 
 $breakpoints: settings.$breakpoints !default;
 
@@ -43,7 +44,6 @@ $namespaces: (
 
 
 @each $direction, $direction-namespace in $directions {
-
 
   @each 
     $spacing-size, $spacing-size-value in $spacing-sizes 

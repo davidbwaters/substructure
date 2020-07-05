@@ -39,6 +39,11 @@ $sizing-factors: (
 ) !default;
 
 
+// Defines the default separator for sizing utilities.
+
+$sizing-separator: \/;
+
+
 // Defines the default spacing sizes.
 
 $spacing-sizes: (
@@ -47,11 +52,6 @@ $spacing-sizes: (
   large : $sizing-unit * 4,
   huge  : $sizing-unit * 8
 ) !default;
-
-
-// Defines the default separator for sizing utilities.
-
-$sizing-separator: \/;
 
 
 // Defines the default text size.

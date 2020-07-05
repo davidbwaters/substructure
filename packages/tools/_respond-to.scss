@@ -22,16 +22,16 @@
     }
 
   }
+  
+  @else if map-has-key( $breakpoints, $breakpoint ) {
 
-  @if map-has-key($breakpoints, $breakpoint) {
-
-    $max-breakpoint: core.str-replace(
+    $max-breakpoint: core.string-replace(
       $breakpoint, 'max-', ''
     );
 
     @media (
       max-width: #{
-        (map-get($breakpoints, $max-breakpoint)-1)
+        ( map-get( $breakpoints, $max-breakpoint ) -1 )
       }
     ) {
       @content;

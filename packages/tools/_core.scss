@@ -1,25 +1,43 @@
 //
-//  Tools - Spacing
+//  Tools - Core
 //
 
 
 @use 'sass:string';
+@use 'node_modules/@substructure/settings';
 
-@function str-replace($string, $search, $replace) {
-  $index: str-index($string, $search);
+
+// Function to calculate REM values from pixel values
+
+@function calculate-rem( 
+  $value, $root: settings.$sizing-root 
+) {
+
+  @return #{ $value / $root }
+
+}
+
+
+// Function to search and replace within strings.
+
+@function string-replace( $string, $search, $replace ) {
+  $index: string.index( $string, $search );
 
   @if $index {
 
-    @return 
-      str.slice($string, 1, $index - 1) + 
+    @return    
+      string.slice( $string, 1, $index - 1 ) + 
       $replace + 
-      str-replace(
-        str-slice($string, $index + str.length($search)),
+      string-replace(
+        string.slice(
+          $string, $index + string.length( $search )
+        ),
         $search, 
         $replace
       );
 
-    }
+  }
 
   @return $string;
+
 }
