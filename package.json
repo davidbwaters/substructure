@@ -2,15 +2,14 @@
   "name": "substructure",
   "version": "0.1.0",
   "main": "main.scss",
+  "scripts": {
+    "test": "sass --no-source-map test/test.scss test.css"
+  },
   "repository": "https://github.com/davidbwaters/substructure.git",
   "author": "David B. Waters <mrdavidbwaters@gmail.com>",
-  "license": "MIT"
-  "keywords": [
-    "oocss",
-    "sass",
-    "bem",
-    "itcss",
-    "css"
-  ],
-  "private": true
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
 }

@@ -1,0 +1,20 @@
+{
+  "name": "@substructure/utilities-spacing",
+  "version": "0.1.0",
+  "description": "Generates spacing utility classes.",
+  "main": "_index.scss",
+  "scripts": {
+    "build": "npx sass test/test.scss test/test.css"
+  },
+  "repository": "https://github.com/davidbwaters/substructure",
+  "keywords": [ 
+    "oocss", "sass", "bem", "itcss", "modular"
+  ],
+  "author": "David B. Waters <mrdavidbwaters@gmail.com>",
+  "license": "MIT",
+  "private": "false",
+  "dependencies": {
+    "@substructure/settings": "^0.1.0",
+    "@substructure/tools": "^0.1.0"
+  }
+}

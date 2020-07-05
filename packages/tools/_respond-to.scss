@@ -1,0 +1,42 @@
+/*
+ *  Tools - Spacing
+ */
+
+
+@use 'sass:map';
+@use 'node_modules/@substructure/settings';
+@use 'core';
+
+
+@mixin respond-to (
+  $breakpoint, 
+  $breakpoints: settings.$breakpoints 
+) {
+
+  @if map-has-key($breakpoints, $breakpoint) {
+
+    @media (
+      min-width: #{map-get($breakpoints, $breakpoint)}
+    ) {
+      @content;
+    }
+
+  }
+
+  @if map-has-key($breakpoints, $breakpoint) {
+
+    $max-breakpoint: core.str-replace(
+      $breakpoint, 'max-', ''
+    );
+
+    @media (
+      max-width: #{
+        (map-get($breakpoints, $max-breakpoint)-1)
+      }
+    ) {
+      @content;
+    }
+
+  }
+
+}

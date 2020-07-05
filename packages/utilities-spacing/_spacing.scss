@@ -1,0 +1,73 @@
+/*
+ *  Utilities - Spacing
+ */
+
+
+@use 'sass:map';
+@use 'node_modules/@substructure/settings';
+@use 'node_modules/@substructure/tools';
+
+$spacing-sizes: settings.$spacing-sizes !default;
+
+$directions: (
+  all: '',
+  vertical: '-vertical',
+  horizontal: '-horizontal',
+  top: '-top',
+  bottom: '-bottom', 
+  left: '-left', 
+  right: '-right'
+) !default;
+
+$responsive: settings.$responsive !default;
+
+$breakpoints: settings.$breakpoints !default;
+
+$breakpoint-separator: 
+  settings.$breakpoint-separator 
+!default;
+
+$namespace: #{
+  map.get(settings.$layer-namespaces, utilities) + 'spacing-'
+} !default;
+
+
+@each $spacing-size, $spacing-size-value in $spacing-sizes {
+
+  @each $direction, $direction-namespace in $directions {
+    
+    $class: #{
+      $namespace + $spacing-size + $direction-namespace
+    };
+    
+    .#{$class} {
+      
+      @include tools.spacing( 
+        $direction, $spacing-size-value 
+      )
+      
+    }
+    
+    @if $responsive {
+      
+      @each $breakpoint, $breakpoint-value in $breakpoints {
+        
+        @include tools.respond-to( $breakpoint, $breakpoints ) {
+          
+          .#{$class + $breakpoint-separator + $breakpoint} {
+          
+            @include tools.spacing( 
+              $direction, $spacing-size-value 
+            )
+            
+          }
+        
+        }
+        
+      }
+      
+    }
+    
+  }
+    
+}

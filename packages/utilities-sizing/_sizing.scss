@@ -1,0 +1,34 @@
+/*
+ *  Utilities - Sizing
+ */
+
+
+@use 'sass:map';
+@use 'node_modules/@substructure/settings';
+@use 'node_modules/@substructure/tools';
+
+$responsive: settings.$responsive !default;
+
+$breakpoints: settings.$breakpoints !default;
+
+$breakpoint-separator: 
+  settings.$breakpoint-separator 
+!default;
+
+$namespaces: (
+  width: #{
+    map.get(settings-core.$namespaces, utilities) + ''
+  },
+  height: #{
+    map.get(settings-core.$namespaces, utilities) + 'height'
+  },
+  push: #{
+    map.get(settings-core.$namespaces, utilities) + 'push'
+  },
+  pull: #{
+    map.get(settings-core.$namespaces, utilities) + 'pull'
+  },
+) !default;
+
+
+

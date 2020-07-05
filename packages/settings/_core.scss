@@ -44,7 +44,7 @@ $sizing-factors: (
 $spacing-sizes: (
   tiny   : $sizing-unit,
   small  : $sizing-unit * 2,
-  large  : $sizing-unit * 4
+  large  : $sizing-unit * 4,
   huge   : $sizing-unit * 8
 ) !default;
 
@@ -76,7 +76,7 @@ $text-sizes-large: (
 
 $text-sizes-small: (
   tiny  : $text-size-normal * .75,
-  small : $text-size-normal * .875;
+  small : $text-size-normal * .875
 ) !default;
 
 

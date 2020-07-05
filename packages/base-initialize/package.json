@@ -1,0 +1,13 @@
+{
+  "name": "@substructure/base-initialize",
+  "version": "0.1.0",
+  "description": "Sets initial values for consistency and compatibility.",
+  "main": "_index.scss",
+  "repository": "https://github.com/davidbwaters/substructure",
+  "keywords": [ 
+    "oocss", "sass", "bem", "itcss", "modular"
+  ],
+  "author": "David B. Waters <mrdavidbwaters@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
