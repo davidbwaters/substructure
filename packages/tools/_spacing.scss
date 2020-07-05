@@ -1,27 +1,27 @@
-/*
- *  Tools - Spacing
- */
+//
+//  Tools - Spacing
+//
 
 
 @mixin spacing ($direction, $size-value, $rule: margin) {
   
-  @if $direction == all {
-    
-    #{$rule + '-'}bottom: $size-value;
-    #{$rule + '-'}left: $size-value;
-    #{$rule + '-'}right: $size-value;
-    #{$rule + '-'}top: $size-value;
+  @if $direction == 'all' {
+
+      #{$rule + '-'}bottom: $size-value;
+      #{$rule + '-'}left: $size-value;
+      #{$rule + '-'}right: $size-value;
+      #{$rule + '-'}top: $size-value;
     
   }
   
-  @else if $direction == vertical {
+  @else if $direction == 'vertical' {
     
     #{$rule + '-'}bottom: $size-value;
     #{$rule + '-'}top: $size-value; 
     
   }
   
-  @else if $direction == horizontal {
+  @else if $direction == 'horizontal' {
     
     #{$rule + '-'}left: $size-value;
     #{$rule + '-'}right: $size-value;

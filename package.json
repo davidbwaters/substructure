@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "main": "main.scss",
   "scripts": {
-    "test": "sass --no-source-map test/test.scss test.css"
+    "test": "sass --no-source-map test/test.scss test/test.css"
   },
   "repository": "https://github.com/davidbwaters/substructure.git",
   "author": "David B. Waters <mrdavidbwaters@gmail.com>",

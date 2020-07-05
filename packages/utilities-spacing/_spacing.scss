@@ -4,22 +4,25 @@
 
 
 @use 'sass:map';
+@use 'sass:string';
 @use 'node_modules/@substructure/settings';
 @use 'node_modules/@substructure/tools';
 
 $spacing-sizes: settings.$spacing-sizes !default;
 
 $directions: (
-  all: '',
-  vertical: '-vertical',
-  horizontal: '-horizontal',
-  top: '-top',
-  bottom: '-bottom', 
-  left: '-left', 
-  right: '-right'
+  all        : '',
+  vertical   : 'vertical-',
+  horizontal : 'horizontal-',
+  top        : 'top-',
+  bottom     : 'bottom-', 
+  left       : 'left-', 
+  right      : 'right-'
 ) !default;
 
 $responsive: settings.$responsive !default;
+
+$padding: true !default;
 
 $breakpoints: settings.$breakpoints !default;
 
@@ -27,20 +30,34 @@ $breakpoint-separator:
   settings.$breakpoint-separator 
 !default;
 
-$namespace: #{
-  map.get(settings.$layer-namespaces, utilities) + 'spacing-'
-} !default;
+$namespaces: (
+  margin: #{
+    map.get( settings.$layer-namespaces, utilities ) +
+    'spacing-'
+  },
+  padding: #{
+    map.get( settings.$layer-namespaces, utilities ) +
+    'padding-'
+  }
+) !default;
 
 
-@each $spacing-size, $spacing-size-value in $spacing-sizes {
+@each $direction, $direction-namespace in $directions {
 
-  @each $direction, $direction-namespace in $directions {
-    
-    $class: #{
-      $namespace + $spacing-size + $direction-namespace
+
+  @each 
+    $spacing-size, $spacing-size-value in $spacing-sizes 
+  {
+
+    $margin-class: #{
+      map.get( $namespaces, margin ) +
+      $direction-namespace +
+      $spacing-size
     };
     
-    .#{$class} {
+    .#{
+      $margin-class
+    } {
       
       @include tools.spacing( 
         $direction, $spacing-size-value 
@@ -52,9 +69,15 @@ $namespace: #{
       
       @each $breakpoint, $breakpoint-value in $breakpoints {
         
-        @include tools.respond-to( $breakpoint, $breakpoints ) {
+        @include tools.respond-to( 
+          $breakpoint, $breakpoints 
+        ) {
           
-          .#{$class + $breakpoint-separator + $breakpoint} {
+          .#{ 
+            $margin-class + 
+            $breakpoint-separator + 
+            $breakpoint
+          } {
           
             @include tools.spacing( 
               $direction, $spacing-size-value 
@@ -67,7 +90,51 @@ $namespace: #{
       }
       
     }
-    
+
+    @if $padding == true {
+
+      $padding-class: #{
+        map.get( $namespaces, padding ) +
+        $direction-namespace + 
+        $spacing-size
+      };
+
+      .#{$padding-class} {
+      
+        @include tools.spacing( 
+          $direction, $spacing-size-value 
+        )
+        
+      }
+      
+      @if $responsive {
+        
+        @each $breakpoint, $breakpoint-value in $breakpoints {
+          
+          @include tools.respond-to( 
+            $breakpoint, $breakpoints 
+          ) {
+            
+            .#{ 
+              $padding-class + 
+              $breakpoint-separator + 
+              $breakpoint
+            } {
+            
+              @include tools.spacing( 
+                $direction, $spacing-size-value 
+              )
+              
+            }
+          
+          }
+          
+        }
+        
+      }
+
+    }
+
   }
     
 }

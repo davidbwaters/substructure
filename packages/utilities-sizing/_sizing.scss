@@ -17,16 +17,20 @@ $breakpoint-separator:
 
 $namespaces: (
   width: #{
-    map.get(settings-core.$namespaces, utilities) + ''
+    map.get(settings.$layer-namespaces, utilities) + 
+    ''
   },
   height: #{
-    map.get(settings-core.$namespaces, utilities) + 'height'
+    map.get(settings.$layer-namespaces, utilities) + 
+    'height'
   },
   push: #{
-    map.get(settings-core.$namespaces, utilities) + 'push'
+    map.get(settings.$layer-namespaces, utilities) + 
+    'push'
   },
   pull: #{
-    map.get(settings-core.$namespaces, utilities) + 'pull'
+    map.get(settings.$layer-namespaces, utilities) + 
+    'pull'
   },
 ) !default;
 

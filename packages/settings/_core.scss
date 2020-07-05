@@ -1,6 +1,6 @@
-/*
- *  Settings - Global
- */
+//
+//  Settings - Global
+//
 
 
 // Enables responsive framework features.
@@ -42,10 +42,10 @@ $sizing-factors: (
 // Defines the default spacing sizes.
 
 $spacing-sizes: (
-  tiny   : $sizing-unit,
-  small  : $sizing-unit * 2,
-  large  : $sizing-unit * 4,
-  huge   : $sizing-unit * 8
+  tiny  : $sizing-unit,
+  small : $sizing-unit * 2,
+  large : $sizing-unit * 4,
+  huge  : $sizing-unit * 8
 ) !default;
 
 

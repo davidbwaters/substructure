@@ -11,7 +11,6 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@substructure/settings": "0.1.0",
-    "@substructure/tools": "0.1.0"
+    "@substructure/settings": "0.1.0"
   }
 }
