@@ -2,11 +2,15 @@
  *  Elements - Root
  */
 
- // Simple page-level setup to apply default text sizes
- // and viewport settings.
+// Simple page-level setup to apply default text sizes
+// and viewport settings.
+
+@use 'node_modules/@substructure/settings';
+
 
 :root {
-  font-size: settings.$sizing-root / 16px * 1em;
-  overflow-y: scroll;
+  font-size: settings.$sizing-root;
+  line-height: settings.$line-height-normal;
   min-height: 100%;
+  overflow-y: scroll;
 }

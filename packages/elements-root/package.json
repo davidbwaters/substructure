@@ -1,7 +1,7 @@
 {
   "name": "@substructure/elements-root",
   "version": "0.1.0",
-  "description": "Generates sizing utility classes.",
+  "description": "Simple page-level setup to apply default text sizes and viewport settings.",
   "main": "_index.scss",
   "repository": "https://github.com/davidbwaters/substructure",
   "keywords": [ 
@@ -9,5 +9,8 @@
   ],
   "author": "David B. Waters <mrdavidbwaters@gmail.com>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "dependencies": {
+    "@substructure/settings": "0.1.0"
+  }
 }

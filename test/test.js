@@ -13,6 +13,14 @@ fs.mkdirSync(
 )
 
 sass.render({
+  file: 'packages/elements-root/_index.scss',
+  outFile: 'test',
+  fiber: Fiber
+}, (error, result) => {
+  fs.writeFile( 'test/build/root.css', result.css, (error) => {} )
+})
+
+sass.render({
   file: 'packages/utilities-sizing/_index.scss',
   outFile: 'test',
   fiber: Fiber
