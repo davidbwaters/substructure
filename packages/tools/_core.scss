@@ -4,7 +4,29 @@
 
 
 @use 'sass:string';
+@use 'sass:math';
 @use 'node_modules/@substructure/settings';
+
+
+// Function to calculate line-height in sizing units 
+// (rounding up)  for vertical rhythm.  Pass a font-size in
+// pixels and a unitless target line-height.
+
+@function line-height (
+  $font-size,
+  $target-line-height: settings.$line-height-normal,
+  $sizing-unit: settings.$sizing-unit
+) {
+  
+  $units: math.ceil(
+    $font-size * $target-line-height / $sizing-unit
+  );
+
+  @return #{
+    $units * $sizing-units / $font-size
+  }
+
+}
 
 
 // Function to calculate REM values from pixel values

@@ -1,4 +1,12 @@
 /*
-*  Elements - Root
-*/
+ *  Elements - Root
+ */
 
+ // Simple page-level setup to apply default text sizes
+ // and viewport settings.
+
+:root {
+  font-size: settings.$sizing-root / 16px * 1em;
+  overflow-y: scroll;
+  min-height: 100%;
+}
