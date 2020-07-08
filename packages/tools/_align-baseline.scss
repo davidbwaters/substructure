@@ -5,7 +5,7 @@
 // Offsets text in pixels for baseline alignment.
 
 
-@mixin baseline( $offset: 0 ) {
+@mixin align-baseline( $offset: 0 ) {
 
   @if ($offset == 0) {
     margin-bottom: 0;

@@ -34,7 +34,7 @@ $breakpoint-separator:
 $namespaces: (
   margin: #{
     map.get( settings.$layer-namespaces, utilities ) +
-    'spacing-'
+    'margin-'
   },
   padding: #{
     map.get( settings.$layer-namespaces, utilities ) +
@@ -47,6 +47,7 @@ $namespaces: (
 
   @each 
     $spacing-size, $spacing-size-value in $spacing-sizes 
+
   {
 
     $margin-class: #{
@@ -90,6 +91,15 @@ $namespaces: (
       }
       
     }
+
+  }
+
+}
+
+@each $direction, $direction-namespace in $directions {
+
+  @each 
+    $spacing-size, $spacing-size-value in $spacing-sizes {
 
     @if $padding == true {
 

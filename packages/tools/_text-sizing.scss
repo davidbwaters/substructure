@@ -1,9 +1,9 @@
 //
-//  Tools - Spacing
+//  Tools - Text Sizing
 //
 
 
-@mixin spacing ( $direction, $size-value, $rule: margin ) {
+@mixin text-sizing ($direction, $size-value, $rule: margin) {
   
   @if $direction == 'all' {
 

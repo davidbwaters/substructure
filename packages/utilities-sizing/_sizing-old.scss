@@ -46,63 +46,60 @@ $namespaces: (
 ) !default;
 
 
-@mixin sizing( 
-  $type,
-  $factors, 
-  $namespaces,
-  $responsive,
-  $breakpoints,
-  $separator
-) {
+@mixin sizing( $type ) {
 
   @each $factor in $factors {
 
     @for $count from 1 through $factor {
 
-      $class: #{
-        map.get( $namespaces, $type ) +
-        $count + 
-        $separator + 
-        $factor
+      $fraction-namespace: #{
+        $count + $separator + $factor
       };
 
-      $property: $type;
+      $prefix: map.get( $namespaces, $type );
+      
       $size-value: $count / $factor * 100%;
-
-      @if $type == push or $type == pull {
-        $property: 'margin-left';
+      
+      @if $type == pull {
+        $size-value: $count / $factor * 100% * -1;
       }
 
-      @if $type == pull {
-        $size-value: #{ $count / $factor * 100% * -1 };
-      };
+      $property: $type; 
 
-      .#{ $class } {
+      @if $type == push or $type == pull {
+        $property: 'margin-left'      
+      }
 
-        #{ $property }: #{ $size-value };
+      .#{
+        $prefix +
+        $fraction-namespace
+      } {
+
+        #{$property}: $size-value;
       
       }
 
       @if $responsive == true {
 
         @each $breakpoint in $breakpoints {
-      
+
           @include tools.respond-to( $breakpoint ) {
 
-            #{ 
-              $class + 
-              $breakpoint-separator + 
+            .#{
+              map-get( $namespaces, width ) +
+              $fraction-namespace +
+              $breakpoint-separator +
               $breakpoint
             } {
-
-              #{ $property }: #{ $size-value };
-
+        
+              #{$property}: $size-value;
+            
             }
 
           }
 
         }
-        
+
       }
 
     }
@@ -110,7 +107,6 @@ $namespaces: (
   }
 
 }
-
 
 @include sizing( width );
 

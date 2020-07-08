@@ -1,65 +1,8 @@
 //
-//  Tools - Core
+//  Index
 //
 
 
-@use 'sass:string';
-@use 'sass:math';
-@use 'node_modules/@substructure/settings';
-
-
-// Function to calculate line-height in sizing units 
-// (rounding up)  for vertical rhythm.  Pass a font-size in
-// pixels and a unitless target line-height.
-
-@function line-height (
-  $font-size,
-  $target-line-height: settings.$line-height-normal,
-  $sizing-unit: settings.$sizing-unit
-) {
-  
-  $units: math.ceil(
-    $font-size * $target-line-height / $sizing-unit
-  );
-
-  @return #{
-    $units * $sizing-units / $font-size
-  }
-
-}
-
-
-// Function to calculate REM values from pixel values
-
-@function calculate-rem( 
-  $value, $root: settings.$sizing-root 
-) {
-
-  @return #{ $value / $root }
-
-}
-
-
-// Function to search and replace within strings.
-
-@function string-replace( $string, $search, $replace ) {
-  $index: string.index( $string, $search );
-
-  @if $index {
-
-    @return    
-      string.slice( $string, 1, $index - 1 ) + 
-      $replace + 
-      string-replace(
-        string.slice(
-          $string, $index + string.length( $search )
-        ),
-        $search, 
-        $replace
-      );
-
-  }
-
-  @return $string;
-
-}
+@forward 'lib/calculate-rem';
+@forward 'lib/line-height';
+@forward 'lib/string-replace';
