@@ -46,14 +46,7 @@ $namespaces: (
 ) !default;
 
 
-@mixin sizing( 
-  $type,
-  $factors, 
-  $namespaces,
-  $responsive,
-  $breakpoints,
-  $separator
-) {
+@mixin _sizing( $type ) {
 
   @each $factor in $factors {
 
@@ -111,17 +104,16 @@ $namespaces: (
 
 }
 
-
-@include sizing( width );
+@include _sizing( width );
 
 @if ( $height == true ) {
-  @include sizing( height );
+  @include _sizing( height );
 }
 
 @if ( $push == true ) {
-  @include sizing( push );
-}
+  @include _sizing( push );
+
 
 @if ( $pull == true ) {
-  @include sizing( pull );
+  @include _sizing( pull );
 }
