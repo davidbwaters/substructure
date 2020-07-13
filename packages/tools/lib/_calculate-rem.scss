@@ -12,6 +12,7 @@
   $value, $sizing-root: settings.$sizing-root 
 ) {
 
-  @return #{ $value / $sizing-root  * 1rem }
+  @debug $value / $sizing-root;
+  @return #{ ( $value / $sizing-root ) * 1rem }
 
 }

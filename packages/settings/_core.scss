@@ -54,9 +54,9 @@ $spacing-sizes: (
 ) !default;
 
 
-// Defines the default text size.
+// Defines the default text size in pixels.
 
-$text-size-normal: 1rem !default;
+$text-size-normal: $sizing-root !default;
 
 
 // Defines the default sizes for large text.
@@ -80,7 +80,8 @@ $text-sizes-small: (
 ) !default;
 
 
-// Defines the default line height as a unitless value.
+// Defines the default target line height as a unitless 
+// value.
 
 $line-height-normal: 1.5 !default;
 

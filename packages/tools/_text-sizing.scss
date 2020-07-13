@@ -3,35 +3,19 @@
 //
 
 
-@mixin text-sizing ($direction, $size-value, $rule: margin) {
-  
-  @if $direction == 'all' {
+@use 'node_modules/@substructure/settings';
+@use 'core';
 
-      #{$rule + '-'}bottom: $size-value;
-      #{$rule + '-'}left: $size-value;
-      #{$rule + '-'}right: $size-value;
-      #{$rule + '-'}top: $size-value;
-    
-  }
+
+@mixin text-sizing ( 
+  $size-value,
+  $target-line-height: settings.$line-height-normal
+) {
   
-  @else if $direction == 'vertical' {
-    
-    #{$rule + '-'}bottom: $size-value;
-    #{$rule + '-'}top: $size-value; 
-    
-  }
-  
-  @else if $direction == 'horizontal' {
-    
-    #{$rule + '-'}left: $size-value;
-    #{$rule + '-'}right: $size-value;
-    
-  }
-  
-  @else {
-    
-    #{$rule + '-'}#{$direction}: $size-value;
-    
-  }
+  font-size: core.calculate-rem( $size-value );
+  line-height: core.line-height(
+    $size-value, 
+    $target-line-height 
+  );
   
 }

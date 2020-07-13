@@ -1,0 +1,77 @@
+/*
+ *  Elements - Headings
+ */
+
+// Text elements based on core settings.
+
+
+@use 'sass:map';
+@use 'sass:list';
+@use 'node_modules/@substructure/settings';
+@use 'node_modules/@substructure/tools';
+
+
+$text-sizes-large: settings.$text-sizes-large !default;
+$text-sizes-small: settings.$text-sizes-small !default;
+
+$_text-sizes-large-length: list.length( 
+  map.keys( $text-sizes-large )
+);
+
+
+@each $size-name, $size-value in $text-sizes-large {
+
+  $i: list.index(
+    map.keys(settings.$text-sizes-large), 
+    $size-name
+  );
+  
+  @if $i < 6 {
+
+    h#{ 6 - ( $i - 1 ) } {
+      @include tools.text-sizing( $size-value );
+    }
+
+  }
+
+}
+
+@if $_text-sizes-large-length < 6 {
+
+  @for $i from $_text-sizes-large-length through 6 {
+
+    h#{ 6 - ( $i - 1 ) } {
+
+      @if $i > $_text-sizes-large-length {
+
+        @include tools.text-sizing( 
+          map-get(
+            $text-sizes-large,
+            list.nth( 
+              map.keys( $text-sizes-large ),
+              $_text-sizes-large-length
+            )
+          )
+        )
+
+      }
+
+      @else {
+
+        @include tools.text-sizing( 
+          map-get(
+            $text-sizes-large,
+            list.nth( 
+              map.keys( $text-sizes-large ), 
+              $i
+            )
+          )
+        )
+
+      }
+
+    }
+
+  }
+
+}

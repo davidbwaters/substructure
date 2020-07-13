@@ -112,7 +112,7 @@ $namespaces: (
 
 @if ( $push == true ) {
   @include _sizing( push );
-
+}
 
 @if ( $pull == true ) {
   @include _sizing( pull );

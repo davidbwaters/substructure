@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "main": "main.scss",
   "scripts": {
-    "test": "node test/test.js"
+    "test": "lerna bootstrap && node test/test.js"
   },
   "repository": "https://github.com/davidbwaters/substructure.git",
   "author": "David B. Waters <mrdavidbwaters@gmail.com>",
