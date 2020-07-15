@@ -18,6 +18,12 @@ $_text-sizes-large-length: list.length(
   map.keys( $text-sizes-large )
 );
 
+$_text-sizes-small-length: list.length( 
+  map.keys( $text-sizes-small )
+);
+
+$_heading-sizes: ();
+
 
 @each $size-name, $size-value in $text-sizes-large {
 
@@ -26,11 +32,9 @@ $_text-sizes-large-length: list.length(
     $size-name
   );
   
-  @if $i < 6 {
+  @if $i <= 6 {
 
-    h#{ 6 - ( $i - 1 ) } {
-      @include tools.text-sizing( $size-value );
-    }
+    $_heading-sizes: list.append( $_heading-sizes, $size-value );
 
   }
 
@@ -38,40 +42,54 @@ $_text-sizes-large-length: list.length(
 
 @if $_text-sizes-large-length < 6 {
 
-  @for $i from $_text-sizes-large-length through 6 {
+  @for $i from ( $_text-sizes-large-length + 1 ) through 6 {
 
-    h#{ 6 - ( $i - 1 ) } {
-
-      @if $i > $_text-sizes-large-length {
-
-        @include tools.text-sizing( 
-          map-get(
-            $text-sizes-large,
-            list.nth( 
-              map.keys( $text-sizes-large ),
-              $_text-sizes-large-length
-            )
-          )
+    $_heading-sizes: list.append(
+      $_heading-sizes,
+      map.get(
+        $text-sizes-large,
+        list.nth( 
+          map.keys( $text-sizes-large ),
+          $_text-sizes-large-length
         )
-
-      }
-
-      @else {
-
-        @include tools.text-sizing( 
-          map-get(
-            $text-sizes-large,
-            list.nth( 
-              map.keys( $text-sizes-large ), 
-              $i
-            )
-          )
-        )
-
-      }
-
-    }
+      )
+    )
 
   }
+
+}
+
+@for $i from 1 through 6 {
+
+  h#{$i} {
+
+    @include tools.text-sizing( 
+
+      list.nth( 
+        tools.reverse( $_heading-sizes ),
+        $i
+      )
+
+    )
+
+  }
+  
+}
+
+small {
+
+  @include tools.text-sizing(
+
+    map.get(
+
+      $text-sizes-small,
+      list.nth(
+        map.keys( $text-sizes-small ),
+        $_text-sizes-small-length
+      )
+
+    )
+
+  )
 
 }

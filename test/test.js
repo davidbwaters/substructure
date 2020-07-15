@@ -36,8 +36,23 @@ const build = (inPath, outPath) => {
 
 }
 
-build('base-initialize/_index.scss', 'base-initialize.css')
-build('elements-root/_index.scss', 'root.css')
-build('elements-text/_index.scss', 'text.css')
-build('utilities-sizing/_index.scss', 'sizing.css')
-build('utilities-spacing/_index.scss', 'spacing.css')
+build(
+  'base-initialize/_index.scss', 
+  'base-initialize.css'
+)
+build(
+  'elements-root/_index.scss', 
+  'elements-root.css'
+)
+build(
+  'elements-text/_index.scss', 
+  'elements-text.css'
+)
+build(
+  'utilities-sizing/_index.scss', 
+  'utilities-sizing.css'
+)
+build(
+  'utilities-spacing/_index.scss', 
+  'utilities-spacing.css'
+)

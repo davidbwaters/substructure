@@ -2,14 +2,14 @@
 //  Tools - Core - Line Height
 //
 
+// Function to calculate line-height in sizing units 
+// (rounding up)  for vertical rhythm.  Pass a font-size in
+// pixels and a unitless target line-height.
+
 
 @use 'sass:math';
 @use '../node_modules/@substructure/settings';
 
-
-// Function to calculate line-height in sizing units 
-// (rounding up)  for vertical rhythm.  Pass a font-size in
-// pixels and a unitless target line-height.
 
 @function line-height (
   $font-size,
