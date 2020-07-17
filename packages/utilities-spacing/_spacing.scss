@@ -9,15 +9,20 @@
 @use 'node_modules/@substructure/tools';
 
 
-$directions: (
-  all        : '',
-  vertical   : 'vertical-',
-  horizontal : 'horizontal-',
-  top        : 'top-',
-  bottom     : 'bottom-', 
-  left       : 'left-', 
-  right      : 'right-'
-) !default;
+$directions: () !default;
+
+$directions: map.merge(
+  (  
+    all        : '',
+    vertical   : 'vertical-',
+    horizontal : 'horizontal-',
+    top        : 'top-',
+    bottom     : 'bottom-', 
+    left       : 'left-', 
+    right      : 'right-'
+  ),
+  $directions
+);
 
 $padding: true !default;
 
@@ -31,16 +36,21 @@ $breakpoint-separator:
   settings.$breakpoint-separator 
 !default;
 
-$namespaces: (
-  margin: #{
-    map.get( settings.$layer-namespaces, utilities ) +
-    'margin-'
-  },
-  padding: #{
-    map.get( settings.$layer-namespaces, utilities ) +
-    'padding-'
-  }
-) !default;
+$namespaces: () !default;
+
+$namespaces: map.merge(
+  (
+    margin: #{
+      map.get( settings.$layer-namespaces, utilities ) +
+      'margin-'
+    },
+    padding: #{
+      map.get( settings.$layer-namespaces, utilities ) +
+      'padding-'
+    }
+  ),
+  $namespaces
+);
 
 
 @each $direction, $direction-namespace in $directions {

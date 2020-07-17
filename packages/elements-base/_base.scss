@@ -6,11 +6,16 @@
 // and viewport settings.
 
 @use 'node_modules/@substructure/settings';
-
+@use 'node_modules/@substructure/tools';
 
 :root {
   font-size: settings.$sizing-root;
-  line-height: settings.$line-height-normal;
   min-height: 100%;
   overflow-y: scroll;
+}
+
+html {
+  @include tools.text-sizing( 
+    settings.$text-size-normal 
+  )
 }

@@ -1,0 +1,50 @@
+/*
+ *  Utilities - Text Sizing
+ */
+
+
+@use 'sass:map';
+@use 'node_modules/@substructure/settings';
+@use 'node_modules/@substructure/tools';
+
+
+$text-sizes-large: settings.$text-sizes-large !default;
+
+$text-sizes-small: settings.$text-sizes-small !default;
+
+$namespaces: () !default;
+
+$namespaces: map.merge(
+  (
+    large: #{ 
+      map.get( settings.$layer-namespaces, utilities ) +
+      'text-'
+    },
+    small: #{ 
+      map.get( settings.$layer-namespaces, utilities ) +
+      'text-'
+    }
+  ),
+  $namespaces
+);
+
+
+@each $size, $size-value in $text-sizes-large {
+
+  #{ map.get( $namespaces, large ) }#{ $size } {
+
+    @include tools.text-sizing( $size-value);
+
+  }
+    
+}
+
+@each $size, $size-value in $text-sizes-small {
+
+  #{ map.get( $namespaces, small ) }#{ $size } {
+
+    @include tools.text-sizing( $size-value);
+    
+  }
+    
+}

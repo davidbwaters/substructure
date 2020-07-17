@@ -2,6 +2,9 @@
 //  Tools - Text Sizing
 //
 
+// Mixin to generate REM-based text sizes with vertical 
+// rhythm based on the sizing units.
+
 
 @use 'node_modules/@substructure/settings';
 @use 'core';
@@ -9,13 +12,15 @@
 
 @mixin text-sizing ( 
   $size-value,
-  $target-line-height: settings.$line-height-normal
+  $target-line-height: settings.$line-height-normal,
+  $sizing-unit: settings.$sizing-unit
 ) {
   
   font-size: core.calculate-rem( $size-value );
   line-height: core.line-height(
     $size-value, 
-    $target-line-height 
+    $target-line-height,
+    $sizing-unit
   );
   
 }

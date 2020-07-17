@@ -1,0 +1,62 @@
+/*
+ *  Objects - Box
+ */
+
+// Object to box off content.
+
+
+@use 'sass:map';
+@use 'node_modules/@substructure/settings';
+@use 'node_modules/@substructure/tools';
+
+
+$spacing-default: settings.$sizing-unit !default;
+
+$spacing-sizes: settings.$spacing-sizes !default;
+
+$variant-separator: '--' !default;
+
+$namespace: #{
+  map-get(settings.$layer-namespaces, objects) +
+  'box'
+};
+
+$namespace-flush: 'flush' !default;
+
+
+#{ $namespace } {
+  @include tools.clearfix();
+  display: block;
+  padding: $spacing-default;
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+}
+
+.#{
+  $namespace +
+  $variant-separator +
+  $namespace-flush
+} {
+  @include tools.spacing(
+    all, 0, padding
+  )
+}
+
+@each $size-name, $size-value in $spacing-sizes {
+
+  .#{
+    $namespace +
+    $variant-separator +
+    $size-name
+  } {
+    
+    @include tools.spacing(
+      all, $size-value, padding
+    )
+
+  }
+
+}

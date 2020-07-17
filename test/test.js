@@ -37,12 +37,12 @@ const build = (inPath, outPath) => {
 }
 
 build(
-  'base-initialize/_index.scss', 
-  'base-initialize.css'
+  'generic-initialize/_index.scss', 
+  'generic-initialize.css'
 )
 build(
-  'elements-root/_index.scss', 
-  'elements-root.css'
+  'elements-base/_index.scss', 
+  'elements-base.css'
 )
 build(
   'elements-text/_index.scss', 
@@ -55,4 +55,12 @@ build(
 build(
   'utilities-spacing/_index.scss', 
   'utilities-spacing.css'
+)
+build(
+  'utilities-text-sizing/_index.scss', 
+  'utilities-text-sizing.css'
+)
+build(
+  'objects-box/_index.scss', 
+  'objects-box.css'
 )

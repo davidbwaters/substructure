@@ -2,6 +2,8 @@
 //  Tools - Spacing
 //
 
+// Mixin to generate spacing values. 
+
 
 @mixin spacing ( $direction, $size-value, $rule: margin ) {
   

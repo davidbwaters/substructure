@@ -2,7 +2,7 @@
 //  Tools - Baseline Offset
 //
 
-// Offsets text in pixels for baseline alignment.
+// Mixin to offset text in pixels for baseline alignment.
 
 
 @mixin align-baseline( $offset: 0 ) {

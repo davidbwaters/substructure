@@ -1,7 +1,7 @@
 {
-  "name": "@substructure/utilities-spacing",
+  "name": "@substructure/utilities-text-sizing",
   "version": "0.1.0",
-  "description": "Generates spacing utility classes.",
+  "description": "Generates text sizing utility classes.",
   "main": "_index.scss",
   "repository": "https://github.com/davidbwaters/substructure",
   "keywords": [ 
