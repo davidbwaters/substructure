@@ -14,17 +14,27 @@ $spacing-default: settings.$sizing-unit !default;
 
 $spacing-sizes: settings.$spacing-sizes !default;
 
-$variant-separator: '--' !default;
+$modifier-separator: '--' !default;
 
-$namespace: #{
-  map-get(settings.$layer-namespaces, objects) +
-  'box'
-};
+$namespaces: () !default;
 
-$namespace-flush: 'flush' !default;
+$namespaces: map.merge(
+  (
+    main: #{
+      map-get(settings.$layer-namespaces, objects) +
+      'box'
+    },
+    flush: 'flush'
+  ),
+  $namespaces
+);
+
+$_class: map.get( $namespaces, main ) !default;
 
 
-#{ $namespace } {
+// Base
+
+.#{ $_class } {
   @include tools.clearfix();
   display: block;
   padding: $spacing-default;
@@ -35,27 +45,36 @@ $namespace-flush: 'flush' !default;
 
 }
 
+
+// Variants
+
 .#{
-  $namespace +
-  $variant-separator +
-  $namespace-flush
+  $_class +
+  $modifier-separator +
+  map.get( $namespaces, flush )
 } {
+
   @include tools.spacing(
     all, 0, padding
   )
+
 }
 
 @each $size-name, $size-value in $spacing-sizes {
 
-  .#{
-    $namespace +
-    $variant-separator +
-    $size-name
-  } {
-    
-    @include tools.spacing(
-      all, $size-value, padding
-    )
+  @if $size-value != $spacing-default {
+
+    .#{
+      $_class +
+      $modifier-separator +
+      $size-name
+    } {
+
+      @include tools.spacing(
+        all, $size-value, padding
+      )
+
+    }
 
   }
 

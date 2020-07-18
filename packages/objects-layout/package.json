@@ -1,0 +1,17 @@
+{
+  "name": "@substructure/objects-layout",
+  "version": "0.1.0",
+  "description": "Flexbox layout system for use with sizing utilities.",
+  "main": "_index.scss",
+  "repository": "https://github.com/davidbwaters/substructure",
+  "keywords": [ 
+    "oocss", "sass", "bem", "itcss", "modular"
+  ],
+  "author": "David B. Waters <mrdavidbwaters@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@substructure/settings": "0.1.0",
+    "@substructure/tools": "0.1.0"
+  }
+}

@@ -1,0 +1,35 @@
+/*
+ *  Generic - Shared
+ */
+
+
+// Shared declarations for certain elements.
+
+
+@use 'node_modules/@substructure/settings';
+@use 'node_modules/@substructure/tools';
+
+
+address,
+h1, h2, h3, h4, h5, h6,
+blockquote, p, pre,
+dl, ol, ul,
+figure,
+hr,
+table,
+fieldset {
+  
+  @include tools.spacing( 
+    'bottom', settings.$sizing-unit 
+  );
+
+}
+
+
+dd, ol, ul {
+
+  @include tools.spacing( 
+    'left', settings.$sizing-unit 
+  );
+
+}

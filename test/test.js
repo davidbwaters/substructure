@@ -13,17 +13,17 @@ fs.mkdirSync(
   { recursive: true }
 )
 
-const build = (inPath, outPath) => {
+const build = (package) => {
   
   sass.render(
     {
-      file: 'packages/' + inPath,
+      file: 'packages/' + package + '/_index.scss',
       fiber: Fiber
     }, 
     (error, result) => {
       if (!error) {
         fs.writeFile( 
-          'test/build/' + outPath, 
+          'test/build/' + package + '.css', 
           result.css, 
           error => {}
         )
@@ -36,31 +36,13 @@ const build = (inPath, outPath) => {
 
 }
 
-build(
-  'generic-initialize/_index.scss', 
-  'generic-initialize.css'
-)
-build(
-  'elements-base/_index.scss', 
-  'elements-base.css'
-)
-build(
-  'elements-text/_index.scss', 
-  'elements-text.css'
-)
-build(
-  'utilities-sizing/_index.scss', 
-  'utilities-sizing.css'
-)
-build(
-  'utilities-spacing/_index.scss', 
-  'utilities-spacing.css'
-)
-build(
-  'utilities-text-sizing/_index.scss', 
-  'utilities-text-sizing.css'
-)
-build(
-  'objects-box/_index.scss', 
-  'objects-box.css'
-)
+build('generic-initialize')
+build('generic-shared')
+build('elements-base')
+build('elements-text')
+build('utilities-sizing')
+build('utilities-spacing')
+build('utilities-text-sizing')
+build('objects-box')
+build('objects-layout')
+build('objects-media')

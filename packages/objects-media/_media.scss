@@ -15,49 +15,121 @@ $spacing-default: settings.$sizing-unit !default;
 
 $spacing-sizes: settings.$spacing-sizes !default;
 
-$variant-separator: '--' !default;
+$element-separator: '__' !default;
 
-$namespace: #{
-  map-get(settings.$layer-namespaces, objects) +
-  'box'
+$modifier-separator: '--' !default;
+
+$namespaces: () !default;
+
+$namespaces: map.merge(
+  (
+    main: #{
+      map-get(settings.$layer-namespaces, objects) +
+      'media'
+    },
+    flush: 'flush'
+  ),
+  $namespaces
+);
+
+
+$_class: map.get( $namespaces, main );
+
+$_class-image: #{ 
+  $_class + $element-separator + 'image'
 };
 
-$namespace-flush: 'flush' !default;
+$_class-body: #{ 
+  $_class + $element-separator + 'body'
+};
+
+$_class-flush: #{ 
+  $_class + 
+  $modifier-separator + 
+  map.get( $namespaces, flush )
+};
+
+$_class-reverse: #{
+  $_class + 
+  $modifier-separator +
+  'reverse'
+};
 
 
-#{ $namespace } {
+// Base
+
+.#{ $_class } {
+
   @include tools.clearfix();
   display: block;
-  padding: $spacing-default;
 
+}
+
+.#{ $_class-image } {
+
+  float: left;
+  
+  @include tools.spacing(
+    'right', $spacing-default
+  );
+
+  > img {
+    display: block;
+  }
+
+}
+
+.#{ $_class-body } {
+
+  display: block;
+  overflow: hidden;
+
+  &,
   > :last-child {
     margin-bottom: 0;
   }
 
 }
 
-.#{
-  $namespace +
-  $variant-separator +
-  $namespace-flush
-} {
-  @include tools.spacing(
-    all, 0, padding
-  )
-}
+
+// Variants
 
 @each $size-name, $size-value in $spacing-sizes {
 
-  .#{
-    $namespace +
-    $variant-separator +
-    $size-name
-  } {
+  .#{ $_class } {
     
-    @include tools.spacing(
-      all, $size-value, padding
-    )
+    > .#{ $_class-image } {
+
+      @include tools.spacing(
+        'right', $size-value
+      );
+      
+    }
+
+    &.#{ $_class-reverse } {
+
+      > .#{ $_class-image } {
+        margin-right: 0;
+        
+        @include tools.spacing(
+          'left', $size-value
+        );
+
+      }
+
+    }
 
   }
+
+}
+
+.#{ $_class-reverse } {
+
+  float: right;
+  margin-right: 0;
+  
+  @include tools.spacing(
+    'left', $spacing-default
+  );
 
 }

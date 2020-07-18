@@ -1,0 +1,34 @@
+/*
+ *  Objects - List-Bare
+ */
+
+// Object for lists without bullets.
+
+
+@use 'sass:map';
+@use 'node_modules/@substructure/settings';
+@use 'node_modules/@substructure/tools';
+
+
+$element-separator: '__' !default;
+
+$namespace: #{
+  map.get( settings.$layer-namespaces, 'objects' ) +
+  'list-bare' 
+} !default;
+
+
+.#{ $namespace } {
+
+  list-style: none;
+  margin-left: 0;
+
+}
+
+.#{ 
+  $namespace + 
+  $element-separator +
+  'item'
+} {
+  margin-left: 0;
+}
