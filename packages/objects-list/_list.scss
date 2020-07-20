@@ -50,7 +50,7 @@ $_class-inline: #{
 
   > #{ $_class-item }:not(:last-child) {
   
-    @include tools.sizing(
+    @include tools.spacing(
       right, $spacing
     )
   

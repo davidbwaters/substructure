@@ -4,7 +4,7 @@
   "main": "main.scss",
   "scripts": {
     "test": "lerna bootstrap && node test/test.js",
-    "deploy": "git add -A && git commit -m .; lerna publish"
+    "deploy": "lerna publish"
   },
   "repository": "https://github.com/davidbwaters/substructure.git",
   "author": "David B. Waters <mrdavidbwaters@gmail.com>",
