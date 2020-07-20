@@ -129,7 +129,7 @@ $_class-reverse: #{
   margin-right: 0;
   
   @include tools.spacing(
-    'left', $spacing-default
+    left, $spacing-default
   );
 
 }

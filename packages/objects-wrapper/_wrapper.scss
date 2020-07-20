@@ -1,0 +1,34 @@
+/*
+ *  Objects - Wrapper
+ */
+
+// Simple wrapper object.
+
+
+@use 'sass:map';
+@use 'node_modules/@substructure/settings';
+@use 'node_modules/@substructure/tools';
+
+
+$spacing: settings.$sizing-unit !default;
+
+$width: 1080px !default;
+
+$namespace: #{
+  map.get( settings.$layer-namespaces, 'objects' ) +
+  'wrapper' 
+} !default;
+
+
+.#{ $namespace } {
+
+  @include tools.clearfix();
+  @include tools.spacing(
+    horizontal, $padding, padding
+  );
+
+  margin-right: auto;
+  margin-left:  auto;
+  max-width: $width;
+
+}

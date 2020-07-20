@@ -20,7 +20,7 @@ table,
 fieldset {
   
   @include tools.spacing( 
-    'bottom', settings.$sizing-unit 
+    bottom, settings.$sizing-unit 
   );
 
 }
@@ -29,7 +29,7 @@ fieldset {
 dd, ol, ul {
 
   @include tools.spacing( 
-    'left', settings.$sizing-unit 
+    left, settings.$sizing-unit 
   );
 
 }

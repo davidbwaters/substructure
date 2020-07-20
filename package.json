@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "main": "main.scss",
   "scripts": {
-    "test": "lerna bootstrap && node test/test.js"
+    "test": "lerna bootstrap && node test/test.js",
+    "deploy": "yarn deploy:git && yarn deploy:npm",
+    "deploy:npm": "lerna publish",
+    "deploy:git": "git add -A && git commit -m .; git push"
   },
   "repository": "https://github.com/davidbwaters/substructure.git",
   "author": "David B. Waters <mrdavidbwaters@gmail.com>",

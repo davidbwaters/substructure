@@ -7,6 +7,10 @@ const fs = require('fs')
 const sass = require('sass')
 const Fiber = require('fibers')
 
+fs.rmdirSync(
+  'test/build', 
+  { recursive: true }
+)
 
 fs.mkdirSync(
   'test/build', 
@@ -45,5 +49,5 @@ build('utilities-spacing')
 build('utilities-text-sizing')
 build('objects-box')
 build('objects-layout')
-build('objects-list-bare')
+build('objects-list')
 build('objects-media')

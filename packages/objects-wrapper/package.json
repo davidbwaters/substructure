@@ -1,7 +1,7 @@
 {
-  "name": "@substructure/objects-list-bare",
+  "name": "@substructure/objects-wrapper",
   "version": "0.1.0",
-  "description": "Object for lists without bullets.",
+  "description": "Simple wrapper object.",
   "main": "_index.scss",
   "repository": "https://github.com/davidbwaters/substructure",
   "keywords": [ 
