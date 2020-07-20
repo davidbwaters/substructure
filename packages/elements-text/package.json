@@ -13,9 +13,12 @@
   ],
   "author": "David B. Waters <mrdavidbwaters@gmail.com>",
   "license": "MIT",
-  "private": false,
   "dependencies": {
     "@substructure/settings": "^0.1.1",
     "@substructure/tools": "^0.1.1"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "01a9f478bd35428d1663a1728abde479a4c2b3b7"
 }
