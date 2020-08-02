@@ -13,7 +13,6 @@
   ],
   "author": "David B. Waters <mrdavidbwaters@gmail.com>",
   "license": "MIT",
-  "private": "false",
   "dependencies": {
     "@substructure/settings": "^0.1.2",
     "@substructure/tools": "^0.1.2"
