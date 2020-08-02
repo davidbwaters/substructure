@@ -14,7 +14,8 @@
   "author": "David B. Waters <mrdavidbwaters@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@substructure/settings": "^0.1.2"
+    "@substructure/settings": "^0.1.2",
+    "@substructure/tools": "^0.1.3"
   },
   "publishConfig": {
     "access": "public"
