@@ -4,8 +4,8 @@
 
 
 @use 'sass:map';
-@use 'node_modules/@substructure/settings';
-@use 'node_modules/@substructure/tools';
+@use '@substructure/settings';
+@use '@substructure/tools';
 
 
 $height: false !default;

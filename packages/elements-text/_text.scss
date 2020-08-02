@@ -7,8 +7,8 @@
 
 @use 'sass:map';
 @use 'sass:list';
-@use 'node_modules/@substructure/settings';
-@use 'node_modules/@substructure/tools';
+@use '@substructure/settings';
+@use '@substructure/tools';
 
 
 $text-sizes-large: settings.$text-sizes-large !default;
