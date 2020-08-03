@@ -50,10 +50,12 @@ $sizing-separator: \/;
 // Defines the default spacing sizes.
 
 $spacing-sizes: (
-  tiny  : $sizing-unit,
-  small : $sizing-unit * 2,
-  large : $sizing-unit * 4,
-  huge  : $sizing-unit * 8
+  tiny     : $sizing-unit,
+  small    : $sizing-unit * 2,
+  medium   : $sizing-unit * 3,
+  large    : $sizing-unit * 4,
+  huge     : $sizing-unit * 6,
+  gigantic : $sizing-unit * 8
 ) !default;
 
 
