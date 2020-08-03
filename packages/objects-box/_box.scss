@@ -10,7 +10,7 @@
 @use 'node_modules/@substructure/tools';
 
 
-$spacing-default: settings.$sizing-unit !default;
+$spacing-default: map.get( $spacing-sizes, small ) !default;
 
 $spacing-sizes: settings.$spacing-sizes !default;
 

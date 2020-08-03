@@ -33,8 +33,11 @@ $namespaces: map.merge(
 
   #{ map.get( $namespaces, large ) }#{ $size } {
 
-    @include tools.text-sizing( $size-value);
-
+    @include tools.text-sizing( 
+      $size-value,
+      settings.$line-height-large 
+    );
+    
   }
     
 }

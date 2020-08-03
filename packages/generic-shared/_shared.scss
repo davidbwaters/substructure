@@ -6,6 +6,7 @@
 // Shared declarations for certain elements.
 
 
+@use 'sass:map';
 @use 'node_modules/@substructure/settings';
 @use 'node_modules/@substructure/tools';
 
@@ -20,7 +21,7 @@ table,
 fieldset {
   
   @include tools.spacing( 
-    bottom, settings.$sizing-unit 
+    bottom, map.get( $spacing-sizes, small )
   );
 
 }
@@ -29,7 +30,7 @@ fieldset {
 dd, ol, ul {
 
   @include tools.spacing( 
-    left, settings.$sizing-unit 
+    left, map.get( $spacing-sizes, small )
   );
 
 }

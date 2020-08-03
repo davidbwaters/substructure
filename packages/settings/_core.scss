@@ -89,6 +89,11 @@ $text-sizes-small: (
 $line-height-normal: 1.5 !default;
 
 
+// Defines the large text line height as a unitless value.
+
+$line-height-large: 1.2 !default;
+
+
 // Defines the default ITCSS layer namespaces.
 
 $layer-namespaces: (

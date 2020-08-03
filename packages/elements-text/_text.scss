@@ -14,6 +14,7 @@
 $text-sizes-large: settings.$text-sizes-large !default;
 $text-sizes-small: settings.$text-sizes-small !default;
 
+
 $_text-sizes-large-length: list.length( 
   map.keys( $text-sizes-large )
 );
@@ -68,7 +69,8 @@ $_heading-sizes: ();
       list.nth( 
         tools.reverse( $_heading-sizes ),
         $i
-      )
+      ),
+      settings.$line-height-large
 
     )
 
