@@ -904,6 +904,18 @@
   dependencies:
     "@types/node" ">= 8"
 
+"@substructure/settings@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@substructure/settings/-/settings-0.1.2.tgz#3ed9b999ecbb6d34a38791a8aa945a94d029f649"
+  integrity sha512-ZezVFNkpNtG1opm42228xv5s1HgbRNcCSPUu43mdI2jGWptvzjOrDrlYb0uLHawdppi45KM9oqy2Yw7TpaWE7w==
+
+"@substructure/tools@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@substructure/tools/-/tools-0.1.5.tgz#4173f3b4c3e9f7c3c25caed0db9d85c0f8670a30"
+  integrity sha512-eVNNW9U2wXrDtlFz2tOAQL1/MmB8L+nVJMMKqdYe8uq04Pjw/11WvV7T4aAlfDk9vwr5mCGd4R3uKJwiQRPFVA==
+  dependencies:
+    "@substructure/settings" "^0.1.2"
+
 "@types/glob@^7.1.1":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.1.2.tgz#06ca26521353a545d94a0adc74f38a59d232c987"

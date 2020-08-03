@@ -3,6 +3,7 @@
  */
 
 
+const path = require('path')
 const fs = require('fs')
 const sass = require('sass')
 const Fiber = require('fibers')
@@ -21,6 +22,7 @@ const build = (package) => {
   
   sass.render(
     {
+      includePaths:['../node_modules'],
       file: 'packages/' + package + '/_index.scss',
       fiber: Fiber
     }, 
@@ -52,3 +54,4 @@ build('objects-box')
 build('objects-layout')
 build('objects-list')
 build('objects-media')
+build('objects-wrapper')

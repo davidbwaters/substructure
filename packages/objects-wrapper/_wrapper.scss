@@ -24,7 +24,7 @@ $namespace: #{
 
   @include tools.clearfix();
   @include tools.spacing(
-    horizontal, $padding, padding
+    horizontal, $spacing, padding
   );
 
   margin-right: auto;
