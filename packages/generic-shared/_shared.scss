@@ -21,7 +21,10 @@ table,
 fieldset {
   
   @include tools.spacing( 
-    bottom, map.get( $spacing-sizes, small )
+    bottom,
+    map.get(
+      settings.$spacing-sizes, small
+    )
   );
 
 }
@@ -30,7 +33,10 @@ fieldset {
 dd, ol, ul {
 
   @include tools.spacing( 
-    left, map.get( $spacing-sizes, small )
+    left, 
+    map.get(
+      settings.$spacing-sizes, small
+    )
   );
 
 }

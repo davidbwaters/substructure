@@ -10,7 +10,9 @@
 @use 'node_modules/@substructure/tools';
 
 
-$spacing-default: map.get( $spacing-sizes, small ) !default;
+$spacing:map.get(
+  settings.$spacing-sizes, small
+) !default;
 
 $spacing-sizes: settings.$spacing-sizes !default;
 
@@ -38,7 +40,7 @@ $_class: map.get( $namespaces, main ) !default;
 .#{ $_class } {
   @include tools.clearfix();
   display: block;
-  padding: $spacing-default;
+  padding: $spacing;
 
   > :last-child {
     margin-bottom: 0;
@@ -63,7 +65,7 @@ $_class: map.get( $namespaces, main ) !default;
 
 @each $size-name, $size-value in $spacing-sizes {
 
-  @if $size-value != $spacing-default {
+  @if $size-value != $spacing {
 
     .#{
       $_class +

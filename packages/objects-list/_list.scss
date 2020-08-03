@@ -10,7 +10,9 @@
 @use 'node_modules/@substructure/tools';
 
 
-$spacing: settings.$sizing-unit;
+$spacing: map.get(
+  settings.$spacing-sizes, small
+) !default;
 
 $element-separator: '__' !default;
 
