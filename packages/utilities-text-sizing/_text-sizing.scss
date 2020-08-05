@@ -54,14 +54,16 @@ $namespaces: map.merge(
   .#{ map.get( $namespaces, small ) }#{ $size } {
 
     @include tools.text-sizing( $size-value);
+
+    @include tools.spacing( 
+      bottom,
+      map.get(
+        settings.$spacing-sizes, small
+      )
+    );
     
   }
 
-  @include tools.spacing( 
-    bottom,
-    map.get(
-      settings.$spacing-sizes, small
-    )
-  );
+
     
 }
