@@ -11,7 +11,7 @@
 
 
 $spacing: map.get(
-  settings.$spacing-sizes, small
+  settings.$spacing-sizes, medium
 ) !default;
 
 $element-separator: '__' !default;

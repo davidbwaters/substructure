@@ -31,11 +31,18 @@ $namespaces: map.merge(
 
 @each $size, $size-value in $text-sizes-large {
 
-  #{ map.get( $namespaces, large ) }#{ $size } {
+  .#{ map.get( $namespaces, large ) }#{ $size } {
 
     @include tools.text-sizing( 
       $size-value,
       settings.$line-height-large 
+    );
+
+    @include tools.spacing( 
+      bottom,
+      map.get(
+        settings.$spacing-sizes, medium
+      )
     );
     
   }
@@ -44,10 +51,17 @@ $namespaces: map.merge(
 
 @each $size, $size-value in $text-sizes-small {
 
-  #{ map.get( $namespaces, small ) }#{ $size } {
+  .#{ map.get( $namespaces, small ) }#{ $size } {
 
     @include tools.text-sizing( $size-value);
     
   }
+
+  @include tools.spacing( 
+    bottom,
+    map.get(
+      settings.$spacing-sizes, small
+    )
+  );
     
 }

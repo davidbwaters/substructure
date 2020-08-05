@@ -12,7 +12,7 @@
 
 
 $spacing: map.get( 
-  settings.$spacing-sizes, small 
+  settings.$spacing-sizes, medium 
 ) !default;
 
 $spacing-sizes: settings.$spacing-sizes !default;

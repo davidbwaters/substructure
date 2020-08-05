@@ -23,7 +23,7 @@ fieldset {
   @include tools.spacing( 
     bottom,
     map.get(
-      settings.$spacing-sizes, small
+      settings.$spacing-sizes, medium
     )
   );
 
