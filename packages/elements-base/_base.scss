@@ -10,11 +10,12 @@
 
 :root {
   font-size: settings.$sizing-root;
-  min-height: 100%;
 }
 
-html {
+html, body {
   @include tools.text-sizing( 
     settings.$text-size-normal 
-  )
+  );
+  
+  min-height: 100%;
 }
