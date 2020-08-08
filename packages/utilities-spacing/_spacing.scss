@@ -54,36 +54,42 @@ $namespaces: map.merge(
   $namespaces
 );
 
+@if map.has-key( $directions, horizontal ) {
 
-$margin-auto-class: #{        
-  map.get( $namespaces, margin ) +
-  map.get( $directions, horizontal ) +
-  'auto'
-};
+  $margin-auto-class: #{
+    map.get( $namespaces, margin ) +
+    map.get( $directions, horizontal ) +
+    'auto'
+  };
 
-.#{ $margin-auto-class } {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@if $responsive {
-      
-  @each $breakpoint, $breakpoint-value in $breakpoints {
-    
-    @include tools.respond-to( 
-      $breakpoint, $breakpoints 
-    ) {
-      
-      .#{ 
-        $margin-auto-class +
-        $breakpoint-separator + 
-        $breakpoint
-      } {
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
+  .#{ $margin-auto-class } {
+    margin-left: auto;
+    margin-right: auto;
   }
+
+  @if $responsive {
+        
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      
+      @include tools.respond-to( 
+        $breakpoint, $breakpoints 
+      ) {
+        
+        .#{ 
+          $margin-auto-class +
+          $breakpoint-separator + 
+          $breakpoint
+        } {
+          margin-left: auto;
+          margin-right: auto;
+        }
+        
+      }
+
+    }
+
+  }
+
 }
 
 @each $direction, $direction-namespace in $directions {
