@@ -60,6 +60,8 @@ $_heading-sizes: ();
 
 }
 
+$_heading-sizes: tools.reverse($_heading-sizes);
+
 @for $i from 6 through 1 {
 
   @if $i < 4 {
