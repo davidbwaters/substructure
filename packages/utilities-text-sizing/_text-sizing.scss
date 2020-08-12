@@ -4,6 +4,7 @@
 
 
 @use 'sass:map';
+@use 'sass:list';
 @use 'node_modules/@substructure/settings';
 @use 'node_modules/@substructure/tools';
 
@@ -31,23 +32,46 @@ $namespaces: map.merge(
 
 @each $size, $size-value in $text-sizes-large {
 
+  $_length: list.length( 
+    map.keys( $text-sizes-large )
+  );
+  $_index: list.index( 
+    map.keys( $text-sizes-large ), $size 
+  );
+  $_line-height-switch: #{ $_index > ( $_length - 3 ) };
+
+
   .#{ map.get( $namespaces, large ) }#{ $size } {
+  
+    @if $_index > ( $_length - 3 ) {
 
-    @include tools.text-sizing( 
-      $size-value,
-      settings.$line-height-large 
-    );
+      @include tools.text-sizing( 
+        $size-value,
+        settings.$line-height-large 
+      );
 
-    @include tools.spacing( 
+    }
+
+    @else {
+
+      @include tools.text-sizing( 
+        $size-value,
+        settings.$line-height-normal
+      );
+
+    };
+
+    @include tools.spacing(
       bottom,
       map.get(
         settings.$spacing-sizes, medium
       )
     );
-    
+
   }
     
 }
+
 
 @each $size, $size-value in $text-sizes-small {
 
@@ -63,7 +87,5 @@ $namespaces: map.merge(
     );
     
   }
-
-
     
 }

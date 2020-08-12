@@ -60,22 +60,41 @@ $_heading-sizes: ();
 
 }
 
-@for $i from 1 through 6 {
+@for $i from 6 through 1 {
 
-  h#{$i} {
+  @if $i < 4 {
 
-    @include tools.text-sizing( 
+    h#{$i} {
 
-      list.nth( 
-        tools.reverse( $_heading-sizes ),
-        $i
-      ),
-      settings.$line-height-large
+      @include tools.text-sizing( 
 
-    )
+        list.nth( 
+          $_heading-sizes, $i
+        ),
+        settings.$line-height-large
+
+      )
+
+    }
 
   }
-  
+
+  @else {
+
+    h#{$i} {
+
+      @include tools.text-sizing( 
+
+        list.nth( 
+          $_heading-sizes, $i
+        )
+
+      )
+
+    }
+
+  }
+
 }
 
 small {
