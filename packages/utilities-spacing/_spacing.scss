@@ -161,7 +161,7 @@ $namespaces: map.merge(
       .#{$padding-class} {
       
         @include tools.spacing( 
-          $direction, $spacing-size-value 
+          $direction, $spacing-size-value, padding
         )
         
       }
@@ -181,7 +181,7 @@ $namespaces: map.merge(
             } {
             
               @include tools.spacing( 
-                $direction, $spacing-size-value 
+                $direction, $spacing-size-value, padding
               )
               
             }
