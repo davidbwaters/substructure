@@ -3,7 +3,8 @@
 //
 
 
-@use 'sass:map';
+@use 'sass:list';
+@use 'sass:math';
 
 
 // Enables responsive framework features.
@@ -66,23 +67,31 @@ $text-size-normal: $sizing-root !default;
 // Defines the default sizes for large text.
 // Order from smallest to largest.
 
-$text-sizes-large: (
-  medium   : $text-size-normal * 1.25,
-  large    : $text-size-normal * 1.5,
-  huge     : $text-size-normal * 2,
-  gigantic : $text-size-normal * 3,
-  enormous : $text-size-normal * 3.5,
-  massive  : $text-size-normal * 4
-) !default;
+$text-size-scale: 1.2;
+$text-size-steps-positive: 6;
+$text-size-steps-negative: 2; 
+
+$text-sizes-large: ();
+
+@for $i from 1 through $text-size-steps-positive {
+  $text-sizes-large: list.append(
+    $text-sizes-large,
+    $text-size-normal * math.pow($text-size-scale, $i)
+  )
+}
 
 
-// Defines the default sizes for large text.
-// Order from smallest to largest.
+// Defines the default sizes for small text.
+// Order from largest to smallest.
 
-$text-sizes-small: (
-  tiny  : $text-size-normal * .75,
-  small : $text-size-normal * .875
-) !default;
+$text-sizes-small: ();
+
+@for $i from 1 through $text-size-steps-negative {
+  $text-sizes-small: list.append(
+    $text-sizes-small,
+    $text-size-normal / math.pow($text-size-scale, $i)
+  )
+}
 
 
 // Defines the default target line height as a unitless 

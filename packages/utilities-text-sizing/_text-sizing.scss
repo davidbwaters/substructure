@@ -30,18 +30,17 @@ $namespaces: map.merge(
 );
 
 
-@each $size, $size-value in $text-sizes-large {
+@each $size-value in $text-sizes-large {
 
   $_length: list.length( 
-    map.keys( $text-sizes-large )
+    $text-sizes-large
   );
+
   $_index: list.index( 
-    map.keys( $text-sizes-large ), $size 
+    $text-sizes-large, $size 
   );
-  $_line-height-switch: #{ $_index > ( $_length - 3 ) };
 
-
-  .#{ map.get( $namespaces, large ) }#{ $size } {
+  .#{ map.get( $namespaces, large ) }#{ $_index} {
   
     @if $_index > ( $_length - 3 ) {
 
@@ -63,8 +62,9 @@ $namespaces: map.merge(
 
     @include tools.spacing(
       bottom,
-      map.get(
-        settings.$spacing-sizes, medium
+      list.nth(
+        settings.$spacing-sizes,
+        2
       )
     );
 
