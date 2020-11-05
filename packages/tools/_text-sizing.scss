@@ -2,7 +2,7 @@
 //  Tools - Text Sizing
 //
 
-// Mixin to generate REM-based text sizes with vertical 
+// Mixin to generate REM-based text sizes with vertical
 // rhythm based on the sizing units.
 
 
@@ -10,17 +10,25 @@
 @use 'core';
 
 
-@mixin text-sizing ( 
+@mixin text-sizing(
   $size-value,
-  $target-line-height: settings.$line-height-normal,
-  $sizing-unit: settings.$sizing-unit
+  $line-height: settings.$line-height-normal,
+  $size-value-max: $size-value,
+  $vw-min: settings.text-viewport-min,
+  $vw-max: settings.text-viewport-max
 ) {
-  
-  font-size: core.calculate-rem( $size-value );
-  line-height: core.line-height(
-    $size-value, 
-    $target-line-height,
-    $sizing-unit
-  );
-  
+  font-size: core.calculate-rem($size-value);
+
+  @if #{$size-value != $size-value-max} {
+    $f: 1 / ($vw-max - $vw-min) * ($size-value-max - $size-value);
+    $calc-value: unquote("#{ $size-value - ($vw-min * $f) } + #{ 100vw * $f }");
+
+    font-size: clamp(
+      #{if($min-value > $max-value, $max-value, $min-value)},
+      #{$calc-value},
+      #{if($min-value > $max-value, $min-value, $max-value)}
+    );
+  }
+
+  line-height: $line-height;
 }

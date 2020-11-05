@@ -51,11 +51,11 @@ $sizing-separator: \/;
 // Defines the default spacing sizes.
 
 $spacing-sizes: (
-  small    : $sizing-unit * 2,
-  medium   : $sizing-unit * 3,
-  large    : $sizing-unit * 4,
-  huge     : $sizing-unit * 6,
-  gigantic : $sizing-unit * 8
+  $sizing-unit * 2,
+  $sizing-unit * 3,
+  $sizing-unit * 4,
+  $sizing-unit * 6,
+  $sizing-unit * 8
 ) !default;
 
 
@@ -67,31 +67,33 @@ $text-size-normal: $sizing-root !default;
 // Defines the default sizes for large text.
 // Order from smallest to largest.
 
-$text-size-scale: 1.2;
-$text-size-steps-positive: 6;
-$text-size-steps-negative: 2; 
-
-$text-sizes-large: ();
-
-@for $i from 1 through $text-size-steps-positive {
-  $text-sizes-large: list.append(
-    $text-sizes-large,
-    $text-size-normal * math.pow($text-size-scale, $i)
-  )
-}
+$text-sizes-large: (
+  $text-size-normal * 1.2,
+  $text-size-normal * math.pow(1.2, 2),
+  $text-size-normal * math.pow(1.2, 3),
+  $text-size-normal * math.pow(1.2, 4),
+  $text-size-normal * math.pow(1.2, 5),
+  $text-size-normal * math.pow(1.2, 6)
+) !default;
 
 
 // Defines the default sizes for small text.
 // Order from largest to smallest.
 
-$text-sizes-small: ();
+$text-sizes-small: (
+  $text-size-normal / 1.2,
+  $text-size-normal / math.pow(1.2, 2)
+) !default;
 
-@for $i from 1 through $text-size-steps-negative {
-  $text-sizes-small: list.append(
-    $text-sizes-small,
-    $text-size-normal / math.pow($text-size-scale, $i)
-  )
-}
+
+// Defines settings for fluid text scaling.
+// Set to false to disable.
+
+$text-sizing-fluid: (
+  viewport-min: 320px,
+  viewport-max: 1600px,
+  scale-max: 1.25 / 1.2
+) !default;
 
 
 // Defines the default target line height as a unitless 

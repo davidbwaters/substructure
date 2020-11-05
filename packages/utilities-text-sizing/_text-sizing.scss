@@ -37,7 +37,7 @@ $namespaces: map.merge(
   );
 
   $_index: list.index( 
-    $text-sizes-large, $size 
+    $text-sizes-large, $size-value
   );
 
   .#{ map.get( $namespaces, large ) }#{ $_index} {
@@ -63,8 +63,7 @@ $namespaces: map.merge(
     @include tools.spacing(
       bottom,
       list.nth(
-        settings.$spacing-sizes,
-        2
+        settings.$spacing-sizes, 3
       )
     );
 
@@ -73,16 +72,20 @@ $namespaces: map.merge(
 }
 
 
-@each $size, $size-value in $text-sizes-small {
+@each $size-value in $text-sizes-small {
+  
+  $_index: list.index( 
+    $text-sizes-small, $size-value
+  );
 
-  .#{ map.get( $namespaces, small ) }#{ $size } {
+  .#{ map.get( $namespaces, small ) }#{ $_index } {
 
-    @include tools.text-sizing( $size-value);
+    @include tools.text-sizing( $size-value );
 
     @include tools.spacing( 
       bottom,
-      map.get(
-        settings.$spacing-sizes, small
+      list.nth(
+        settings.$spacing-sizes, 2
       )
     );
     
