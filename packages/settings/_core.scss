@@ -14,10 +14,34 @@ $responsive: true !default;
 
 // Defines the default breakpoints
 
-$breakpoints: (
-  tablet  : "screen and ( min-width: 768px )",
-  desktop : "screen and ( min-width: 1000px )"
+$breakpoint-sizes: (
+  tablet  :  768px,
+  desktop : 1000px
 ) !default;
+
+$breakpoints: () !default;
+
+$breakpoints-max: () !default;
+
+@each $bp-name, $bp-size in $breakpoint-sizes {
+  
+  $_bp-value: #{
+    'screen and ( min-width: ' + $bp-size + ' )'
+  };
+
+  $_bp-value-max: #{
+    'screen and ( max-width: ' + $bp-size + ' )'
+  };
+
+  $breakpoints: map.set(
+    $breakpoints, $bp-name, $_bp-value
+  );
+
+  $breakpoints-max: map.set(
+    $breakpoints-max, $bp-name, $_bp-value-max
+  );
+
+}
 
 
 // Defines the default breakpoint separator.
@@ -114,3 +138,74 @@ $layer-namespaces: (
   utilities  : 'u-',
   components : 'c-'
 ) !default;
+
+
+// Defines custom properties to set in CSS.
+// Set to false to disable.
+
+$custom-properties: () !default;
+
+@if $custom-properties != false {
+
+  $custom-properties: (
+    text-size-normal: $text-size-normal,
+    line-height-normal: $line-height-normal,
+    line-height-large:  $line-height-large
+  );
+
+  @each $value in $text-sizes-large {
+    
+    $_index: list.index(
+      $text-sizes-large,
+      $value
+    );
+    
+    $custom-properties: map.set(
+      $custom-properties,
+      #{ 'text-sizes-large-' + $_index },
+      $value
+    )
+
+  }
+
+  @each $value in $text-sizes-small {
+    
+    $_index: list.index(
+      $text-sizes-small,
+      $value
+    );
+    
+    $custom-properties: map.set(
+      $custom-properties,
+      #{ 'text-sizes-small-' + $_index },
+      $value
+    )
+
+  }
+  
+  @each $key, $value in $layer-namespaces {
+    
+    $custom-properties: map.set(
+      $custom-properties,
+      #{ 'layer-namespace-' + $key },
+      $value
+    )
+
+  }
+
+  @if $text-sizing-fluid != false {
+    
+    @each $key, $value in $text-sizing-fluid {
+
+      $custom-properties: map.set(
+        $custom-properties,
+        #{ 'text-sizing-fluid-' + $key },
+        $value
+      )
+      
+    }
+
+  }
+
+}
+
