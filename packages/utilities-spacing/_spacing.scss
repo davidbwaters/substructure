@@ -5,6 +5,7 @@
 // Generate responsive spacing utility classes.
 
 
+@use 'sass:list';
 @use 'sass:map';
 @use 'sass:string';
 @use 'node_modules/@substructure/settings';
@@ -95,14 +96,17 @@ $namespaces: map.merge(
 @each $direction, $direction-namespace in $directions {
 
   @each 
-    $spacing-size, $spacing-size-value in $spacing-sizes 
+    $spacing-size-value in $spacing-sizes 
 
   {
 
     $margin-class: #{
       map.get( $namespaces, margin ) +
       $direction-namespace +
-      $spacing-size
+      list.index( 
+        $spacing-sizes,
+        $spacing-size-value
+      )
     };
     
     .#{
@@ -147,15 +151,17 @@ $namespaces: map.merge(
 
 @each $direction, $direction-namespace in $directions {
 
-  @each 
-    $spacing-size, $spacing-size-value in $spacing-sizes {
+  @each $spacing-size-value in $spacing-sizes {
 
     @if $padding == true {
 
       $padding-class: #{
         map.get( $namespaces, padding ) +
         $direction-namespace + 
-        $spacing-size
+        list.index( 
+          $spacing-sizes,
+          $spacing-size-value
+        )
       };
 
       .#{$padding-class} {

@@ -5,13 +5,14 @@
 // Object to box off content.
 
 
+@use 'sass:list';
 @use 'sass:map';
 @use 'node_modules/@substructure/settings';
 @use 'node_modules/@substructure/tools';
 
 
-$spacing:map.get(
-  settings.$spacing-sizes, medium
+$spacing: list.nth(
+  settings.$spacing-sizes, 2
 ) !default;
 
 $spacing-sizes: settings.$spacing-sizes !default;
@@ -63,14 +64,17 @@ $_class: map.get( $namespaces, main ) !default;
 
 }
 
-@each $size-name, $size-value in $spacing-sizes {
+@each $size-value in $spacing-sizes {
 
   @if $size-value != $spacing {
 
     .#{
       $_class +
       $modifier-separator +
-      $size-name
+      list.index( 
+        $spacing-sizes,
+        $size-value
+      )
     } {
 
       @include tools.spacing(

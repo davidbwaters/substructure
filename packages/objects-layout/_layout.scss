@@ -6,6 +6,7 @@
 // side-by-side
 
 
+@use 'sass:list';
 @use 'sass:map';
 @use 'node_modules/@substructure/settings';
 @use 'node_modules/@substructure/tools';
@@ -73,9 +74,16 @@ $_justify-values: (
 
 // Gutters
 
-@each $size-name, $size-value in $gutter-sizes {
+@each $size-value in $gutter-sizes {
 
-  .#{ $_class + $modifier-separator + $size-name } {
+  .#{ 
+    $_class + 
+    $modifier-separator + 
+    list.index( 
+      $gutter-sizes,
+      $size-value
+    )
+  } {
 
     @include tools.spacing(
       'left', $size-value

@@ -6,13 +6,14 @@
 // side-by-side
 
 
+@use 'sass:list';
 @use 'sass:map';
 @use 'node_modules/@substructure/settings';
 @use 'node_modules/@substructure/tools';
 
 
-$spacing: map.get( 
-  settings.$spacing-sizes, medium 
+$spacing: list.nth(
+  settings.$spacing-sizes, 3
 ) !default;
 
 $spacing-sizes: settings.$spacing-sizes !default;

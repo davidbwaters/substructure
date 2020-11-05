@@ -45,7 +45,7 @@ $sizing-factors: (
 
 // Defines the default separator for sizing utilities.
 
-$sizing-separator: \/;
+$sizing-separator: \/ !default;
 
 
 // Defines the default spacing sizes.

@@ -17,11 +17,11 @@ $namespaces: () !default;
 
 $namespaces: map.merge(
   (
-    large: #{ 
+    large: #{
       map.get( settings.$layer-namespaces, utilities ) +
       'text-'
     },
-    small: #{ 
+    small: #{
       map.get( settings.$layer-namespaces, utilities ) +
       'text-'
     }
@@ -82,7 +82,7 @@ $namespaces: map.merge(
 
     @include tools.text-sizing( $size-value );
 
-    @include tools.spacing( 
+    @include tools.spacing(
       bottom,
       list.nth(
         settings.$spacing-sizes, 2

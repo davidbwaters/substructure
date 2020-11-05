@@ -5,28 +5,44 @@
 // Mixin to generate REM-based text sizes with vertical
 // rhythm based on the sizing units.
 
+@use 'sass:map';
 
 @use 'node_modules/@substructure/settings';
 @use 'core';
 
-
 @mixin text-sizing(
   $size-value,
   $line-height: settings.$line-height-normal,
-  $size-value-max: $size-value,
-  $vw-min: settings.text-viewport-min,
-  $vw-max: settings.text-viewport-max
+  $sizing-fluid: settings.$text-sizing-fluid
 ) {
+
   font-size: core.calculate-rem($size-value);
 
-  @if #{$size-value != $size-value-max} {
-    $f: 1 / ($vw-max - $vw-min) * ($size-value-max - $size-value);
-    $calc-value: unquote("#{ $size-value - ($vw-min * $f) } + #{ 100vw * $f }");
+  @if $sizing-fluid != false {
+
+    $scale: map.get($sizing-fluid, scale-max);
+
+    $fs-min: $size-value;
+    $fs-max: $size-value * $scale;
+    $vw-min: map.get($sizing-fluid, viewport-min);
+    $vw-max: map.get($sizing-fluid, viewport-max);
+
+    $factor: 
+      1 / 
+      ($vw-max - $vw-min) * 
+      ($fs-max - $fs-min);
+
+    $calc-fs: #{ $fs-min - ($vw-min * $factor) };
+    $calc-vw: #{ 100vw * $factor };
+    
+    $calc-value: unquote(
+      "#{ $calc-fs } + #{ $calc-vw }"
+    );
 
     font-size: clamp(
-      #{if($min-value > $max-value, $max-value, $min-value)},
-      #{$calc-value},
-      #{if($min-value > $max-value, $min-value, $max-value)}
+      #{ core.calculate-rem($fs-min) },
+      #{ $calc-value },
+      #{ core.calculate-rem($fs-max) }
     );
   }
 

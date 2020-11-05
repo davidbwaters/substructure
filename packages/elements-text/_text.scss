@@ -35,7 +35,10 @@ $_heading-sizes: ();
   
   @if $i <= 6 {
 
-    $_heading-sizes: list.append( $size-value );
+    $_heading-sizes: list.append( 
+      $_heading-sizes,
+      $size-value 
+    );
 
   }
 

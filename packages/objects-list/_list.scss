@@ -5,13 +5,14 @@
 // Object for lists without bullets.
 
 
+@use 'sass:list';
 @use 'sass:map';
 @use 'node_modules/@substructure/settings';
 @use 'node_modules/@substructure/tools';
 
 
-$spacing: map.get(
-  settings.$spacing-sizes, medium
+$spacing: list.nth(
+  settings.$spacing-sizes, 2
 ) !default;
 
 $element-separator: '__' !default;
