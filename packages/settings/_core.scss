@@ -37,9 +37,13 @@ $breakpoints-max: () !default;
     $breakpoints, $bp-name, $_bp-value
   );
 
-  $breakpoints-max: map.set(
-    $breakpoints-max, $bp-name, $_bp-value-max
-  );
+  @if $breakpoints-max != false {
+
+    $breakpoints-max: map.set(
+      $breakpoints-max, $bp-name, $_bp-value-max
+    );
+  
+  }
 
 }
 
@@ -150,8 +154,50 @@ $custom-properties: () !default;
   $custom-properties: (
     text-size-normal: $text-size-normal,
     line-height-normal: $line-height-normal,
-    line-height-large:  $line-height-large
+    line-height-large:  $line-height-large,
+    sizing-root: $sizing-root,
+    sizing-unit: $sizing-unit,
   );
+
+  @each $key, $value in $breakpoint-sizes {
+
+    $custom-properties: map.set(
+      $custom-properties,
+      #{ 'breakpoint-size-' + $key },
+      $value
+    )
+
+  }
+
+  @each $value in $sizing-factors {
+    
+    $_index: list.index(
+      $sizing-factors,
+      $value
+    );
+    
+    $custom-properties: map.set(
+      $custom-properties,
+      #{ 'sizing-factor-' + $_index },
+      $value
+    )
+
+  }
+
+  @each $value in $spacing-sizes {
+    
+    $_index: list.index(
+      $spacing-sizes,
+      $value
+    );
+    
+    $custom-properties: map.set(
+      $custom-properties,
+      #{ 'spacing-size-' + $_index },
+      $value
+    )
+
+  }
 
   @each $value in $text-sizes-large {
     
@@ -162,7 +208,7 @@ $custom-properties: () !default;
     
     $custom-properties: map.set(
       $custom-properties,
-      #{ 'text-sizes-large-' + $_index },
+      #{ 'text-size-large-' + $_index },
       $value
     )
 

@@ -1,0 +1,114 @@
+//
+//  Settings - Properties
+//
+
+
+@use 'core' as *;
+
+
+@if $custom-properties != false {
+
+  $custom-properties: (
+    text-size-normal: $text-size-normal,
+    line-height-normal: $line-height-normal,
+    line-height-large:  $line-height-large,
+    sizing-root: $sizing-root,
+    sizing-unit: $sizing-unit,
+  );
+
+  @each $key, $value in $breakpoint-sizes {
+
+    $custom-properties: map.set(
+      $custom-properties,
+      #{ 'breakpoint-size-' + $key },
+      $value
+    )
+
+  }
+
+  @each $value in $sizing-factors {
+    
+    $_index: list.index(
+      $sizing-factors,
+      $value
+    );
+    
+    $custom-properties: map.set(
+      $custom-properties,
+      #{ 'sizing-factor-' + $_index },
+      $value
+    )
+
+  }
+
+  @each $value in $spacing-sizes {
+    
+    $_index: list.index(
+      $spacing-sizes,
+      $value
+    );
+    
+    $custom-properties: map.set(
+      $custom-properties,
+      #{ 'spacing-size-' + $_index },
+      $value
+    )
+
+  }
+
+  @each $value in $text-sizes-large {
+    
+    $_index: list.index(
+      $text-sizes-large,
+      $value
+    );
+    
+    $custom-properties: map.set(
+      $custom-properties,
+      #{ 'text-size-large-' + $_index },
+      $value
+    )
+
+  }
+
+  @each $value in $text-sizes-small {
+    
+    $_index: list.index(
+      $text-sizes-small,
+      $value
+    );
+    
+    $custom-properties: map.set(
+      $custom-properties,
+      #{ 'text-sizes-small-' + $_index },
+      $value
+    )
+
+  }
+  
+  @each $key, $value in $layer-namespaces {
+    
+    $custom-properties: map.set(
+      $custom-properties,
+      #{ 'layer-namespace-' + $key },
+      $value
+    )
+
+  }
+
+  @if $text-sizing-fluid != false {
+    
+    @each $key, $value in $text-sizing-fluid {
+
+      $custom-properties: map.set(
+        $custom-properties,
+        #{ 'text-sizing-fluid-' + $key },
+        $value
+      )
+      
+    }
+
+  }
+
+}
+
