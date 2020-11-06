@@ -3,6 +3,7 @@
 //
 
 
+@use 'sass:map';
 @use 'core' as *;
 
 
@@ -18,10 +19,11 @@
 
   @each $key, $value in $breakpoint-sizes {
 
-    $custom-properties: map.set(
+    $custom-properties: map.merge(
       $custom-properties,
-      #{ 'breakpoint-size-' + $key },
-      $value
+      ( 
+        #{ 'breakpoint-size-' + $key }: $value
+      )
     )
 
   }
@@ -33,10 +35,11 @@
       $value
     );
     
-    $custom-properties: map.set(
+    $custom-properties: map.merge(
       $custom-properties,
-      #{ 'sizing-factor-' + $_index },
-      $value
+      (
+        #{ 'sizing-factor-' + $_index }: $value
+      )
     )
 
   }
@@ -48,10 +51,11 @@
       $value
     );
     
-    $custom-properties: map.set(
+    $custom-properties: map.merge(
       $custom-properties,
-      #{ 'spacing-size-' + $_index },
-      $value
+      (
+        #{ 'spacing-size-' + $_index }: $value
+      )
     )
 
   }
@@ -63,10 +67,11 @@
       $value
     );
     
-    $custom-properties: map.set(
+    $custom-properties: map.merge(
       $custom-properties,
-      #{ 'text-size-large-' + $_index },
-      $value
+      (
+        #{ 'text-size-large-' + $_index }: $value
+      )
     )
 
   }
@@ -78,20 +83,22 @@
       $value
     );
     
-    $custom-properties: map.set(
+    $custom-properties: map.merge(
       $custom-properties,
-      #{ 'text-sizes-small-' + $_index },
-      $value
+      (
+        #{ 'text-sizes-small-' + $_index }: $value
+      )
     )
 
   }
   
   @each $key, $value in $layer-namespaces {
     
-    $custom-properties: map.set(
+    $custom-properties: map.merge(
       $custom-properties,
-      #{ 'layer-namespace-' + $key },
-      $value
+      (
+        #{ 'layer-namespace-' + $key }: $value
+      )
     )
 
   }
@@ -100,15 +107,22 @@
     
     @each $key, $value in $text-sizing-fluid {
 
-      $custom-properties: map.set(
+      $custom-properties: map.merge(
         $custom-properties,
-        #{ 'text-sizing-fluid-' + $key },
-        $value
+        (
+          #{ 'text-sizing-fluid-' + $key }: $value
+        )
       )
-      
     }
 
   }
 
 }
 
+:root {
+  
+  @each $key, $value in $custom-properties {
+    #{ '--' + $key }: #{ $value };
+  }
+
+}

@@ -24,7 +24,7 @@ $namespaces: () !default;
 $namespaces: map.merge(
   (
     main: #{
-      map-get(settings.$layer-namespaces, objects) +
+      map.get(settings.$layer-namespaces, objects) +
       'box'
     },
     flush: 'flush'
