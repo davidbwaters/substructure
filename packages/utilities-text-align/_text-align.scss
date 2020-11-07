@@ -1,0 +1,34 @@
+/*
+ *  Utilities - Text Sizing
+ */
+
+
+@use 'sass:map';
+@use 'sass:list';
+@use 'node_modules/@substructure/settings';
+
+
+$namespace: #{
+  map.get( settings.$layer-namespaces, utilities ) +
+  'text-align-'
+} !default;
+
+
+$alignments: (
+  left: 'left',
+  center: 'center',
+  right: 'right',
+  justify: 'justify'
+) !default;
+
+
+@each $key, $value in $alignments {
+
+  .#{ $namespace }#{ $value } {
+  
+    text-align: #{ $key };
+
+  }
+
+}
+

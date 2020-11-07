@@ -9,45 +9,64 @@
 @use 'node_modules/@substructure/tools';
 
 
+$text-size-normal: settings.$text-size-normal !default;
+
 $text-sizes-large: settings.$text-sizes-large !default;
 
 $text-sizes-small: settings.$text-sizes-small !default;
+
+$line-height-normal: settings.$line-height-normal !default;
+
+$line-height-large: settings.$line-height-large !default;
 
 $namespaces: () !default;
 
 $namespaces: map.merge(
   (
-    large: #{ 
+    normal: #{
       map.get( settings.$layer-namespaces, utilities ) +
-      'text-'
+      'text-normal'
     },
-    small: #{ 
+    large: #{
       map.get( settings.$layer-namespaces, utilities ) +
-      'text-'
+      'text-large-'
+    },
+    small: #{
+      map.get( settings.$layer-namespaces, utilities ) +
+      'text-small-'
     }
   ),
   $namespaces
 );
 
 
-@each $size, $size-value in $text-sizes-large {
+
+.#{ map.get( $namespaces, normal ) } {
+
+  @include tools.text-sizing(
+    $text-size-normal,
+    $line-height-normal
+  )
+
+}
+
+@each $size-value in $text-sizes-large {
 
   $_length: list.length( 
-    map.keys( $text-sizes-large )
+    $text-sizes-large
   );
+
   $_index: list.index( 
-    map.keys( $text-sizes-large ), $size 
+    $text-sizes-large, $size-value
   );
-  $_line-height-switch: #{ $_index > ( $_length - 3 ) };
 
-
-  .#{ map.get( $namespaces, large ) }#{ $size } {
+  .#{ map.get( $namespaces, large ) }#{ $_index} {
   
     @if $_index > ( $_length - 3 ) {
 
       @include tools.text-sizing( 
         $size-value,
-        settings.$line-height-large 
+        $line-height-large 
       );
 
     }
@@ -56,15 +75,15 @@ $namespaces: map.merge(
 
       @include tools.text-sizing( 
         $size-value,
-        settings.$line-height-normal
+        $line-height-normal
       );
 
     };
 
     @include tools.spacing(
       bottom,
-      map.get(
-        settings.$spacing-sizes, medium
+      list.nth(
+        settings.$spacing-sizes, 3
       )
     );
 
@@ -73,16 +92,20 @@ $namespaces: map.merge(
 }
 
 
-@each $size, $size-value in $text-sizes-small {
+@each $size-value in $text-sizes-small {
+  
+  $_index: list.index( 
+    $text-sizes-small, $size-value
+  );
 
-  .#{ map.get( $namespaces, small ) }#{ $size } {
+  .#{ map.get( $namespaces, small ) }#{ $_index } {
 
-    @include tools.text-sizing( $size-value);
+    @include tools.text-sizing( $size-value );
 
-    @include tools.spacing( 
+    @include tools.spacing(
       bottom,
-      map.get(
-        settings.$spacing-sizes, small
+      list.nth(
+        settings.$spacing-sizes, 2
       )
     );
     

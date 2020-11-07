@@ -3,7 +3,9 @@
 //
 
 
+@use 'sass:list';
 @use 'sass:map';
+@use 'sass:math';
 
 
 // Enables responsive framework features.
@@ -13,10 +15,44 @@ $responsive: true !default;
 
 // Defines the default breakpoints
 
-$breakpoints: (
-  tablet  : "screen and ( min-width: 768px )",
-  desktop : "screen and ( min-width: 1000px )"
+$breakpoint-sizes: (
+  tablet  :  768px,
+  desktop : 1000px
 ) !default;
+
+$breakpoints: () !default;
+
+$breakpoints-max: () !default;
+
+@each $bp-name, $bp-size in $breakpoint-sizes {
+  
+  $_bp-value: #{
+    'screen and ( min-width: ' + $bp-size + ' )'
+  };
+
+  $_bp-value-max: #{
+    'screen and ( max-width: ' + $bp-size + ' )'
+  };
+
+  $breakpoints: map.merge( 
+    (
+      #{ $bp-name }: $_bp-value
+    ),
+    $breakpoints
+  );
+
+  @if $breakpoints-max != false {
+
+    $breakpoints-max: map.merge(
+      (
+        #{ $bp-name }: $_bp-value-max
+      ),
+      $breakpoints-max
+    );
+  
+  }
+
+}
 
 
 // Defines the default breakpoint separator.
@@ -44,17 +80,17 @@ $sizing-factors: (
 
 // Defines the default separator for sizing utilities.
 
-$sizing-separator: \/;
+$sizing-separator: \/ !default;
 
 
 // Defines the default spacing sizes.
 
 $spacing-sizes: (
-  small    : $sizing-unit * 2,
-  medium   : $sizing-unit * 3,
-  large    : $sizing-unit * 4,
-  huge     : $sizing-unit * 6,
-  gigantic : $sizing-unit * 8
+  $sizing-unit * 2,
+  $sizing-unit * 3,
+  $sizing-unit * 4,
+  $sizing-unit * 6,
+  $sizing-unit * 8
 ) !default;
 
 
@@ -67,21 +103,31 @@ $text-size-normal: $sizing-root !default;
 // Order from smallest to largest.
 
 $text-sizes-large: (
-  medium   : $text-size-normal * 1.25,
-  large    : $text-size-normal * 1.5,
-  huge     : $text-size-normal * 2,
-  gigantic : $text-size-normal * 3,
-  enormous : $text-size-normal * 3.5,
-  massive  : $text-size-normal * 4
+  $text-size-normal * 1.2,
+  $text-size-normal * math.pow(1.2, 2),
+  $text-size-normal * math.pow(1.2, 3),
+  $text-size-normal * math.pow(1.2, 4),
+  $text-size-normal * math.pow(1.2, 5),
+  $text-size-normal * math.pow(1.2, 6)
 ) !default;
 
 
-// Defines the default sizes for large text.
-// Order from smallest to largest.
+// Defines the default sizes for small text.
+// Order from largest to smallest.
 
 $text-sizes-small: (
-  tiny  : $text-size-normal * .75,
-  small : $text-size-normal * .875
+  $text-size-normal / 1.2,
+  $text-size-normal / math.pow(1.2, 2)
+) !default;
+
+
+// Defines settings for fluid text scaling.
+// Set to false to disable.
+
+$text-sizing-fluid: (
+  viewport-min: 320px,
+  viewport-max: 1600px,
+  scale-max: 1.25 / 1.2
 ) !default;
 
 
@@ -96,6 +142,16 @@ $line-height-normal: 1.5 !default;
 $line-height-large: 1.3 !default;
 
 
+// Defines the default element separator.
+
+$element-separator: '__';
+
+
+// Defines the default modifier separator.
+
+$modifier-separator: '--' !default;;
+
+
 // Defines the default ITCSS layer namespaces.
 
 $layer-namespaces: (
@@ -103,3 +159,9 @@ $layer-namespaces: (
   utilities  : 'u-',
   components : 'c-'
 ) !default;
+
+
+// Defines custom properties to set in CSS.
+// Set to false to disable.
+
+$custom-properties: () !default;

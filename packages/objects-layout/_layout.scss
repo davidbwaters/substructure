@@ -6,16 +6,19 @@
 // side-by-side
 
 
+@use 'sass:list';
 @use 'sass:map';
 @use 'node_modules/@substructure/settings';
 @use 'node_modules/@substructure/tools';
 
 
-$gutter-sizes: settings.$spacing-sizes !default;
+$spacing-sizes: settings.$spacing-sizes !default;
 
-$element-separator: '__' !default;
+$spacing-prefix: 'spacing-' !default; 
 
-$modifier-separator: '--' !default;
+$element-separator: settings.$element-separator !default;
+
+$modifier-separator: settings.$modifier-separator !default;
 
 $namespaces: () !default;
 
@@ -73,9 +76,17 @@ $_justify-values: (
 
 // Gutters
 
-@each $size-name, $size-value in $gutter-sizes {
+@each $size-value in $spacing-sizes {
 
-  .#{ $_class + $modifier-separator + $size-name } {
+  .#{ 
+    $_class + 
+    $modifier-separator +
+    $spacing-prefix + 
+    list.index( 
+      $spacing-sizes,
+      $size-value
+    )
+  } {
 
     @include tools.spacing(
       'left', $size-value

@@ -5,18 +5,19 @@
 // Object for lists without bullets.
 
 
+@use 'sass:list';
 @use 'sass:map';
 @use 'node_modules/@substructure/settings';
 @use 'node_modules/@substructure/tools';
 
 
-$spacing: map.get(
-  settings.$spacing-sizes, medium
+$spacing: list.nth(
+  settings.$spacing-sizes, 2
 ) !default;
 
-$element-separator: '__' !default;
+$element-separator: settings.$element-separator !default;
 
-$modifier-separator: '--' !default;
+$modifier-separator: settings.$modifier-separator !default;
 
 $namespace: #{
   map.get( settings.$layer-namespaces, 'objects' ) +

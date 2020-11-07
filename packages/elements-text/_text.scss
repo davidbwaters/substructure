@@ -16,26 +16,29 @@ $text-sizes-small: settings.$text-sizes-small !default;
 
 
 $_text-sizes-large-length: list.length( 
-  map.keys( $text-sizes-large )
+  $text-sizes-large
 );
 
 $_text-sizes-small-length: list.length( 
-  map.keys( $text-sizes-small )
+  $text-sizes-small
 );
 
 $_heading-sizes: ();
 
 
-@each $size-name, $size-value in $text-sizes-large {
+@each $size-value in $text-sizes-large {
 
   $i: list.index(
-    map.keys(settings.$text-sizes-large), 
-    $size-name
+    $text-sizes-large, 
+    $size-value
   );
   
   @if $i <= 6 {
 
-    $_heading-sizes: list.append( $_heading-sizes, $size-value );
+    $_heading-sizes: list.append( 
+      $_heading-sizes,
+      $size-value 
+    );
 
   }
 
@@ -47,12 +50,9 @@ $_heading-sizes: ();
 
     $_heading-sizes: list.append(
       $_heading-sizes,
-      map.get(
+      list.nth( 
         $text-sizes-large,
-        list.nth( 
-          map.keys( $text-sizes-large ),
-          $_text-sizes-large-length
-        )
+        $_text-sizes-large-length
       )
     )
 
@@ -103,14 +103,9 @@ small {
 
   @include tools.text-sizing(
 
-    map.get(
-
+    list.nth(
       $text-sizes-small,
-      list.nth(
-        map.keys( $text-sizes-small ),
-        $_text-sizes-small-length
-      )
-
+      1
     )
 
   )
