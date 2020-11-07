@@ -18,9 +18,11 @@ $spacing: list.nth(
 
 $spacing-sizes: settings.$spacing-sizes !default;
 
-$element-separator: '__' !default;
+$spacing-prefix: 'spacing-' !default;
 
-$modifier-separator: '--' !default;
+$element-separator: settings.$element-separator !default;
+
+$modifier-separator: settings.$modifier-separator !default;
 
 $namespaces: () !default;
 
@@ -97,14 +99,24 @@ $_class-reverse: #{
 
 // Variants
 
-@each $size-name, $size-value in $spacing-sizes {
+@each $size in $spacing-sizes {
 
-  .#{ $_class } {
+  $_index: list.index(
+    $spacing-sizes,
+    $size
+  );
+
+  .#{ 
+    $_class +
+    $modifier-separator +
+    $spacing-prefix +
+    $_index
+  } {
     
     > .#{ $_class-image } {
 
       @include tools.spacing(
-        'right', $size-value
+        'right', $size
       );
       
     }
@@ -115,7 +127,7 @@ $_class-reverse: #{
         margin-right: 0;
         
         @include tools.spacing(
-          'left', $size-value
+          'left', $size
         );
 
       }

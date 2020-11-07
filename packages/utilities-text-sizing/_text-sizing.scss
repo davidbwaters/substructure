@@ -9,26 +9,46 @@
 @use 'node_modules/@substructure/tools';
 
 
+$text-size-normal: settings.$text-size-normal !default;
+
 $text-sizes-large: settings.$text-sizes-large !default;
 
 $text-sizes-small: settings.$text-sizes-small !default;
+
+$line-height-normal: settings.$line-height-normal !default;
+
+$line-height-large: settings.$line-height-large !default;
 
 $namespaces: () !default;
 
 $namespaces: map.merge(
   (
+    normal: #{
+      map.get( settings.$layer-namespaces, utilities ) +
+      'text-normal'
+    },
     large: #{
       map.get( settings.$layer-namespaces, utilities ) +
-      'text-'
+      'text-large-'
     },
     small: #{
       map.get( settings.$layer-namespaces, utilities ) +
-      'text-'
+      'text-small-'
     }
   ),
   $namespaces
 );
 
+
+
+.#{ map.get( $namespaces, normal ) } {
+
+  @include tools.text-sizing(
+    $text-size-normal,
+    $line-height-normal
+  )
+
+}
 
 @each $size-value in $text-sizes-large {
 
@@ -46,7 +66,7 @@ $namespaces: map.merge(
 
       @include tools.text-sizing( 
         $size-value,
-        settings.$line-height-large 
+        $line-height-large 
       );
 
     }
@@ -55,7 +75,7 @@ $namespaces: map.merge(
 
       @include tools.text-sizing( 
         $size-value,
-        settings.$line-height-normal
+        $line-height-normal
       );
 
     };

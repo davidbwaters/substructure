@@ -15,9 +15,9 @@ $spacing: list.nth(
   settings.$spacing-sizes, 2
 ) !default;
 
-$element-separator: '__' !default;
+$element-separator: settings.$element-separator !default;
 
-$modifier-separator: '--' !default;
+$modifier-separator: settings.$modifier-separator !default;
 
 $namespace: #{
   map.get( settings.$layer-namespaces, 'objects' ) +

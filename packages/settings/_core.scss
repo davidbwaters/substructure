@@ -34,20 +34,20 @@ $breakpoints-max: () !default;
     'screen and ( max-width: ' + $bp-size + ' )'
   };
 
-  $breakpoints: map.merge(
-    $breakpoints, 
+  $breakpoints: map.merge( 
     (
       #{ $bp-name }: $_bp-value
-    )
+    ),
+    $breakpoints
   );
 
   @if $breakpoints-max != false {
 
     $breakpoints-max: map.merge(
-      $breakpoints-max, 
       (
         #{ $bp-name }: $_bp-value-max
-      )
+      ),
+      $breakpoints-max
     );
   
   }
@@ -140,6 +140,16 @@ $line-height-normal: 1.5 !default;
 // Defines the large text line height as a unitless value.
 
 $line-height-large: 1.3 !default;
+
+
+// Defines the default element separator.
+
+$element-separator: '__';
+
+
+// Defines the default modifier separator.
+
+$modifier-separator: '--' !default;;
 
 
 // Defines the default ITCSS layer namespaces.

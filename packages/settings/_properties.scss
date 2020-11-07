@@ -20,10 +20,10 @@
   @each $key, $value in $breakpoint-sizes {
 
     $custom-properties: map.merge(
-      $custom-properties,
       ( 
         #{ 'breakpoint-size-' + $key }: $value
-      )
+      ),
+      $custom-properties
     )
 
   }
@@ -36,10 +36,10 @@
     );
     
     $custom-properties: map.merge(
-      $custom-properties,
       (
         #{ 'sizing-factor-' + $_index }: $value
-      )
+      ),
+      $custom-properties
     )
 
   }
@@ -52,10 +52,10 @@
     );
     
     $custom-properties: map.merge(
-      $custom-properties,
       (
         #{ 'spacing-size-' + $_index }: $value
-      )
+      ),
+      $custom-properties
     )
 
   }
@@ -68,10 +68,10 @@
     );
     
     $custom-properties: map.merge(
-      $custom-properties,
       (
         #{ 'text-size-large-' + $_index }: $value
-      )
+      ),
+      $custom-properties
     )
 
   }
@@ -84,10 +84,10 @@
     );
     
     $custom-properties: map.merge(
-      $custom-properties,
       (
         #{ 'text-sizes-small-' + $_index }: $value
-      )
+      ),
+      $custom-properties
     )
 
   }
@@ -95,10 +95,10 @@
   @each $key, $value in $layer-namespaces {
     
     $custom-properties: map.merge(
-      $custom-properties,
       (
         #{ 'layer-namespace-' + $key }: $value
-      )
+      ),
+      $custom-properties
     )
 
   }
@@ -108,10 +108,10 @@
     @each $key, $value in $text-sizing-fluid {
 
       $custom-properties: map.merge(
-        $custom-properties,
         (
           #{ 'text-sizing-fluid-' + $key }: $value
-        )
+        ),
+        $custom-properties
       )
     }
 

@@ -17,7 +17,9 @@ $spacing: list.nth(
 
 $spacing-sizes: settings.$spacing-sizes !default;
 
-$modifier-separator: '--' !default;
+$spacing-prefix: 'spacing-' !default;
+
+$modifier-separator: settings.$modifier-separator !default;
 
 $namespaces: () !default;
 
