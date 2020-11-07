@@ -904,17 +904,17 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@substructure/settings@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@substructure/settings/-/settings-0.1.2.tgz#3ed9b999ecbb6d34a38791a8aa945a94d029f649"
-  integrity sha512-ZezVFNkpNtG1opm42228xv5s1HgbRNcCSPUu43mdI2jGWptvzjOrDrlYb0uLHawdppi45KM9oqy2Yw7TpaWE7w==
+"@substructure/settings@^0.1.10", "@substructure/settings@^0.1.2":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@substructure/settings/-/settings-0.1.10.tgz#2be49d571e53eb6b9668936f3c01cbd38e5e3f46"
+  integrity sha512-3Yf41a00Fv4Ie4Q0mQNmGiEzvsk3OACtsE5COn3ED8WmWhaijT29eexcdTHfl5O4Bf27Xq+tQS9getykfzzI7g==
 
 "@substructure/tools@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@substructure/tools/-/tools-0.1.5.tgz#4173f3b4c3e9f7c3c25caed0db9d85c0f8670a30"
-  integrity sha512-eVNNW9U2wXrDtlFz2tOAQL1/MmB8L+nVJMMKqdYe8uq04Pjw/11WvV7T4aAlfDk9vwr5mCGd4R3uKJwiQRPFVA==
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/@substructure/tools/-/tools-0.1.13.tgz#1ee64c99c9dc6a1aeeba4374f2852f505298e241"
+  integrity sha512-n75rNouGKU4T/3gXqFD0jRqriPebgIuZPvXL4M9nZglmVXUp50JyG9sTaGhACbTZ16Dv0h9LKhjWef+nQJ/oPA==
   dependencies:
-    "@substructure/settings" "^0.1.2"
+    "@substructure/settings" "^0.1.10"
 
 "@types/glob@^7.1.1":
   version "7.1.2"
