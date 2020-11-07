@@ -101,13 +101,6 @@ $namespaces: map.merge(
   .#{ map.get( $namespaces, small ) }#{ $_index } {
 
     @include tools.text-sizing( $size-value );
-
-    @include tools.spacing(
-      bottom,
-      list.nth(
-        settings.$spacing-sizes, 2
-      )
-    );
     
   }
     
