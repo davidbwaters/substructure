@@ -83,7 +83,7 @@ $namespaces: map.merge(
     @include tools.spacing(
       bottom,
       list.nth(
-        settings.$spacing-sizes, 3
+        settings.$spacing-sizes, 2
       )
     );
 
