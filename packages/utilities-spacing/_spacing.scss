@@ -29,7 +29,10 @@ $directions: map.merge(
 
 $padding: true !default;
 
-$spacing-sizes: settings.$spacing-sizes !default;
+$spacing-sizes: list.join(
+  (0),
+  settings.$spacing-sizes
+ ) !default;
 
 $responsive: settings.$responsive !default;
 
@@ -57,13 +60,13 @@ $namespaces: map.merge(
 
 @if map.has-key( $directions, horizontal ) {
 
-  $margin-auto-class: #{
+  $_margin-auto-class: #{
     map.get( $namespaces, margin ) +
     map.get( $directions, horizontal ) +
     'auto'
   };
 
-  .#{ $margin-auto-class } {
+  .#{ $_margin-auto-class } {
     margin-left: auto;
     margin-right: auto;
   }
@@ -77,7 +80,7 @@ $namespaces: map.merge(
       ) {
         
         .#{ 
-          $margin-auto-class +
+          $_margin-auto-class +
           $breakpoint-separator + 
           $breakpoint
         } {
@@ -95,22 +98,23 @@ $namespaces: map.merge(
 
 @each $direction, $direction-namespace in $directions {
 
-  @each 
-    $spacing-size-value in $spacing-sizes 
+  @each  $spacing-size-value in $spacing-sizes {
 
-  {
-
-    $margin-class: #{
-      map.get( $namespaces, margin ) +
-      $direction-namespace +
+    $_suffix: #{
       list.index( 
         $spacing-sizes,
         $spacing-size-value
-      )
+      ) - 1
+    };
+
+    $_margin-class: #{
+      map.get( $namespaces, margin ) +
+      $direction-namespace +
+      $_suffix
     };
     
     .#{
-      $margin-class
+      $_margin-class
     } {
       
       @include tools.spacing( 
@@ -126,9 +130,9 @@ $namespaces: map.merge(
         @include tools.respond-to( 
           $breakpoint, $breakpoints 
         ) {
-          
+
           .#{ 
-            $margin-class + 
+            $_margin-class + 
             $breakpoint-separator + 
             $breakpoint
           } {
@@ -155,16 +159,20 @@ $namespaces: map.merge(
 
     @if $padding == true {
 
-      $padding-class: #{
-        map.get( $namespaces, padding ) +
-        $direction-namespace + 
+      $_suffix: #{
         list.index( 
           $spacing-sizes,
           $spacing-size-value
-        )
+        ) - 1
       };
 
-      .#{$padding-class} {
+      $_padding-class: #{
+        map.get( $namespaces, padding ) +
+        $direction-namespace + 
+        $_suffix
+      };
+
+      .#{$_padding-class} {
       
         @include tools.spacing( 
           $direction, $spacing-size-value, padding
@@ -181,7 +189,7 @@ $namespaces: map.merge(
           ) {
             
             .#{ 
-              $padding-class + 
+              $_padding-class + 
               $breakpoint-separator + 
               $breakpoint
             } {
