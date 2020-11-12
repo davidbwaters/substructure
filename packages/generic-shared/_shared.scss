@@ -24,7 +24,7 @@ fieldset {
   @include tools.spacing( 
     bottom,
     list.nth(
-      settings.$spacing-sizes, 2
+      settings.$spacing-sizes, 1
     )
   );
 
