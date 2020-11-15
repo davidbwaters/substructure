@@ -1,6 +1,6 @@
 {
   "name": "substructure",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "main": "main.scss",
   "scripts": {
     "test": "lerna bootstrap && node test/test.js",

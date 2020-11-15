@@ -12,11 +12,10 @@
   @include tools.text-sizing( 
     settings.$text-size-normal 
   );
-  height: 100%;
-  overflow: auto;
 }
 
 :root {
   font-size: settings.$sizing-root;
-  min-height: 100%;
+  height: 100%;
+  overflow: auto;
 }
