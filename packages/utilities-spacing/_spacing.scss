@@ -58,6 +58,7 @@ $namespaces: map.merge(
   $namespaces
 );
 
+
 @if map.has-key( $directions, horizontal ) {
 
   $_margin-auto-class: #{
@@ -201,7 +202,7 @@ $namespaces: map.merge(
             }
           
           }
-          
+        
         }
         
       }

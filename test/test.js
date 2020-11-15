@@ -8,6 +8,7 @@ const fs = require('fs')
 const sass = require('sass')
 const Fiber = require('fibers')
 
+
 fs.rmdirSync(
   'test/build', 
   { recursive: true }
@@ -17,6 +18,8 @@ fs.mkdirSync(
   'test/build', 
   { recursive: true }
 )
+
+const packages = fs.readdirSync('packages')
 
 const build = (package) => {
   
@@ -42,17 +45,6 @@ const build = (package) => {
 
 }
 
-build('generic-initialize')
-build('generic-shared')
-build('elements-base')
-build('elements-text')
-build('utilities-float')
-build('utilities-sizing')
-build('utilities-spacing')
-build('utilities-text-align')
-build('utilities-text-sizing')
-build('objects-box')
-build('objects-layout')
-build('objects-list')
-build('objects-media')
-build('objects-wrapper')
+packages.forEach(package => {
+  build(package)
+})

@@ -8,14 +8,15 @@
 @use 'node_modules/@substructure/settings';
 @use 'node_modules/@substructure/tools';
 
-:root {
-  font-size: settings.$sizing-root;
-  min-height: 100%;
-  overflow: auto;
-}
-
-html, body {
+:root, body {
   @include tools.text-sizing( 
     settings.$text-size-normal 
   );
+  height: 100%;
+  overflow: auto;
+}
+
+:root {
+  font-size: settings.$sizing-root;
+  min-height: 100%;
 }
