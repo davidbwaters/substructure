@@ -1,6 +1,6 @@
 {
   "name": "@substructure/utilities-text-align",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Generates text align utility classes.",
   "main": "_index.scss",
   "repository": "https://github.com/davidbwaters/substructure",
@@ -14,7 +14,7 @@
   "author": "David B. Waters <mrdavidbwaters@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@substructure/settings": "^0.1.12"
+    "@substructure/settings": "^0.1.13"
   },
   "publishConfig": {
     "access": "public"
