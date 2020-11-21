@@ -20,40 +20,6 @@ $breakpoint-sizes: (
   desktop : 1000px
 ) !default;
 
-$breakpoints: () !default;
-
-$breakpoints-max: () !default;
-
-@each $bp-name, $bp-size in $breakpoint-sizes {
-  
-  $_bp-value: #{
-    'screen and ( min-width: ' + $bp-size + ' )'
-  };
-
-  $_bp-value-max: #{
-    'screen and ( max-width: ' + $bp-size + ' )'
-  };
-
-  $breakpoints: map.merge( 
-    (
-      #{ $bp-name }: $_bp-value
-    ),
-    $breakpoints
-  );
-
-  @if $breakpoints-max != false {
-
-    $breakpoints-max: map.merge(
-      (
-        #{ $bp-name }: $_bp-value-max
-      ),
-      $breakpoints-max
-    );
-  
-  }
-
-}
-
 
 // Defines the default breakpoint separator.
 
@@ -165,4 +131,4 @@ $layer-namespaces: (
 // Defines custom properties to set in CSS.
 // Set to false to disable.
 
-$custom-properties: () !default;
+$custom-properties: true !default;
