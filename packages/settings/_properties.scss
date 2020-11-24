@@ -1,9 +1,10 @@
 //
-//  Settings - Properties
+//  Settings - Generate Properties
 //
 
 
 @use 'sass:map';
+@use 'sass:list';
 @use 'core' as *;
 
 
@@ -116,13 +117,15 @@
     }
 
   }
-
-}
-
-:root {
   
-  @each $key, $value in $custom-properties {
-    #{ '--' + $key }: #{ $value };
+  :root {
+    
+    @each $key, $value in $custom-properties {
+      #{ '--' + $key }: #{ $value };
+    }
+
   }
 
 }
+
+

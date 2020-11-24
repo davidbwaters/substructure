@@ -1,10 +1,9 @@
 /*
- *  Utilities - Spacing
+ *  Utilities - Float
  */
 
 
 @use 'sass:map';
-@use 'sass:string';
 @use 'node_modules/@substructure/settings';
 @use 'node_modules/@substructure/tools';
 
@@ -20,7 +19,7 @@ $breakpoint-separator:
 $namespace: #{
   map.get( settings.$layer-namespaces, utilities ) +
   'float-'
-};
+} !default;
 
 
 $_directions: (
@@ -31,7 +30,7 @@ $_directions: (
 
 @each $direction in $_directions {
   
-  #{ 
+  .#{ 
     $namespace + $direction 
   } {
     float: $direction !important;
@@ -49,7 +48,7 @@ $_directions: (
       
       @each $direction in $_directions {
   
-        #{ 
+        .#{ 
           $namespace + 
           $direction + 
           $breakpoint-separator +

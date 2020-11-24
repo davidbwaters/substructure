@@ -24,19 +24,7 @@ fieldset {
   @include tools.spacing( 
     bottom,
     list.nth(
-      settings.$spacing-sizes, 3
-    )
-  );
-
-}
-
-
-dd, ol, ul {
-
-  @include tools.spacing( 
-    left, 
-    list.nth(
-      settings.$spacing-sizes, 2
+      settings.$spacing-sizes, 1
     )
   );
 

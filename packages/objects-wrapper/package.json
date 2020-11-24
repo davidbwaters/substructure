@@ -1,6 +1,6 @@
 {
   "name": "@substructure/objects-wrapper",
-  "version": "0.1.20",
+  "version": "0.2.00",
   "description": "Simple wrapper object.",
   "main": "_index.scss",
   "repository": "https://github.com/davidbwaters/substructure",
@@ -14,8 +14,8 @@
   "author": "David B. Waters <mrdavidbwaters@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@substructure/settings": "^0.1.11",
-    "@substructure/tools": "^0.1.18"
+    "@substructure/settings": "^0.2.00",
+    "@substructure/tools": "^0.2.00"
   },
   "publishConfig": {
     "access": "public"

@@ -29,7 +29,10 @@ $directions: map.merge(
 
 $padding: true !default;
 
-$spacing-sizes: settings.$spacing-sizes !default;
+$spacing-sizes: list.join(
+  (0),
+  settings.$spacing-sizes
+ ) !default;
 
 $responsive: settings.$responsive !default;
 
@@ -54,6 +57,7 @@ $namespaces: map.merge(
   ),
   $namespaces
 );
+
 
 @if map.has-key( $directions, horizontal ) {
 
@@ -95,15 +99,19 @@ $namespaces: map.merge(
 
 @each $direction, $direction-namespace in $directions {
 
-  @each $spacing-size-value in $spacing-sizes {
+  @each  $spacing-size-value in $spacing-sizes {
+
+    $_suffix: #{
+      list.index( 
+        $spacing-sizes,
+        $spacing-size-value
+      ) - 1
+    };
 
     $_margin-class: #{
       map.get( $namespaces, margin ) +
       $direction-namespace +
-      list.index( 
-        $spacing-sizes,
-        $spacing-size-value
-      )
+      $_suffix
     };
     
     .#{
@@ -123,7 +131,7 @@ $namespaces: map.merge(
         @include tools.respond-to( 
           $breakpoint, $breakpoints 
         ) {
-          
+
           .#{ 
             $_margin-class + 
             $breakpoint-separator + 
@@ -152,13 +160,17 @@ $namespaces: map.merge(
 
     @if $padding == true {
 
-      $_padding-class: #{
-        map.get( $namespaces, padding ) +
-        $direction-namespace + 
+      $_suffix: #{
         list.index( 
           $spacing-sizes,
           $spacing-size-value
-        )
+        ) - 1
+      };
+
+      $_padding-class: #{
+        map.get( $namespaces, padding ) +
+        $direction-namespace + 
+        $_suffix
       };
 
       .#{$_padding-class} {
@@ -190,7 +202,7 @@ $namespaces: map.merge(
             }
           
           }
-          
+        
         }
          
       }
