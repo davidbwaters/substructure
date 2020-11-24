@@ -1,6 +1,6 @@
 {
   "name": "@substructure/objects-media",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "description": "Object to place any image and text-like content side-by-side.",
   "main": "_index.scss",
   "repository": "https://github.com/davidbwaters/substructure",
@@ -14,8 +14,8 @@
   "author": "David B. Waters <mrdavidbwaters@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@substructure/settings": "^0.1.10",
-    "@substructure/tools": "^0.1.17"
+    "@substructure/settings": "^0.1.11",
+    "@substructure/tools": "^0.1.18"
   },
   "publishConfig": {
     "access": "public"
