@@ -34,7 +34,7 @@ $_directions: (
   #{ 
     $namespace + $direction 
   } {
-    float: $direction;
+    float: $direction !important;
   }
 
 }
@@ -56,7 +56,7 @@ $_directions: (
           $breakpoint
         } {
 
-          float: $direction;
+          float: $direction !important;
 
         }
       

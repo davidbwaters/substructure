@@ -67,40 +67,54 @@ $namespaces: map.merge(
       $property: $type;
       $size-value: $count / $factor * 100%;
 
-      @if $type == push or $type == pull {
-        $property: 'margin-left';
+      @if $type == push {
+
+        .#{ $class } {
+          margin-left: #{ $size-value } !important;
+        }
+
       }
 
       @if $type == pull {
-        $size-value: #{ $count / $factor * 100% * -1 };
+
+        .#{ $class } {
+          margin-left: #{ 
+            $count / $factor * 100% * -1 
+          } !important;
+        }
+
       };
 
-      .#{ $class } {
+      @if $type != pull and $type != push {
 
-        #{ $property }: #{ $size-value };
-      
-      }
+        .#{ $class } {
 
-      @if $responsive == true {
+          #{ $property }: #{ $size-value } !important;
+        
+        }
 
-        @each $breakpoint in $breakpoints {
-      
-          @include tools.respond-to( $breakpoint ) {
+        @if $responsive == true {
 
-            #{ 
-              $class + 
-              $breakpoint-separator + 
-              $breakpoint
-            } {
+          @each $breakpoint in $breakpoints {
+        
+            @include tools.respond-to( $breakpoint ) {
 
-              #{ $property }: #{ $size-value };
+              #{ 
+                $class + 
+                $breakpoint-separator + 
+                $breakpoint
+              } {
+
+                #{ $property }: #{ $size-value } !important;
+
+              }
 
             }
 
           }
-
-        }
         
+        }
+
       }
 
     }

@@ -45,7 +45,8 @@ $namespaces: map.merge(
 
   @include tools.text-sizing(
     $text-size-normal,
-    $line-height-normal
+    $line-height-normal,
+    true
   )
 
 }
@@ -66,7 +67,8 @@ $namespaces: map.merge(
 
       @include tools.text-sizing( 
         $size-value,
-        $line-height-large 
+        $line-height-large,
+        true
       );
 
     }
@@ -75,7 +77,8 @@ $namespaces: map.merge(
 
       @include tools.text-sizing( 
         $size-value,
-        $line-height-normal
+        $line-height-normal,
+        true
       );
 
     };
@@ -100,7 +103,11 @@ $namespaces: map.merge(
 
   .#{ map.get( $namespaces, small ) }#{ $_index } {
 
-    @include tools.text-sizing( $size-value );
+    @include tools.text-sizing( 
+      $size-value,
+      $line-height-normal,
+      true 
+    );
 
     @include tools.spacing(
       bottom,

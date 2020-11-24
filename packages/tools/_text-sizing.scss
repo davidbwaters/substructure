@@ -13,10 +13,18 @@
 @mixin text-sizing(
   $size-value,
   $line-height: settings.$line-height-normal,
+  $important: false,
   $sizing-fluid: settings.$text-sizing-fluid
 ) {
 
-  font-size: core.calculate-rem($size-value);
+  @if $important {
+    font-size: #{
+      core.calculate-rem($size-value) + '!important'
+    };
+  }
+  @else {
+    font-size: #{ core.calculate-rem($size-value) };
+  }
 
   @if $sizing-fluid != false {
 
@@ -39,12 +47,22 @@
       "#{ $calc-fs } + #{ $calc-vw }"
     );
 
-    font-size: clamp(
+    $value: clamp(
       #{ core.calculate-rem($fs-min) },
       #{ $calc-value },
       #{ core.calculate-rem($fs-max) }
     );
+
+    @if $important == true {
+      font-size: #{ $value + '!important'};
+      line-height: #{ $line-height + '!important'};
+    }
+
+    @else {
+      font-size: $value;
+      line-height: $line-height;
+    }
   }
 
-  line-height: $line-height;
+  
 }
