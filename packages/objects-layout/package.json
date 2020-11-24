@@ -1,6 +1,6 @@
 {
   "name": "@substructure/objects-layout",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "Flexbox layout system for use with sizing utilities.",
   "main": "_index.scss",
   "repository": "https://github.com/davidbwaters/substructure",
@@ -15,7 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "@substructure/settings": "^0.1.10",
-    "@substructure/tools": "^0.1.13"
+    "@substructure/tools": "^0.1.14"
   },
   "publishConfig": {
     "access": "public"
