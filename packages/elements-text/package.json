@@ -1,6 +1,6 @@
 {
   "name": "@substructure/elements-text",
-  "version": null,
+  "version": "0.2.0",
   "description": "Text elements based on core settings.",
   "main": "_index.scss",
   "repository": "https://github.com/davidbwaters/substructure",
