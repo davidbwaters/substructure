@@ -19,7 +19,7 @@
 
   @if $important {
     font-size: #{
-      core.calculate-rem($size-value) + '!important'
+      core.calculate-rem($size-value) + ' !important'
     };
   }
   @else {
@@ -54,8 +54,8 @@
     );
 
     @if $important == true {
-      font-size: #{ $value + '!important'};
-      line-height: #{ $line-height + '!important'};
+      font-size: #{ $value + ' !important'};
+      line-height: #{ $line-height + ' !important'};
     }
 
     @else {

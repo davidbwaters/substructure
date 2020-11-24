@@ -1,16 +1,17 @@
 //
-//  Settings - Generate Properties
+//  Elements - Root Properties
 //
 
 
-@use 'sass:map';
 @use 'sass:list';
-@use 'core' as *;
+@use 'sass:map';
+@use 'sass:meta';
+@use 'node_modules/@substructure/settings' as *;
 
 
 @if $custom-properties != false {
 
-  $custom-properties: (
+  $_custom-properties: (
     text-size-normal: $text-size-normal,
     line-height-normal: $line-height-normal,
     line-height-large:  $line-height-large,
@@ -20,11 +21,11 @@
 
   @each $key, $value in $breakpoint-sizes {
 
-    $custom-properties: map.merge(
+    $_custom-properties: map.merge(
       ( 
         #{ 'breakpoint-size-' + $key }: $value
       ),
-      $custom-properties
+      $_custom-properties
     )
 
   }
@@ -36,11 +37,11 @@
       $value
     );
     
-    $custom-properties: map.merge(
+    $_custom-properties: map.merge(
       (
         #{ 'sizing-factor-' + $_index }: $value
       ),
-      $custom-properties
+      $_custom-properties
     )
 
   }
@@ -52,11 +53,11 @@
       $value
     );
     
-    $custom-properties: map.merge(
+    $_custom-properties: map.merge(
       (
         #{ 'spacing-size-' + $_index }: $value
       ),
-      $custom-properties
+      $_custom-properties
     )
 
   }
@@ -68,11 +69,11 @@
       $value
     );
     
-    $custom-properties: map.merge(
+    $_custom-properties: map.merge(
       (
         #{ 'text-size-large-' + $_index }: $value
       ),
-      $custom-properties
+      $_custom-properties
     )
 
   }
@@ -84,22 +85,22 @@
       $value
     );
     
-    $custom-properties: map.merge(
+    $_custom-properties: map.merge(
       (
         #{ 'text-sizes-small-' + $_index }: $value
       ),
-      $custom-properties
+      $_custom-properties
     )
 
   }
   
   @each $key, $value in $layer-namespaces {
     
-    $custom-properties: map.merge(
+    $_custom-properties: map.merge(
       (
         #{ 'layer-namespace-' + $key }: $value
       ),
-      $custom-properties
+      $_custom-properties
     )
 
   }
@@ -108,24 +109,43 @@
     
     @each $key, $value in $text-sizing-fluid {
 
-      $custom-properties: map.merge(
+      $_custom-properties: map.merge(
         (
           #{ 'text-sizing-fluid-' + $key }: $value
         ),
-        $custom-properties
+        $_custom-properties
       )
     }
 
   }
-  
-  :root {
+
+  @if meta.type-of($custom-properties) == map {
     
-    @each $key, $value in $custom-properties {
-      #{ '--' + $key }: #{ $value };
+    $_custom-properties: map.merge(
+      $_custom-properties,
+      $custom-properties
+    );
+
+    :root {
+    
+      @each $key, $value in $_custom-properties {
+        #{ '--' + $key }: #{ $value };
+      }
+  
+    }
+
+  }
+  
+  @if $custom-properties == true {
+    
+    :root {
+    
+      @each $key, $value in $_custom-properties {
+        #{ '--' + $key }: #{ $value };
+      }
+  
     }
 
   }
 
 }
-
-
