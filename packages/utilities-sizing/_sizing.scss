@@ -100,7 +100,7 @@ $namespaces: map.merge(
             @include tools.respond-to( $breakpoint ) {
 
               #{ 
-                $class + 
+                $class +  
                 $breakpoint-separator + 
                 $breakpoint
               } {

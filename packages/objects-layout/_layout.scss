@@ -86,10 +86,10 @@ $_justify-values: (
       $spacing-sizes,
       $size-value
     )
-  } {
+  } { 
 
     @include tools.spacing(
-      'left', $size-value
+      'left', $size-value 
     );
       
     & > .#{ $_cell-class } {
