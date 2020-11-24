@@ -1,6 +1,6 @@
 {
   "name": "@substructure/elements-base",
-  "version": "0.1.24",
+  "version": "0.1.25",
   "description": "Simple page-level setup to apply default text sizes and viewport settings.",
   "main": "_index.scss",
   "repository": "https://github.com/davidbwaters/substructure",
@@ -15,7 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "@substructure/settings": "^0.1.10",
-    "@substructure/tools": "^0.1.15"
+    "@substructure/tools": "^0.1.16"
   },
   "publishConfig": {
     "access": "public"
