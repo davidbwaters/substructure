@@ -32,7 +32,7 @@ $levels-negative: 2 !default;
 @for $i from $levels-negative through 1 {
 
   .#{ map.get( $namespaces, negative ) + $i } {
-    z-index: -$i;
+    z-index: -$i !important;
   }
 
 }
@@ -40,7 +40,7 @@ $levels-negative: 2 !default;
 @for $i from 0 through $levels-positive {
 
   .#{ map.get( $namespaces, positive ) + $i } {
-    z-index: $i;
+    z-index: $i !important;
   }
 
 }
