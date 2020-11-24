@@ -14,10 +14,10 @@
   "author": "David B. Waters <mrdavidbwaters@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@substructure/settings": "^0.2.00"
+    "@substructure/settings": "^0.2.0"
   },
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "64c5baf07875e3de271d28166bc0c10f64871eb9"
+  "gitHead": "ea5f20e0e059881039da2734d08e3b6e04276a9f"
 }
