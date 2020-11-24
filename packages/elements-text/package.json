@@ -1,6 +1,6 @@
 {
   "name": "@substructure/elements-text",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "Text elements based on core settings.",
   "main": "_index.scss",
   "repository": "https://github.com/davidbwaters/substructure",
@@ -15,7 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "@substructure/settings": "^0.1.10",
-    "@substructure/tools": "^0.1.14"
+    "@substructure/tools": "^0.1.15"
   },
   "publishConfig": {
     "access": "public"
