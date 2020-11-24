@@ -9,12 +9,12 @@
 @use 'sass:map';
 @use 'node_modules/@substructure/settings';
 @use 'node_modules/@substructure/tools';
-
+ 
 
 $spacing: list.nth(
   settings.$spacing-sizes, 2
 ) !default;
-
+ 
 $element-separator: settings.$element-separator !default;
 
 $modifier-separator: settings.$modifier-separator !default;

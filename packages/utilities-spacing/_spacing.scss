@@ -68,8 +68,8 @@ $namespaces: map.merge(
   };
 
   .#{ $_margin-auto-class } {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
   @if $responsive {
@@ -85,8 +85,8 @@ $namespaces: map.merge(
           $breakpoint-separator + 
           $breakpoint
         } {
-          margin-left: auto;
-          margin-right: auto;
+          margin-left: auto !important;
+          margin-right: auto !important;
         }
         
       }
@@ -119,7 +119,7 @@ $namespaces: map.merge(
     } {
       
       @include tools.spacing( 
-        $direction, $spacing-size-value 
+        $direction, $spacing-size-value, margin, true
       )
       
     }
@@ -139,7 +139,7 @@ $namespaces: map.merge(
           } {
           
             @include tools.spacing( 
-              $direction, $spacing-size-value 
+              $direction, $spacing-size-value, margin, true
             )
             
           }
@@ -176,7 +176,7 @@ $namespaces: map.merge(
       .#{$_padding-class} {
       
         @include tools.spacing( 
-          $direction, $spacing-size-value, padding
+          $direction, $spacing-size-value, padding, true
         )
         
       }
@@ -196,7 +196,7 @@ $namespaces: map.merge(
             } {
             
               @include tools.spacing( 
-                $direction, $spacing-size-value, padding
+                $direction, $spacing-size-value, padding, true
               )
               
             }
@@ -204,7 +204,7 @@ $namespaces: map.merge(
           }
         
         }
-        
+         
       }
 
     }

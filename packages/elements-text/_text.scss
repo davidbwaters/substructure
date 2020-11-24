@@ -1,5 +1,5 @@
 /*
- *  Elements - Headings
+ *  Elements - Text
  */
 
 // Text elements based on core settings.
@@ -10,7 +10,7 @@
 @use 'node_modules/@substructure/settings';
 @use 'node_modules/@substructure/tools';
 
-
+ 
 $text-sizes-large: settings.$text-sizes-large !default;
 $text-sizes-small: settings.$text-sizes-small !default;
 

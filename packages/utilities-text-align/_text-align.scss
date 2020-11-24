@@ -26,9 +26,8 @@ $alignments: (
 
   .#{ $namespace }#{ $value } {
   
-    text-align: #{ $key };
+    text-align: #{ $key } !important;
 
   }
 
 }
-
