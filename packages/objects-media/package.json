@@ -1,6 +1,6 @@
 {
   "name": "@substructure/objects-media",
-  "version": "0.2.00",
+  "version": "0.2.0",
   "description": "Object to place any image and text-like content side-by-side.",
   "main": "_index.scss",
   "repository": "https://github.com/davidbwaters/substructure",

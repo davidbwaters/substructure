@@ -1,6 +1,6 @@
 {
   "name": "@substructure/objects-box",
-  "version": "0.2.00",
+  "version": "0.2.0",
   "description": "The box object simply boxes off content.",
   "main": "_index.scss",
   "repository": "https://github.com/davidbwaters/substructure",
