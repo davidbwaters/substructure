@@ -9,7 +9,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
-} 
+}
 
 // Remove default padding
 
@@ -47,7 +47,7 @@ html {
 // Set core body defaults
 
 body {
-  min-height: 100vh;
+  min-height: 100%;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
 }
@@ -85,7 +85,7 @@ img:not([alt]) {
 }
 
 
-// Remove all animations and transitions for people that 
+// Remove all animations and transitions for people that
 // prefer not to see them
 
 @media (prefers-reduced-motion: reduce) {
