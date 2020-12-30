@@ -13,6 +13,8 @@
 
 // Remove default padding
 
+html,
+body,
 ul,
 ol {
   padding: 0;
@@ -21,18 +23,8 @@ ol {
 
 // Remove default margin
 
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-ul,
-ol,
-figure,
-blockquote,
-dl,
-dd {
+html,
+body {
   margin: 0;
 }
 
