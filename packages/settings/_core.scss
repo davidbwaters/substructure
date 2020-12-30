@@ -52,6 +52,7 @@ $sizing-separator: \/ !default;
 // Defines the default spacing sizes.
 
 $spacing-sizes: (
+  $sizing-unit / 2,
   $sizing-unit,
   $sizing-unit * 2,
   $sizing-unit * 3,
@@ -98,7 +99,7 @@ $text-sizing-fluid: (
 ) !default;
 
 
-// Defines the default target line height as a unitless 
+// Defines the default target line height as a unitless
 // value.
 
 $line-height-normal: 1.5 !default;
