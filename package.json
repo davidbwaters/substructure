@@ -1,6 +1,6 @@
 {
   "name": "substructure",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "main": "main.scss",
   "scripts": {
     "test": "lerna bootstrap && node test/test.js",
@@ -13,9 +13,5 @@
     "fibers": "^5.0.0",
     "lerna": "^3.22.1",
     "sass": "^1.26.9"
-  },
-  "dependencies": {
-    "@substructure/settings": "^0.1.2",
-    "@substructure/tools": "^0.1.5"
   }
 }
