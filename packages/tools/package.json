@@ -1,6 +1,6 @@
 {
   "name": "@substructure/tools",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Mixin for generating content inside media queries.",
   "main": "_index.scss",
   "repository": "https://github.com/davidbwaters/substructure",

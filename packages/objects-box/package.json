@@ -1,6 +1,6 @@
 {
   "name": "@substructure/objects-box",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "The box object simply boxes off content.",
   "main": "_index.scss",
   "repository": "https://github.com/davidbwaters/substructure",
@@ -15,7 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "@substructure/settings": "^0.2.4",
-    "@substructure/tools": "^0.2.5"
+    "@substructure/tools": "^0.2.6"
   },
   "publishConfig": {
     "access": "public"
