@@ -2,19 +2,19 @@
  *  Objects - Media
  */
 
-// Object to place any image and text-like content 
+// Object to place any image and text-like content
 // side-by-side
 
 
 @use 'sass:list';
 @use 'sass:map';
-@use 'node_modules/@substructure/settings';
-@use 'node_modules/@substructure/tools';
+@use '../settings';
+@use '../tools';
 
 
 $spacing-sizes: settings.$spacing-sizes !default;
 
-$spacing-prefix: 'spacing-' !default; 
+$spacing-prefix: 'spacing-' !default;
 
 $element-separator: settings.$element-separator !default;
 
@@ -22,7 +22,7 @@ $modifier-separator: settings.$modifier-separator !default;
 
 $namespaces: () !default;
 
-$namespaces: map.merge( 
+$namespaces: map.merge(
   (
     main: #{
       map-get(settings.$layer-namespaces, objects) +
@@ -78,22 +78,22 @@ $_justify-values: (
 
 @each $size-value in $spacing-sizes {
 
-  .#{ 
-    $_class + 
+  .#{
+    $_class +
     $modifier-separator +
-    $spacing-prefix + 
-    list.index( 
+    $spacing-prefix +
+    list.index(
       $spacing-sizes,
       $size-value
     )
-  } { 
+  } {
 
     @include tools.spacing(
-      'left', $size-value 
+      'left', $size-value
     );
-      
+
     & > .#{ $_cell-class } {
-      
+
       @include tools.spacing(
         'left', $size-value, 'padding'
       );
@@ -122,7 +122,7 @@ $_justify-values: (
   .#{ $_class + $modifier-separator + $namespace } {
 
       justify-content: #{$value};
-  
+
   }
 
 }
@@ -146,7 +146,7 @@ $_justify-values: (
 // Vertical Alignment
 
 @each $namespace, $value in $_alignment-values {
-  
+
   .#{ $_class + $modifier-separator + $namespace } {
 
       align-items: #{$value};
