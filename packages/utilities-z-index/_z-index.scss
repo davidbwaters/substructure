@@ -1,11 +1,11 @@
 /*
- *  Utilities - Spacing
+ *  Utilities - Z-Index
  */
 
 
 @use 'sass:map';
-@use 'node_modules/@substructure/settings';
-@use 'node_modules/@substructure/tools';
+@use '../settings';
+@use '../tools';
 
 
 $namespaces: () !default;
