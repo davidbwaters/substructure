@@ -2,6 +2,9 @@
 #   Gitignore
 #
 
+# Mac
+.DS_Store
+
 # Test Build
 test/build
 
