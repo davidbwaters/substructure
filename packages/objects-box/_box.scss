@@ -7,8 +7,8 @@
 
 @use 'sass:list';
 @use 'sass:map';
-@use 'node_modules/@substructure/settings';
-@use 'node_modules/@substructure/tools';
+@use '../settings';
+@use '../tools';
 
 
 $spacing: list.nth(
@@ -73,7 +73,7 @@ $_class: map.get( $namespaces, main ) !default;
     .#{
       $_class +
       $modifier-separator +
-      list.index( 
+      list.index(
         $spacing-sizes,
         $size-value
       )
@@ -87,4 +87,4 @@ $_class: map.get( $namespaces, main ) !default;
 
   }
 
-} 
+}

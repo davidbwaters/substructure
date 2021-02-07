@@ -4,16 +4,16 @@
 
 
 @use 'sass:map';
-@use 'node_modules/@substructure/settings';
-@use 'node_modules/@substructure/tools';
+@use '../settings';
+@use '../tools';
 
 
 $responsive: settings.$responsive !default;
 
 $breakpoints: settings.$breakpoints !default;
 
-$breakpoint-separator: 
-  settings.$breakpoint-separator 
+$breakpoint-separator:
+  settings.$breakpoint-separator
 !default;
 
 $namespace: #{
@@ -29,9 +29,9 @@ $_directions: (
 
 
 @each $direction in $_directions {
-  
-  .#{ 
-    $namespace + $direction 
+
+  .#{
+    $namespace + $direction
   } {
     float: $direction !important;
   }
@@ -39,18 +39,18 @@ $_directions: (
 }
 
 @if $responsive {
-  
+
   @each $breakpoint, $breakpoint-value in $breakpoints {
-    
-    @include tools.respond-to( 
-      $breakpoint, $breakpoints 
+
+    @include tools.respond-to(
+      $breakpoint, $breakpoints
     ) {
-      
+
       @each $direction in $_directions {
-  
-        .#{ 
-          $namespace + 
-          $direction + 
+
+        .#{
+          $namespace +
+          $direction +
           $breakpoint-separator +
           $breakpoint
         } {
@@ -58,11 +58,11 @@ $_directions: (
           float: $direction !important;
 
         }
-      
+
       }
-    
+
     }
-    
+
   }
-  
+
 }

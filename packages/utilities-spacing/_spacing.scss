@@ -8,20 +8,20 @@
 @use 'sass:list';
 @use 'sass:map';
 @use 'sass:string';
-@use 'node_modules/@substructure/settings';
-@use 'node_modules/@substructure/tools';
+@use '../settings';
+@use '../tools';
 
 
 $directions: () !default;
 
 $directions: map.merge(
-  (  
+  (
     all        : '',
     vertical   : 'vertical-',
     horizontal : 'horizontal-',
     top        : 'top-',
-    bottom     : 'bottom-', 
-    left       : 'left-', 
+    bottom     : 'bottom-',
+    left       : 'left-',
     right      : 'right-'
   ),
   $directions
@@ -38,8 +38,8 @@ $responsive: settings.$responsive !default;
 
 $breakpoints: settings.$breakpoints !default;
 
-$breakpoint-separator: 
-  settings.$breakpoint-separator 
+$breakpoint-separator:
+  settings.$breakpoint-separator
 !default;
 
 $namespaces: () !default;
@@ -73,22 +73,22 @@ $namespaces: map.merge(
   }
 
   @if $responsive {
-        
+
     @each $breakpoint, $breakpoint-value in $breakpoints {
-      
-      @include tools.respond-to( 
-        $breakpoint, $breakpoints 
+
+      @include tools.respond-to(
+        $breakpoint, $breakpoints
       ) {
-        
-        .#{ 
+
+        .#{
           $_margin-auto-class +
-          $breakpoint-separator + 
+          $breakpoint-separator +
           $breakpoint
         } {
           margin-left: auto !important;
           margin-right: auto !important;
         }
-        
+
       }
 
     }
@@ -102,7 +102,7 @@ $namespaces: map.merge(
   @each  $spacing-size-value in $spacing-sizes {
 
     $_suffix: #{
-      list.index( 
+      list.index(
         $spacing-sizes,
         $spacing-size-value
       ) - 1
@@ -113,41 +113,41 @@ $namespaces: map.merge(
       $direction-namespace +
       $_suffix
     };
-    
+
     .#{
       $_margin-class
     } {
-      
-      @include tools.spacing( 
+
+      @include tools.spacing(
         $direction, $spacing-size-value, margin, true
       )
-      
+
     }
-    
+
     @if $responsive {
-      
+
       @each $breakpoint, $breakpoint-value in $breakpoints {
-        
-        @include tools.respond-to( 
-          $breakpoint, $breakpoints 
+
+        @include tools.respond-to(
+          $breakpoint, $breakpoints
         ) {
 
-          .#{ 
-            $_margin-class + 
-            $breakpoint-separator + 
+          .#{
+            $_margin-class +
+            $breakpoint-separator +
             $breakpoint
           } {
-          
-            @include tools.spacing( 
+
+            @include tools.spacing(
               $direction, $spacing-size-value, margin, true
             )
-            
+
           }
-        
+
         }
-        
+
       }
-      
+
     }
 
   }
@@ -161,7 +161,7 @@ $namespaces: map.merge(
     @if $padding == true {
 
       $_suffix: #{
-        list.index( 
+        list.index(
           $spacing-sizes,
           $spacing-size-value
         ) - 1
@@ -169,46 +169,46 @@ $namespaces: map.merge(
 
       $_padding-class: #{
         map.get( $namespaces, padding ) +
-        $direction-namespace + 
+        $direction-namespace +
         $_suffix
       };
 
       .#{$_padding-class} {
-      
-        @include tools.spacing( 
+
+        @include tools.spacing(
           $direction, $spacing-size-value, padding, true
         )
-        
+
       }
-      
+
       @if $responsive {
-        
+
         @each $breakpoint, $breakpoint-value in $breakpoints {
-          
-          @include tools.respond-to( 
-            $breakpoint, $breakpoints 
+
+          @include tools.respond-to(
+            $breakpoint, $breakpoints
           ) {
-            
-            .#{ 
-              $_padding-class + 
-              $breakpoint-separator + 
+
+            .#{
+              $_padding-class +
+              $breakpoint-separator +
               $breakpoint
             } {
-            
-              @include tools.spacing( 
+
+              @include tools.spacing(
                 $direction, $spacing-size-value, padding, true
               )
-              
+
             }
-          
+
           }
-        
+
         }
-         
+
       }
 
     }
 
   }
-    
+
 }

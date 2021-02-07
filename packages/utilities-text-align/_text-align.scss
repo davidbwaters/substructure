@@ -5,7 +5,7 @@
 
 @use 'sass:list';
 @use 'sass:map';
-@use 'node_modules/@substructure/settings';
+@use '../settings';
 
 
 $namespace: #{
@@ -25,7 +25,7 @@ $alignments: (
 @each $key, $value in $alignments {
 
   .#{ $namespace }#{ $value } {
-  
+
     text-align: #{ $key } !important;
 
   }

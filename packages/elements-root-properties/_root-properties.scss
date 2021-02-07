@@ -6,7 +6,7 @@
 @use 'sass:list';
 @use 'sass:map';
 @use 'sass:meta';
-@use 'node_modules/@substructure/settings' as *;
+@use '../settings' as *;
 
 
 @if $custom-properties != false {
@@ -22,7 +22,7 @@
   @each $key, $value in $breakpoint-sizes {
 
     $_custom-properties: map.merge(
-      ( 
+      (
         #{ 'breakpoint-size-' + $key }: $value
       ),
       $_custom-properties
@@ -31,12 +31,12 @@
   }
 
   @each $value in $sizing-factors {
-    
+
     $_index: list.index(
       $sizing-factors,
       $value
     );
-    
+
     $_custom-properties: map.merge(
       (
         #{ 'sizing-factor-' + $_index }: $value
@@ -47,12 +47,12 @@
   }
 
   @each $value in $spacing-sizes {
-    
+
     $_index: list.index(
       $spacing-sizes,
       $value
     );
-    
+
     $_custom-properties: map.merge(
       (
         #{ 'spacing-size-' + $_index }: $value
@@ -63,12 +63,12 @@
   }
 
   @each $value in $text-sizes-large {
-    
+
     $_index: list.index(
       $text-sizes-large,
       $value
     );
-    
+
     $_custom-properties: map.merge(
       (
         #{ 'text-size-large-' + $_index }: $value
@@ -79,12 +79,12 @@
   }
 
   @each $value in $text-sizes-small {
-    
+
     $_index: list.index(
       $text-sizes-small,
       $value
     );
-    
+
     $_custom-properties: map.merge(
       (
         #{ 'text-sizes-small-' + $_index }: $value
@@ -93,9 +93,9 @@
     )
 
   }
-  
+
   @each $key, $value in $layer-namespaces {
-    
+
     $_custom-properties: map.merge(
       (
         #{ 'layer-namespace-' + $key }: $value
@@ -106,7 +106,7 @@
   }
 
   @if $text-sizing-fluid != false {
-    
+
     @each $key, $value in $text-sizing-fluid {
 
       $_custom-properties: map.merge(
@@ -120,30 +120,30 @@
   }
 
   @if meta.type-of($custom-properties) == map {
-    
+
     $_custom-properties: map.merge(
       $_custom-properties,
       $custom-properties
     );
 
     :root {
-    
+
       @each $key, $value in $_custom-properties {
         #{ '--' + $key }: #{ $value };
       }
-  
+
     }
 
   }
-  
+
   @if $custom-properties == true {
-    
+
     :root {
-    
+
       @each $key, $value in $_custom-properties {
         #{ '--' + $key }: #{ $value };
       }
-  
+
     }
 
   }

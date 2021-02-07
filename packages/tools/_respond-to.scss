@@ -6,13 +6,13 @@
 
 
 @use 'sass:map';
-@use 'node_modules/@substructure/settings';
+@use '../settings';
 @use 'core';
 
 
 @mixin respond-to (
-  $breakpoint, 
-  $breakpoints: settings.$breakpoints 
+  $breakpoint,
+  $breakpoints: settings.$breakpoints
 ) {
 
   @if map-has-key($breakpoints, $breakpoint) {
@@ -24,7 +24,7 @@
     }
 
   }
-  
+
   @else if map-has-key( $breakpoints, $breakpoint ) {
 
     $max-breakpoint: core.string-replace(

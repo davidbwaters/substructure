@@ -7,31 +7,31 @@
 
 @use 'sass:list';
 @use 'sass:map';
-@use 'node_modules/@substructure/settings';
-@use 'node_modules/@substructure/tools';
- 
+@use '../settings';
+@use '../tools';
+
 
 $spacing: list.nth(
   settings.$spacing-sizes, 2
 ) !default;
- 
+
 $element-separator: settings.$element-separator !default;
 
 $modifier-separator: settings.$modifier-separator !default;
 
 $namespace: #{
   map.get( settings.$layer-namespaces, 'objects' ) +
-  'list' 
+  'list'
 } !default;
 
 
 $_class-item: #{
-  $namespace + 
+  $namespace +
   $element-separator +
   'item'
 };
 
-$_class-inline: #{ 
+$_class-inline: #{
   $namespace +
   $modifier-separator +
   'inline'
@@ -46,17 +46,17 @@ $_class-inline: #{
 }
 
 .#{ $_class-inline } {
-  
+
   > #{ $_class-item } {
     display: inline-block;
   }
 
   > #{ $_class-item }:not(:last-child) {
-  
+
     @include tools.spacing(
       right, $spacing
     )
-  
+
   }
 
 }

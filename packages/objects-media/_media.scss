@@ -2,20 +2,20 @@
  *  Objects - Media
  */
 
-// Object to place any image and text-like content 
+// Object to place any image and text-like content
 // side-by-side
 
 
 @use 'sass:list';
 @use 'sass:map';
-@use 'node_modules/@substructure/settings';
-@use 'node_modules/@substructure/tools';
- 
+@use '../settings';
+@use '../tools';
+
 
 $spacing: list.nth(
   settings.$spacing-sizes, 2
 ) !default;
- 
+
 $spacing-sizes: settings.$spacing-sizes !default;
 
 $spacing-prefix: 'spacing-' !default;
@@ -40,22 +40,22 @@ $namespaces: map.merge(
 
 $_class: map.get( $namespaces, main );
 
-$_class-image: #{ 
+$_class-image: #{
   $_class + $element-separator + 'image'
 };
 
-$_class-body: #{ 
+$_class-body: #{
   $_class + $element-separator + 'body'
 };
 
-$_class-flush: #{ 
-  $_class + 
-  $modifier-separator + 
+$_class-flush: #{
+  $_class +
+  $modifier-separator +
   map.get( $namespaces, flush )
 };
 
 $_class-reverse: #{
-  $_class + 
+  $_class +
   $modifier-separator +
   'reverse'
 };
@@ -73,7 +73,7 @@ $_class-reverse: #{
 .#{ $_class-image } {
 
   float: left;
-  
+
   @include tools.spacing(
     'right', $spacing
   );
@@ -106,26 +106,26 @@ $_class-reverse: #{
     $size
   );
 
-  .#{ 
+  .#{
     $_class +
     $modifier-separator +
     $spacing-prefix +
     $_index
   } {
-    
+
     > .#{ $_class-image } {
 
       @include tools.spacing(
         'right', $size
       );
-      
+
     }
 
     &.#{ $_class-reverse } {
 
       > .#{ $_class-image } {
         margin-right: 0;
-        
+
         @include tools.spacing(
           'left', $size
         );
@@ -142,7 +142,7 @@ $_class-reverse: #{
 
   float: right;
   margin-right: 0;
-  
+
   @include tools.spacing(
     left, $spacing
   );

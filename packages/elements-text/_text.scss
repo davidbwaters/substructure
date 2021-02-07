@@ -7,19 +7,19 @@
 
 @use 'sass:list';
 @use 'sass:map';
-@use 'node_modules/@substructure/settings';
-@use 'node_modules/@substructure/tools';
+@use '../settings';
+@use '../tools';
 
- 
+
 $text-sizes-large: settings.$text-sizes-large !default;
 $text-sizes-small: settings.$text-sizes-small !default;
 
 
-$_text-sizes-large-length: list.length( 
+$_text-sizes-large-length: list.length(
   $text-sizes-large
 );
 
-$_text-sizes-small-length: list.length( 
+$_text-sizes-small-length: list.length(
   $text-sizes-small
 );
 
@@ -29,15 +29,15 @@ $_heading-sizes: ();
 @each $size-value in $text-sizes-large {
 
   $i: list.index(
-    $text-sizes-large, 
+    $text-sizes-large,
     $size-value
   );
-  
+
   @if $i <= 6 {
 
-    $_heading-sizes: list.append( 
+    $_heading-sizes: list.append(
       $_heading-sizes,
-      $size-value 
+      $size-value
     );
 
   }
@@ -50,7 +50,7 @@ $_heading-sizes: ();
 
     $_heading-sizes: list.append(
       $_heading-sizes,
-      list.nth( 
+      list.nth(
         $text-sizes-large,
         $_text-sizes-large-length
       )
@@ -68,9 +68,9 @@ $_heading-sizes: tools.reverse($_heading-sizes);
 
     h#{$i} {
 
-      @include tools.text-sizing( 
+      @include tools.text-sizing(
 
-        list.nth( 
+        list.nth(
           $_heading-sizes, $i
         ),
         settings.$line-height-large
@@ -85,9 +85,9 @@ $_heading-sizes: tools.reverse($_heading-sizes);
 
     h#{$i} {
 
-      @include tools.text-sizing( 
+      @include tools.text-sizing(
 
-        list.nth( 
+        list.nth(
           $_heading-sizes, $i
         )
 

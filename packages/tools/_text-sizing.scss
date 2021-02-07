@@ -7,7 +7,7 @@
 
 @use 'sass:map';
 
-@use 'node_modules/@substructure/settings';
+@use '../settings';
 @use 'core';
 
 @mixin text-sizing(
@@ -35,14 +35,14 @@
     $vw-min: map.get($sizing-fluid, viewport-min);
     $vw-max: map.get($sizing-fluid, viewport-max);
 
-    $factor: 
-      1 / 
-      ($vw-max - $vw-min) * 
+    $factor:
+      1 /
+      ($vw-max - $vw-min) *
       ($fs-max - $fs-min);
 
     $calc-fs: #{ $fs-min - ($vw-min * $factor) };
     $calc-vw: #{ 100vw * $factor };
-    
+
     $calc-value: unquote(
       "#{ $calc-fs } + #{ $calc-vw }"
     );
@@ -64,5 +64,5 @@
     }
   }
 
-  
+
 }

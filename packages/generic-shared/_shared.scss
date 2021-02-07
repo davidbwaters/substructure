@@ -8,8 +8,8 @@
 
 @use 'sass:list';
 @use 'sass:map';
-@use 'node_modules/@substructure/settings';
-@use 'node_modules/@substructure/tools';
+@use '../settings';
+@use '../tools';
 
 
 address,
@@ -20,8 +20,8 @@ figure,
 hr,
 table,
 fieldset {
-   
-  @include tools.spacing( 
+
+  @include tools.spacing(
     bottom,
     list.nth(
       settings.$spacing-sizes, 1

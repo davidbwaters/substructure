@@ -4,8 +4,8 @@
 
 
 @use 'sass:map';
-@use 'node_modules/@substructure/settings';
-@use 'node_modules/@substructure/tools';
+@use '../settings';
+@use '../tools';
 
 
 $height: false !default;
@@ -22,8 +22,8 @@ $separator: settings.$sizing-separator !default;
 
 $breakpoints: settings.$breakpoints !default;
 
-$breakpoint-separator: 
-  settings.$breakpoint-separator 
+$breakpoint-separator:
+  settings.$breakpoint-separator
 !default;
 
 $namespaces: () !default;
@@ -31,19 +31,19 @@ $namespaces: () !default;
 $namespaces: map.merge(
   (
     width: #{
-      map.get( settings.$layer-namespaces, utilities ) + 
+      map.get( settings.$layer-namespaces, utilities ) +
       ''
     },
     height: #{
-      map.get( settings.$layer-namespaces, utilities ) + 
+      map.get( settings.$layer-namespaces, utilities ) +
       'height-'
     },
     push: #{
-      map.get( settings.$layer-namespaces, utilities ) + 
+      map.get( settings.$layer-namespaces, utilities ) +
       'push-'
     },
     pull: #{
-      map.get( settings.$layer-namespaces, utilities ) + 
+      map.get( settings.$layer-namespaces, utilities ) +
       'pull-'
     }
   ),
@@ -59,8 +59,8 @@ $namespaces: map.merge(
 
       $class: #{
         map.get( $namespaces, $type ) +
-        $count + 
-        $separator + 
+        $count +
+        $separator +
         $factor
       };
 
@@ -78,8 +78,8 @@ $namespaces: map.merge(
       @if $type == pull {
 
         .#{ $class } {
-          margin-left: #{ 
-            $count / $factor * 100% * -1 
+          margin-left: #{
+            $count / $factor * 100% * -1
           } !important;
         }
 
@@ -90,18 +90,18 @@ $namespaces: map.merge(
         .#{ $class } {
 
           #{ $property }: #{ $size-value } !important;
-        
+
         }
 
         @if $responsive == true {
 
           @each $breakpoint in $breakpoints {
-        
+
             @include tools.respond-to( $breakpoint ) {
 
-              #{ 
-                $class +  
-                $breakpoint-separator + 
+              #{
+                $class +
+                $breakpoint-separator +
                 $breakpoint
               } {
 
@@ -112,7 +112,7 @@ $namespaces: map.merge(
             }
 
           }
-        
+
         }
 
       }

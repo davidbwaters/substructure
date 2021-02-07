@@ -4,6 +4,8 @@
 
 // Function to calculate REM values from pixel values.
 
+@use '../../settings';
+
 
 @function calculate-rem(
   $value, $sizing-root: settings.$sizing-root
