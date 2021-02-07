@@ -4,11 +4,9 @@
 
 // Function to calculate REM values from pixel values.
 
-@use 'node_modules/@substructure/settings';
 
-
-@function calculate-rem( 
-  $value, $sizing-root: settings.$sizing-root 
+@function calculate-rem(
+  $value, $sizing-root: settings.$sizing-root
 ) {
 
   @return #{ ( $value / $sizing-root ) * 1rem }
