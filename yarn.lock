@@ -904,18 +904,6 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@substructure/settings@^0.1.12", "@substructure/settings@^0.1.2":
-  version "0.1.12"
-  resolved "https://registry.yarnpkg.com/@substructure/settings/-/settings-0.1.12.tgz#156eadc568a333b10fc8fccd0da04286c19aa198"
-  integrity sha512-06xuQVr00Jks6gslRgwFlLVFPSkXoOEXJDtyQA3/XH02D3jEKlEdEPgxCttQ50obscRX6abtN+8uAbGPedsIcA==
-
-"@substructure/tools@^0.1.5":
-  version "0.1.15"
-  resolved "https://registry.yarnpkg.com/@substructure/tools/-/tools-0.1.15.tgz#70a0e5dac14590639a9816544bd2fb2cb1bf37df"
-  integrity sha512-zsqH+wGNVafq+Xb8X/2KSdWN/mgJmW1tpSdy95VDWw1/XfflBu6X2WU/+ojkWTnF//CY4Xj3pRguHCfSNGeZvA==
-  dependencies:
-    "@substructure/settings" "^0.1.12"
-
 "@types/glob@^7.1.1":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.1.2.tgz#06ca26521353a545d94a0adc74f38a59d232c987"
@@ -4546,9 +4534,9 @@ sshpk@^1.7.0:
     tweetnacl "~0.14.0"
 
 ssri@^6.0.0, ssri@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/ssri/-/ssri-6.0.1.tgz#2a3c41b28dd45b62b63676ecb74001265ae9edd8"
-  integrity sha512-3Wge10hNcT1Kur4PDFwEieXSCMCJs/7WvSACcrMYrNp+b8kDL1/0wJch5Ni2WrtwEa2IO8OsVfeKIciKCDx/QA==
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/ssri/-/ssri-6.0.2.tgz#157939134f20464e7301ddba3e90ffa8f7728ac5"
+  integrity sha512-cepbSq/neFK7xB6A50KHN0xHDotYzq58wWCa5LeWqnPrHG8GzfEjO/4O8kpmcGW+oaxkvhEJCWgbgNk4/ZV93Q==
   dependencies:
     figgy-pudding "^3.5.1"
 
