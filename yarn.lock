@@ -904,18 +904,6 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@substructure/settings@^0.1.12", "@substructure/settings@^0.1.2":
-  version "0.1.12"
-  resolved "https://registry.yarnpkg.com/@substructure/settings/-/settings-0.1.12.tgz#156eadc568a333b10fc8fccd0da04286c19aa198"
-  integrity sha512-06xuQVr00Jks6gslRgwFlLVFPSkXoOEXJDtyQA3/XH02D3jEKlEdEPgxCttQ50obscRX6abtN+8uAbGPedsIcA==
-
-"@substructure/tools@^0.1.5":
-  version "0.1.15"
-  resolved "https://registry.yarnpkg.com/@substructure/tools/-/tools-0.1.15.tgz#70a0e5dac14590639a9816544bd2fb2cb1bf37df"
-  integrity sha512-zsqH+wGNVafq+Xb8X/2KSdWN/mgJmW1tpSdy95VDWw1/XfflBu6X2WU/+ojkWTnF//CY4Xj3pRguHCfSNGeZvA==
-  dependencies:
-    "@substructure/settings" "^0.1.12"
-
 "@types/glob@^7.1.1":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.1.2.tgz#06ca26521353a545d94a0adc74f38a59d232c987"
@@ -2459,9 +2447,9 @@ has@^1.0.3:
     function-bind "^1.1.1"
 
 hosted-git-info@^2.1.4, hosted-git-info@^2.7.1:
-  version "2.8.8"
-  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.8.tgz#7539bd4bc1e0e0a895815a2e0262420b12858488"
-  integrity sha512-f/wzC2QaWBs7t9IYqB4T3sR1xviIViXJRJTWBlx2Gf3g0Xi5vI7Yy4koXQ1c9OYDGHN9sBy1DQ2AB8fqZBWhUg==
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz#dffc0bf9a21c02209090f2aa69429e1414daf3f9"
+  integrity sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==
 
 http-cache-semantics@^3.8.1:
   version "3.8.1"
