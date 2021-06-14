@@ -1,6 +1,6 @@
 {
   "name": "@substructure/utilities-float",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Generate responsive float utility classes.",
   "main": "_index.scss",
   "repository": "https://github.com/davidbwaters/substructure",
@@ -14,8 +14,8 @@
   "author": "David B. Waters <mrdavidbwaters@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@substructure/settings": "^0.2.4",
-    "@substructure/tools": "^0.2.6"
+    "@substructure/settings": "^0.2.5",
+    "@substructure/tools": "^0.2.7"
   },
   "publishConfig": {
     "access": "public"

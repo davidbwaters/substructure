@@ -1,6 +1,6 @@
 {
   "name": "@substructure/settings",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Defines the core settings used required by most other modules.",
   "main": "_index.scss",
   "repository": "https://github.com/davidbwaters/substructure",
