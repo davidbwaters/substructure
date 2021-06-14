@@ -1,6 +1,6 @@
 {
   "name": "@substructure/tools",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "Mixin for generating content inside media queries.",
   "main": "_index.scss",
   "repository": "https://github.com/davidbwaters/substructure",
@@ -14,7 +14,7 @@
   "author": "David B. Waters <mrdavidbwaters@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@substructure/settings": "^0.2.5"
+    "@substructure/settings": "^0.2.6"
   },
   "publishConfig": {
     "access": "public"
