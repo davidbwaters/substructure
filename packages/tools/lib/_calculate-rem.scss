@@ -4,6 +4,8 @@
 
 // Function to calculate REM values from pixel values.
 
+@use "sass:math";
+
 @use '../../settings';
 
 
@@ -11,6 +13,6 @@
   $value, $sizing-root: settings.$sizing-root
 ) {
 
-  @return #{ ( $value / $sizing-root ) * 1rem }
+  @return #{  math.div($value, $sizing-root)  * 1rem }
 
 }

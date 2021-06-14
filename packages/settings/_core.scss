@@ -83,8 +83,8 @@ $text-sizes-large: (
 // Order from largest to smallest.
 
 $text-sizes-small: (
-  $text-size-normal / 1.2,
-  $text-size-normal / math.pow(1.2, 2)
+  math.div($text-size-normal, 1.2),
+  math.div($text-size-normal, math.pow(1.2, 2))
 ) !default;
 
 
@@ -94,7 +94,7 @@ $text-sizes-small: (
 $text-sizing-fluid: (
   viewport-min: 320px,
   viewport-max: 1600px,
-  scale-max: 1.25 / 1.2
+  scale-max: math.div(1.25, 1.2)
 ) !default;
 
 

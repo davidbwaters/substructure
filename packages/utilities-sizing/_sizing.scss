@@ -3,6 +3,8 @@
  */
 
 
+@use "sass:math";
+
 @use 'sass:map';
 @use '../settings';
 @use '../tools';
@@ -65,7 +67,7 @@ $namespaces: map.merge(
       };
 
       $property: $type;
-      $size-value: $count / $factor * 100%;
+      $size-value: math.div($count, $factor) * 100%;
 
       @if $type == push {
 
@@ -79,7 +81,7 @@ $namespaces: map.merge(
 
         .#{ $class } {
           margin-left: #{
-            $count / $factor * 100% * -1
+            math.div($count, $factor) * 100% * -1
           } !important;
         }
 

@@ -1,5 +1,7 @@
+@use "sass:math";
+
 @mixin fluid-type($min-vw, $max-vw, $min-value, $max-value) {
-  $factor: 1 / ($max-vw - $min-vw) * ($max-value - $min-value);
+  $factor: math.div(1, $max-vw - $min-vw) * ($max-value - $min-value);
   $calc-value: unquote(
     "#{ $min-value - ($min-vw * $factor) } + #{ 100vw * $factor }"
   );
