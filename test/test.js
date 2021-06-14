@@ -6,34 +6,34 @@
 const path = require('path')
 const fs = require('fs')
 const sass = require('sass')
-const Fiber = require('fibers')
+//const Fiber = require('fibers')
 
 
 fs.rmdirSync(
-  'test/build', 
+  'test/build',
   { recursive: true }
 )
 
 fs.mkdirSync(
-  'test/build', 
+  'test/build',
   { recursive: true }
 )
 
 const packages = fs.readdirSync('packages')
 
 const build = (package) => {
-  
+
   sass.render(
     {
       includePaths:['../node_modules'],
       file: 'packages/' + package + '/_index.scss',
-      fiber: Fiber
-    }, 
+      //fiber: Fiber
+    },
     (error, result) => {
       if (!error) {
-        fs.writeFile( 
-          'test/build/' + package + '.css', 
-          result.css, 
+        fs.writeFile(
+          'test/build/' + package + '.css',
+          result.css,
           error => {}
         )
       }
@@ -46,5 +46,10 @@ const build = (package) => {
 }
 
 packages.forEach(package => {
-  build(package)
+
+  if (package !== '.DS_Store') {
+
+    build(package)
+
+  }
 })

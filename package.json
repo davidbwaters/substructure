@@ -12,6 +12,6 @@
   "devDependencies": {
     "fibers": "^5.0.0",
     "lerna": "^3.22.1",
-    "sass": "^1.26.9"
+    "sass": "^1.34.1"
   }
 }
