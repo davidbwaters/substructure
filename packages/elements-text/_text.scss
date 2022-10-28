@@ -25,6 +25,7 @@ $_text-sizes-small-length: list.length(
 
 h1, h2, h3, h4, h5, h6 {
 
+  margin-top: 0;
   @include tools.spacing(bottom,
     list.nth(settings.$spacing-sizes, 2),
     margin
