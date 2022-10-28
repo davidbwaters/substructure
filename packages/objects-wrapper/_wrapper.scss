@@ -12,10 +12,10 @@
 
 
 $spacing: list.nth(
-  settings.$spacing-sizes, 2
+  settings.$spacing-sizes, 3
 ) !default;
 
-$width: 1080px !default;
+$width: 1200px !default;
 
 $namespace: #{
   map.get( settings.$layer-namespaces, 'objects' ) +

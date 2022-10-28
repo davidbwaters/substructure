@@ -99,7 +99,7 @@ $namespaces: map.merge(
 
 @each $direction, $direction-namespace in $directions {
 
-  @each  $spacing-size-value in $spacing-sizes {
+  @each $spacing-size-value in $spacing-sizes {
 
     $_suffix: #{
       list.index(

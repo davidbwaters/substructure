@@ -1,0 +1,61 @@
+/*
+ *  Utilities - Layout - Display
+ */
+
+
+@use 'sass:map';
+@use 'core' as *;
+@use '../settings';
+@use '../tools';
+
+
+$_displayProps: (
+  'inline',
+  'block',
+  'inline-block',
+  'grid',
+  'inline-grid',
+  'flex',
+  'inline-flex',
+) !default;
+
+
+@each $prop in $_displayProps {
+
+  .#{
+    map.get($namespaces, display) + $prop
+  } {
+    display: $prop !important;
+  }
+
+}
+
+
+@if $responsive {
+
+  @each $breakpoint, $breakpoint-value in $breakpoints {
+
+    @include tools.respond-to(
+      $breakpoint, $breakpoints
+    ) {
+
+      @each $prop in $_displayProps {
+
+        .#{
+          map.get($namespaces, display) +
+          $prop +
+          $breakpoint-separator +
+          $breakpoint
+        } {
+
+          display: $prop !important;
+
+        }
+
+      }
+
+    }
+
+  }
+
+}

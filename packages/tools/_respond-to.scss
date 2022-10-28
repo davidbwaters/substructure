@@ -12,30 +12,14 @@
 
 @mixin respond-to (
   $breakpoint,
-  $breakpoints: settings.$breakpoints
+  $breakpoints: settings.$breakpoints,
+  $max: false
 ) {
 
   @if map-has-key($breakpoints, $breakpoint) {
 
-    @media (
-      min-width: #{map-get($breakpoints, $breakpoint)}
-    ) {
-      @content;
-    }
-
-  }
-
-  @else if map-has-key( $breakpoints, $breakpoint ) {
-
-    $max-breakpoint: core.string-replace(
-      $breakpoint, 'max-', ''
-    );
-
-    @media (
-      max-width: #{
-        ( map-get( $breakpoints, $max-breakpoint ) -1 )
-      }
-    ) {
+    @media #{map-get($breakpoints, $breakpoint)}
+     {
       @content;
     }
 

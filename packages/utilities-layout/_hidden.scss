@@ -1,0 +1,62 @@
+/*
+ *  Utilities - Layout - Hidden
+ */
+
+
+@use 'sass:map';
+@use 'core' as *;
+@use '../settings';
+@use '../tools';
+
+
+$_displayProps: (
+  'inline',
+  'block',
+  'inline-block',
+  'grid',
+  'inline-grid',
+  'flex',
+  'inline-flex',
+) !default;
+
+
+.#{
+  map.get($class-names, hidden)
+} {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.#{
+  map.get($class-names, transparent)
+} {
+  opacity: 0 !important;
+}
+
+@if $responsive {
+
+  @each $breakpoint, $breakpoint-value in $breakpoints {
+
+
+    @include tools.respond-to(
+      $breakpoint, $breakpoints
+    ) {
+
+      .#{
+        map.get($class-names, hidden)
+      } {
+        display: none !important;
+        visibility: hidden !important;
+      }
+
+      .#{
+        map.get($class-names, transparent)
+      } {
+        opacity: 0 !important;
+      }
+
+    }
+
+  }
+
+}

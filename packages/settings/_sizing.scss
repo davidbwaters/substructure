@@ -1,0 +1,95 @@
+//
+//  Settings - Sizing Fluid
+//
+
+
+// Defines the default fluid sizes text and spacing.
+// Order from smallest to largest.
+
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+@use 'core' as *;
+@use '../tools/core' as *;
+
+$text-size-normal: fluid-scale($text-size-normal-base);
+$text-size-normal-base: calculate-rem($text-size-normal-base);
+$text-sizes-large-fluid: ();
+$text-sizes-small-fluid: ();
+$text-sizes-large-rem: ();
+$text-sizes-small-rem: ();
+$spacing-sizes-fluid: ();
+$spacing-sizes-rem: ();
+
+@if $sizing-fluid != false {
+
+  $text-sizes-large-length: list.length($text-sizes-large);
+
+  $fs-min: map.get($sizing-fluid, text-size-normal-min);
+  $fs-max: map.get($sizing-fluid, text-size-normal-max);
+  $vw-min: map.get($sizing-fluid, viewport-min);
+  $vw-max: map.get($sizing-fluid, viewport-max);
+  $scale-min: map.get($sizing-fluid, text-scale-min);
+  $scale-max: map.get($sizing-fluid, text-scale-max);
+
+  @each $size in $text-sizes-large {
+
+    $text-sizes-large-rem: list.join(
+      $text-sizes-large-rem,
+      (
+        round(calculate-rem($size), 2)
+      )
+    );
+
+    $text-sizes-large-fluid: list.join(
+      $text-sizes-large-fluid,
+      (
+        fluid-scale($size)
+      )
+    );
+
+  }
+
+  @each $size in $text-sizes-small {
+
+    $text-sizes-small-rem: list.join(
+      $text-sizes-small-rem,
+      (
+        round(calculate-rem($size), 2)
+      )
+    );
+
+    $text-sizes-small-fluid: list.join(
+      $text-sizes-small-fluid,
+      (
+        fluid-scale($size)
+      )
+    );
+
+  }
+
+  @each $size in $spacing-sizes {
+
+    $spacing-sizes-rem: list.join(
+      $spacing-sizes-rem,
+      (
+        round(calculate-rem($size), 2)
+      )
+    );
+
+    $spacing-sizes-fluid: list.join(
+      $spacing-sizes-fluid,
+      (
+        fluid-scale($size)
+      )
+    );
+
+  }
+
+}
+
+$text-sizes-large: $text-sizes-large-rem;
+$text-sizes-small: $text-sizes-small-rem;
+$spacing-sizes: $spacing-sizes-rem;
+
+@debug($text-size-normal);

@@ -23,75 +23,38 @@ $_text-sizes-small-length: list.length(
   $text-sizes-small
 );
 
-$_heading-sizes: ();
+h1, h2, h3, h4, h5, h6 {
 
-
-@each $size-value in $text-sizes-large {
-
-  $i: list.index(
-    $text-sizes-large,
-    $size-value
+  @include tools.spacing(bottom,
+    list.nth(settings.$spacing-sizes, 2),
+    margin
   );
 
-  @if $i <= 6 {
-
-    $_heading-sizes: list.append(
-      $_heading-sizes,
-      $size-value
-    );
-
-  }
+  line-height: settings.$line-height-large;
 
 }
-
-@if $_text-sizes-large-length < 6 {
-
-  @for $i from ( $_text-sizes-large-length + 1 ) through 6 {
-
-    $_heading-sizes: list.append(
-      $_heading-sizes,
-      list.nth(
-        $text-sizes-large,
-        $_text-sizes-large-length
-      )
-    )
-
-  }
-
-}
-
-$_heading-sizes: tools.reverse($_heading-sizes);
-
 @for $i from 6 through 1 {
 
-  @if $i < 4 {
+  h#{$i} {
 
-    h#{$i} {
-
-      @include tools.text-sizing(
-
-        list.nth(
-          $_heading-sizes, $i
-        ),
-        settings.$line-height-large
-
-      )
-
+    @if settings.$custom-properties != false {
+      font-size: var(--text-size-large-#{6 + 1 - $i}-base);
     }
 
-  }
+    @else {
+      font-size: $size-value;
+    }
 
-  @else {
+    @if settings.$sizing-fluid !=false {
+      @if settings.$custom-properties != false {
+        font-size: var(--text-size-large-#{6 + 1 - $i});
+      }
 
-    h#{$i} {
+      @else {
+        font-size: list.nth($text-sizes-large-fluid,
+            6 + 1 - $i );
 
-      @include tools.text-sizing(
-
-        list.nth(
-          $_heading-sizes, $i
-        )
-
-      )
+      }
 
     }
 
@@ -101,13 +64,9 @@ $_heading-sizes: tools.reverse($_heading-sizes);
 
 small {
 
-  @include tools.text-sizing(
-
-    list.nth(
-      $text-sizes-small,
-      1
-    )
-
-  )
+  font-size: tools.sizing(
+    -1
+  );
+  line-height: settings.$line-height-normal
 
 }

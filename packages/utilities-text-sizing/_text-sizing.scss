@@ -9,7 +9,7 @@
 @use '../tools';
 
 
-$text-size-normal: settings.$text-size-normal !default;
+$text-size-normal-base: settings.$text-size-normal-base !default;
 
 $text-sizes-large: settings.$text-sizes-large !default;
 
@@ -40,60 +40,65 @@ $namespaces: map.merge(
 );
 
 
-
 .#{ map.get( $namespaces, normal ) } {
 
-  @include tools.text-sizing(
-    $text-size-normal,
-    $line-height-normal,
-    true
-  )
+  @if settings.$custom-properties {
+    font-size:  var(--text-size-normal-base) !important;
+    @if settings.$sizing-fluid != false {
+      font-size: var(--text-size-normal) !important;
+    }
+  }
+  @else {
+    font-size: $text-size-normal-base !important;
+
+    @if settings.$sizing-fluid != false {
+      font-size: $text-size-normal !important;
+    }
+  }
+  line-height: $line-height-normal !important;
 
 }
 
 @each $size-value in $text-sizes-large {
 
-  $_length: list.length(
-    $text-sizes-large
-  );
+  $_length: list.length($text-sizes-large );
 
-  $_index: list.index(
-    $text-sizes-large, $size-value
-  );
+  $_index: list.index($text-sizes-large, $size-value );
 
   .#{ map.get( $namespaces, large ) }#{ $_index} {
 
-    @if $_index > ( $_length - 3 ) {
-
-      @include tools.text-sizing(
-        $size-value,
-        $line-height-large,
-        true
-      );
-
+    @if settings.$custom-properties {
+      font-size: var(--text-size-large-#{$_index}-base) !important;
     }
 
     @else {
+      font-size: $size-value !important;
+    }
 
-      @include tools.text-sizing(
-        $size-value,
-        $line-height-normal,
-        true
-      );
+    @if settings.$sizing-fluid !=false {
+      @if settings.$custom-properties {
+        font-size: var(--text-size-large-#{$_index}) !important;
+      }
 
-    };
+      @else {
+        font-size: list.nth($text-sizes-large-fluid,
+            $_index ) !important;
 
-    @include tools.spacing(
-      bottom,
-      list.nth(
-        settings.$spacing-sizes, 1
-      )
+      }
+
+    }
+
+    @include tools.spacing(bottom,
+      list.nth(settings.$spacing-sizes, 2),
+      margin,
+      true
     );
+
+    line-height: $line-height-large !important;
 
   }
 
 }
-
 
 @each $size-value in $text-sizes-small {
 
@@ -103,18 +108,34 @@ $namespaces: map.merge(
 
   .#{ map.get( $namespaces, small ) }#{ $_index } {
 
-    @include tools.text-sizing(
-      $size-value,
-      $line-height-normal,
+    @if settings.$custom-properties {
+      font-size:  var(--text-size-small-#{$_index}-base) !important;
+    }
+    @else {
+      font-size: $size-value !important;
+    }
+
+    @if settings.$sizing-fluid != false {
+      @if settings.$custom-properties {
+        font-size: var(--text-size-small-#{$_index}) !important;
+      }
+      @else {
+        font-size: list.nth(
+          $text-sizes-large-fluid,
+          $_index
+        ) !important;
+
+      }
+
+    }
+
+    @include tools.spacing(bottom,
+      list.nth(settings.$spacing-sizes, 2),
+      margin,
       true
     );
 
-    @include tools.spacing(
-      bottom,
-      list.nth(
-        settings.$spacing-sizes, 2
-      )
-    );
+    line-height: $line-height-normal !important;
 
   }
 

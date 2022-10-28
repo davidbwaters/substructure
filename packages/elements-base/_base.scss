@@ -10,13 +10,25 @@
 
 :root,
 body {
-  @include tools.text-sizing(
-    settings.$text-size-normal
-  );
   height: 100%;
 }
 
 :root {
+  font-family: sans-serif;
   font-size: settings.$sizing-root;
   overflow: auto;
 }
+
+body {
+  @if settings.$custom-properties {
+    font-size: var(--text-size-normal-base);
+    font-size: var(--text-size-normal);
+  }
+  @else {
+    font-size: settings.$font-size-normal-base;
+    font-size: tools.sizing();
+  }
+  line-height: settings.$line-height-normal;
+  overflow: auto;
+}
+

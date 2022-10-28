@@ -1,0 +1,35 @@
+//
+//  Tools - Fluid
+//
+
+// Fluid sizing mixin.
+
+@use 'sass:math';
+@use 'round' as *;
+@use 'calculate-rem' as *;
+@use 'strip-units' as *;
+
+
+@function fluid(
+  $min-size,
+  $max-size,
+  $min-breakpoint,
+  $max-breakpoint,
+) {
+  $slope: math.div($max-size - $min-size, $max-breakpoint - $min-breakpoint);
+  $slope-to-unit: strip(round($slope * 100, 2));
+  $intercept-rem: round(
+    calculate-rem(
+      $min-size - $slope * $min-breakpoint
+    ),
+    2
+  );
+  $min-size-rem: round(calculate-rem($min-size), 2);
+  $max-size-rem: round(calculate-rem($max-size), 2);
+
+  @return clamp(
+    #{$min-size-rem},
+    #{$slope-to-unit}vw + #{$intercept-rem},
+    #{$max-size-rem}
+  );
+}

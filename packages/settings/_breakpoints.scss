@@ -10,34 +10,32 @@
 
 $breakpoints: ();
 
-$breakpoints-max: ();
-
 @each $bp-name, $bp-size in $breakpoint-sizes {
-  
+
   $_bp-value: #{
     'screen and ( min-width: ' + $bp-size + ' )'
   };
 
   $_bp-value-max: #{
-    'screen and ( max-width: ' + $bp-size + ' )'
+    'screen and ( max-width: ' + ($bp-size - 1px) + ' )'
   };
 
-  $breakpoints: map.merge( 
+  $breakpoints: map.merge(
     (
       #{ $bp-name }: $_bp-value
     ),
     $breakpoints
   );
 
-  @if $breakpoints-max != false {
+  @if $max-breakpoints != false {
 
-    $breakpoints-max: map.merge(
+    $breakpoints: map.merge(
       (
-        #{ $bp-name }: $_bp-value-max
+        #{ $bp-name + '-max' }: $_bp-value-max
       ),
-      $breakpoints-max
+      $breakpoints
     );
-  
+
   }
 
 }

@@ -2,71 +2,172 @@
 //  Tools - Spacing
 //
 
-// Mixin to generate spacing values. 
+// Mixin to generate spacing values.
 
-@use 'core';
+@use 'sass:list';
+@use 'core' as *;
+@use '../settings/core' as *;
 
-@mixin spacing ( 
-  $direction, 
-  $size-value, 
+@mixin spacing (
+  $direction,
+  $size-value,
   $rule: margin,
-  $important: false
+  $important: false,
+  $sizing-fluid: $sizing-fluid
 ) {
-  
+
+  $size-value-fluid: fluid-scale($size-value);
+  $size-index: list.index($spacing-sizes, $size-value);
+
+  @if $size-index and $custom-properties != false {
+    $size-value: var(--spacing-size-#{$size-index}-base);
+    $size-value-fluid: var(--spacing-size-#{$size-index});
+  }
+
   @if $direction == 'all' {
 
-      #{$rule + '-'}bottom: #{ 
-        $size-value + core.important($important)
+    #{$rule + '-'}bottom:
+      #{
+        $size-value + important($important)
       };
 
-      #{$rule + '-'}left: #{ 
-        $size-value + core.important($important)
+    @if $sizing-fluid != false {
+
+      #{$rule + '-'}bottom:
+        #{
+          $size-value-fluid
+          + important($important)
+        };
+    }
+
+    #{$rule + '-'}left:
+      #{
+        $size-value + important($important)
       };
 
-      #{$rule + '-'}right: #{ 
-        $size-value + core.important($important)
+    @if $sizing-fluid != false {
+
+      #{$rule + '-'}left:
+        #{
+          $size-value-fluid
+          + important($important)
+        };
+    }
+
+    #{$rule + '-'}right:
+      #{
+        $size-value + important($important)
       };
 
-      #{$rule + '-'}top: #{ 
-        $size-value + core.important($important)
+    @if $sizing-fluid != false {
+
+      #{$rule + '-'}right:
+        #{
+          $size-value-fluid
+          + important($important)
+        };
+    }
+
+    #{$rule + '-'}top:
+      #{
+        $size-value + important($important)
       };
 
-    
+    @if $sizing-fluid != false {
+
+      #{$rule + '-'}top:
+        #{
+          $size-value-fluid
+          + important($important)
+        };
+    }
+
   }
-  
+
   @else if $direction == 'vertical' {
-    
-    #{$rule + '-'}bottom: #{ 
-        $size-value + core.important($important)
+
+    #{$rule + '-'}bottom:
+      #{
+        $size-value + important($important)
       };
 
-    #{$rule + '-'}top: #{ 
-        $size-value + core.important($important)
+    @if $sizing-fluid != false {
+
+      #{$rule + '-'}bottom:
+        #{
+          $size-value-fluid
+          + important($important)
+        };
+    }
+
+    #{$rule + '-'}top:
+      #{
+        $size-value + important($important)
       };
- 
-    
+
+    @if $sizing-fluid != false {
+
+      #{$rule + '-'}top:
+        #{
+          $size-value-fluid
+          + important($important)
+        };
+    }
+
   }
-  
+
   @else if $direction == 'horizontal' {
-    
-    #{$rule + '-'}left: #{ 
-        $size-value + core.important($important)
+
+    #{$rule + '-'}left:
+      #{
+        $size-value + important($important)
       };
 
-    #{$rule + '-'}right: #{ 
-        $size-value + core.important($important)
+    @if $sizing-fluid != false {
+
+      #{$rule + '-'}left:
+        #{
+          $size-value-fluid
+          + important($important)
+        };
+    }
+
+    #{$rule + '-'}right:
+      #{
+        $size-value + important($important)
       };
 
-    
+    @if $sizing-fluid != false {
+
+
+      #{$rule + '-'}right:
+        #{
+          $size-value-fluid
+          + important($important)
+        };
+
+    }
+
   }
-  
+
   @else {
-    
-    #{$rule + '-'}#{$direction}: #{ 
-        $size-value + core.important($important)
+
+    #{$rule + '-'}#{$direction}:
+      #{
+          $size-value + important($important)
       };
 
-    
+    @if $sizing-fluid != false {
+
+
+      #{$rule + '-'}#{$direction}:
+        #{
+          $size-value-fluid
+          + important($important)
+        };
+
+    }
+
   }
-  
+
 }

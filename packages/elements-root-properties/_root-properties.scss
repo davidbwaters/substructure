@@ -11,24 +11,26 @@
 
 @if $custom-properties != false {
 
-  $_custom-properties: (
-    text-size-normal: $text-size-normal,
-    line-height-normal: $line-height-normal,
-    line-height-large:  $line-height-large,
-    sizing-root: $sizing-root,
-    sizing-unit: $sizing-unit,
-  );
+  $_custom-properties: ();
 
   @each $key, $value in $breakpoint-sizes {
 
     $_custom-properties: map.merge(
+      $_custom-properties,
       (
         #{ 'breakpoint-size-' + $key }: $value
-      ),
-      $_custom-properties
+      )
     )
 
   }
+
+  $_custom-properties: map.merge(
+    $_custom-properties,
+    (
+      sizing-root: $sizing-root,
+      sizing-unit: $sizing-unit,
+    )
+  );
 
   @each $value in $sizing-factors {
 
@@ -37,11 +39,25 @@
       $value
     );
 
+    @if $sizing-fluid != false {
+
+      @each $key, $value in $sizing-fluid {
+
+        $_custom-properties: map.merge(
+          $_custom-properties,
+          (
+            #{ 'sizing-fluid-' + $key }: $value
+          )
+        )
+      }
+
+    }
+
     $_custom-properties: map.merge(
+      $_custom-properties,
       (
         #{ 'sizing-factor-' + $_index }: $value
-      ),
-      $_custom-properties
+      )
     )
 
   }
@@ -54,11 +70,46 @@
     );
 
     $_custom-properties: map.merge(
+      $_custom-properties,
       (
-        #{ 'spacing-size-' + $_index }: $value
-      ),
-      $_custom-properties
+        #{ 'spacing-size-' + $_index + '-base'}: $value
+      )
     )
+
+  }
+
+  @each $value in $spacing-sizes-fluid {
+
+    $_index: list.index(
+      $spacing-sizes-fluid,
+      $value
+    );
+
+    $_custom-properties: map.merge(
+      $_custom-properties,
+      (
+        #{ 'spacing-size-' + $_index}: $value
+      )
+    )
+
+  }
+
+  $_custom-properties: map.merge(
+    $_custom-properties,
+    (
+      text-size-normal-base: $text-size-normal-base
+    )
+  );
+
+
+  @if $sizing-fluid != false {
+
+    $_custom-properties: map.merge(
+      $_custom-properties,
+      (
+        text-size-normal: $text-size-normal
+      )
+    );
 
   }
 
@@ -70,10 +121,10 @@
     );
 
     $_custom-properties: map.merge(
+      $_custom-properties,
       (
-        #{ 'text-size-large-' + $_index }: $value
-      ),
-      $_custom-properties
+        #{ 'text-size-large-' + $_index + '-base'}: $value,
+      )
     )
 
   }
@@ -86,38 +137,65 @@
     );
 
     $_custom-properties: map.merge(
+      $_custom-properties,
       (
-        #{ 'text-sizes-small-' + $_index }: $value
-      ),
-      $_custom-properties
-    )
+        #{ 'text-sizes-small-' + $_index + '-base'}: $value
+      )
+    );
 
   }
 
-  @each $key, $value in $layer-namespaces {
+  @each $value in $text-sizes-large {
 
-    $_custom-properties: map.merge(
-      (
-        #{ 'layer-namespace-' + $key }: $value
-      ),
-      $_custom-properties
-    )
+    $_index: list.index(
+      $text-sizes-large,
+      $value
+    );
 
-  }
-
-  @if $text-sizing-fluid != false {
-
-    @each $key, $value in $text-sizing-fluid {
+    @if $sizing-fluid != false {
 
       $_custom-properties: map.merge(
+        $_custom-properties,
         (
-          #{ 'text-sizing-fluid-' + $key }: $value
-        ),
-        $_custom-properties
+          #{ 'text-size-large-' + $_index }: list.nth(
+            $text-sizes-large-fluid, $_index
+          )
+        )
       )
     }
 
   }
+
+
+  @each $value in $text-sizes-small {
+
+    $_index: list.index(
+      $text-sizes-small,
+      $value
+    );
+
+    @if $sizing-fluid != false {
+
+      $_custom-properties: map.merge(
+        $_custom-properties,
+        (
+          #{ 'text-size-small-' + $_index }: list.nth(
+            $text-sizes-large-fluid, $_index
+          )
+        )
+      )
+    }
+
+  }
+
+  $_custom-properties: map.merge(
+    $_custom-properties,
+    (
+      line-height-normal: $line-height-normal,
+      line-height-large:  $line-height-large
+    )
+  );
+
 
   @if meta.type-of($custom-properties) == map {
 
@@ -126,21 +204,18 @@
       $custom-properties
     );
 
-    :root {
-
-      @each $key, $value in $_custom-properties {
-        #{ '--' + $key }: #{ $value };
-      }
-
-    }
+    $custom-properties: true;
 
   }
 
+
   @if $custom-properties == true {
+
+    $custom-properties: $_custom-properties;
 
     :root {
 
-      @each $key, $value in $_custom-properties {
+      @each $key, $value in $custom-properties {
         #{ '--' + $key }: #{ $value };
       }
 

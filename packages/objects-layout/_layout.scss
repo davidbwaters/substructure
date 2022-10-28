@@ -89,15 +89,8 @@ $_justify-values: (
   } {
 
     @include tools.spacing(
-      'left', $size-value
+      'all', $size-value, 'padding'
     );
-
-    & > .#{ $_cell-class } {
-
-      @include tools.spacing(
-        'left', $size-value, 'padding'
-      );
-    }
 
   }
 
@@ -149,9 +142,9 @@ $_justify-values: (
 
   .#{ $_class + $modifier-separator + $namespace } {
 
-      align-items: #{$value};
+    align-items: #{$value};
 
-    }
+  }
 
   .#{ $_cell-class + $modifier-separator + $namespace } {
 

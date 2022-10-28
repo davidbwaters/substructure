@@ -1,0 +1,22 @@
+/*
+ *  Utilities - Layout - List
+ */
+
+
+@use 'sass:map';
+@use 'core' as *;
+@use '../settings';
+@use '../tools';
+
+
+$_displayProps: (
+  'inline',
+  'block'
+) !default;
+
+
+.#{
+  map.get($namespaces, list) + 'inline'
+} li {
+  display: inline-block;
+}
