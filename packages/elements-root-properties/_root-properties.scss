@@ -160,7 +160,7 @@
     $_custom-properties: map.merge(
       $_custom-properties,
       (
-        #{ 'text-sizes-small-' + $_index + '-base'}: $value
+        #{ 'text-size-small-' + $_index + '-base'}: $value
       )
     );
 
