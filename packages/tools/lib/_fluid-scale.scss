@@ -40,7 +40,6 @@
 
     $size-min: $target;
     $size-max: $size-max * math.pow($scale-max, $step);
-
     $size-fluid: fluid($size-min, $size-max, $vw-min, $vw-max);
 
     @return $size-fluid;

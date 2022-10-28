@@ -129,22 +129,6 @@
 
   }
 
-  @each $value in $text-sizes-small {
-
-    $_index: list.index(
-      $text-sizes-small,
-      $value
-    );
-
-    $_custom-properties: map.merge(
-      $_custom-properties,
-      (
-        #{ 'text-sizes-small-' + $_index + '-base'}: $value
-      )
-    );
-
-  }
-
   @each $value in $text-sizes-large {
 
     $_index: list.index(
@@ -166,6 +150,21 @@
 
   }
 
+  @each $value in $text-sizes-small {
+
+    $_index: list.index(
+      $text-sizes-small,
+      $value
+    );
+
+    $_custom-properties: map.merge(
+      $_custom-properties,
+      (
+        #{ 'text-sizes-small-' + $_index + '-base'}: $value
+      )
+    );
+
+  }
 
   @each $value in $text-sizes-small {
 
@@ -180,7 +179,7 @@
         $_custom-properties,
         (
           #{ 'text-size-small-' + $_index }: list.nth(
-            $text-sizes-large-fluid, $_index
+            $text-sizes-small-fluid, $_index
           )
         )
       )
