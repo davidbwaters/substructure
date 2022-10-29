@@ -1,6 +1,6 @@
 {
   "name": "@substructure/utilities-text-sizing",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Generates text sizing utility classes.",
   "main": "_index.scss",
   "repository": "https://github.com/davidbwaters/substructure",
@@ -14,9 +14,9 @@
   "author": "David B. Waters <mrdavidbwaters@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@substructure/settings": "^0.3.2",
-    "@substructure/tools": "^0.3.2",
-    "@substructure/utilities-spacing": "^0.3.2"
+    "@substructure/settings": "^0.3.3",
+    "@substructure/tools": "^0.3.3",
+    "@substructure/utilities-spacing": "^0.3.3"
   },
   "publishConfig": {
     "access": "public"
