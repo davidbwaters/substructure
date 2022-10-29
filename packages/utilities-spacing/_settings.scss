@@ -8,20 +8,6 @@
 @use 'sass:map';
 @use '../settings';
 
-$directions: () !default;
-
-$directions: map.merge(
-  (
-    all: '',
-    vertical: 'vertical-',
-    horizontal: 'horizontal-',
-    top: 'top-',
-    bottom: 'bottom-',
-    left: 'left-',
-    right: 'right-'
-  ),
-  $directions
-);
 
 $padding: true !default;
 
@@ -36,9 +22,9 @@ $breakpoints: settings.$breakpoints !default;
 
 $breakpoint-separator: settings.$breakpoint-separator !default;
 
-$namespaces: () !default;
+$type-namespaces: () !default;
 
-$namespaces: map.merge(
+$type-namespaces: map.merge(
   (
     margin: #{map.get(settings.$layer-namespaces, utilities) +
       'margin-'},
@@ -47,5 +33,20 @@ $namespaces: map.merge(
         utilities
       ) + 'padding-'}
   ),
-  $namespaces
+  $type-namespaces
+);
+
+$direction-namespaces: () !default;
+
+$direction-namespaces: map.merge(
+  (
+    all: '',
+    vertical: 'vertical-',
+    horizontal: 'horizontal-',
+    top: 'top-',
+    bottom: 'bottom-',
+    left: 'left-',
+    right: 'right-'
+  ),
+  $direction-namespaces
 );

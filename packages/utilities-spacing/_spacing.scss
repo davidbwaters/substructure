@@ -12,9 +12,9 @@
 
 
 
-@if map.has-key(settings.$directions, horizontal) {
-  $_margin-auto-class: #{map.get(settings.$namespaces, margin) +
-    map.get(settings.$directions, horizontal) +
+@if map.has-key(settings.$direction-namespaces, horizontal) {
+  $_margin-auto-class: #{map.get(settings.$type-namespaces, margin) +
+    map.get(settings.$direction-namespaces, horizontal) +
     'auto'};
 
   .#{ $_margin-auto-class } {
@@ -38,7 +38,7 @@
   }
 }
 
-@each $direction, $direction-namespace in settings.$directions {
+@each $direction, $direction-namespace in settings.$direction-namespaces {
   @each $spacing-size-value in settings.$spacing-sizes {
     $_suffix: #{list.index(
         settings.$spacing-sizes,
@@ -46,7 +46,7 @@
       ) -
       1};
 
-    $_margin-class: #{map.get(settings.$namespaces, margin) +
+    $_margin-class: #{map.get(settings.$type-namespaces, margin) +
       $direction-namespace +
       $_suffix};
 
@@ -83,7 +83,7 @@
   }
 }
 
-@each $direction, $direction-namespace in settings.$directions {
+@each $direction, $direction-namespace in settings.$direction-namespaces {
   @each $spacing-size-value in settings.$spacing-sizes {
     @if settings.$padding == true {
       $_suffix: #{list.index(
@@ -92,7 +92,7 @@
         ) -
         1};
 
-      $_padding-class: #{map.get(settings.$namespaces, padding) +
+      $_padding-class: #{map.get(settings.$type-namespaces, padding) +
         $direction-namespace +
         $_suffix};
 

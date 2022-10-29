@@ -32,6 +32,9 @@ $namespaces: map.merge(
   $namespaces
 );
 
+$_margin-0-class: #{'.' + map.get(spacing.$type-namespaces, margin) + 0};
+$_margin-bottom-0-class: #{'.' + map.get(spacing.$type-namespaces, margin) + map.get(spacing.$direction-namespaces, bottom) + 0};
+
 .#{ map.get( $namespaces, normal ) } {
   @if settings.$custom-properties {
     font-size: var(--text-size-normal-base) !important;
@@ -56,16 +59,17 @@ $_size-classes-large-combined-0-margin: ();
   $_length: list.length($text-sizes-large);
 
   $_index: list.index($text-sizes-large, $size-value);
+  $_size-class: #{'.' + map.get($namespaces, large) + $_index};
 
   $_size-classes-large-combined: list.append(
     $_size-classes-large-combined,
-    #{'.' + map.get($namespaces, large)}#{$_index},
+    $_size-class,
     $separator: comma
   );
 
   $_size-classes-large-combined-0-margin: list.append(
     $_size-classes-large-combined-0-margin,
-    #{'.' + map.get($namespaces, large)}#{$_index+ '.' + map.get(spacing.$namespaces, margin) + 0},
+    #{$_size-class + $_margin-0-class + ',' $_size-class + $_margin-bottom-0-class},
     $separator: comma
   );
 
@@ -128,9 +132,11 @@ $_size-classes-small-combined-0-margin: ();
     $separator: comma
   );
 
+  $_size-class: #{'.' + map.get($namespaces, small) + $_index};
+
   $_size-classes-small-combined-0-margin: list.append(
     $_size-classes-large-combined-0-margin,
-    #{'.' + map.get($namespaces, small)}#{$_index+ '.' + map.get(spacing.$namespaces, margin) + 0},
+    #{$_size-class + $_margin-0-class + ',' $_size-class + $_margin-bottom-0-class},
     $separator: comma
   );
 }
