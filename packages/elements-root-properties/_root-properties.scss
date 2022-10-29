@@ -1,225 +1,166 @@
-//
-//  Elements - Root Properties
-//
+/*
+ *  Elements - Root Propertiesß
+ */
 
 
 @use 'sass:list';
 @use 'sass:map';
 @use 'sass:meta';
-@use '../settings' as *;
+@use '../settings';
 
-
-@if $custom-properties != false {
-
+@if settings.$custom-properties != false {
   $_custom-properties: ();
 
-  @each $key, $value in $breakpoint-sizes {
-
+  @each $key, $value in settings.$breakpoint-sizes {
     $_custom-properties: map.merge(
       $_custom-properties,
-      (
-        #{ 'breakpoint-size-' + $key }: $value
-      )
-    )
-
+      (#{'breakpoint-size-' + $key}: $value)
+    );
   }
 
   $_custom-properties: map.merge(
     $_custom-properties,
     (
-      sizing-root: $sizing-root,
-      sizing-unit: $sizing-unit,
+      sizing-root: settings.$sizing-root,
+      sizing-unit: settings.$sizing-unit
     )
   );
 
-  @each $value in $sizing-factors {
+  @each $value in settings.$sizing-factors {
+    $_index: list.index(settings.$sizing-factors, $value);
 
-    $_index: list.index(
-      $sizing-factors,
-      $value
-    );
-
-    @if $sizing-fluid != false {
-
-      @each $key, $value in $sizing-fluid {
-
+    @if settings.$sizing-fluid != false {
+      @each $key, $value in settings.$sizing-fluid {
         $_custom-properties: map.merge(
           $_custom-properties,
-          (
-            #{ 'sizing-fluid-' + $key }: $value
-          )
-        )
+          (#{'sizing-fluid-' + $key}: $value)
+        );
       }
-
     }
 
     $_custom-properties: map.merge(
       $_custom-properties,
-      (
-        #{ 'sizing-factor-' + $_index }: $value
-      )
-    )
-
+      (#{'sizing-factor-' + $_index}: $value)
+    );
   }
 
-  @each $value in $spacing-sizes {
+  @each $value in settings.$spacing-sizes {
+    $_index: list.index(settings.$spacing-sizes, $value);
 
+    $_custom-properties: map.merge(
+      $_custom-properties,
+      (#{'spacing-size-' + $_index + '-base'}: $value)
+    );
+  }
+
+  @each $value in settings.$spacing-sizes-fluid {
     $_index: list.index(
-      $spacing-sizes,
+      settings.$spacing-sizes-fluid,
       $value
     );
 
     $_custom-properties: map.merge(
       $_custom-properties,
-      (
-        #{ 'spacing-size-' + $_index + '-base'}: $value
-      )
-    )
-
-  }
-
-  @each $value in $spacing-sizes-fluid {
-
-    $_index: list.index(
-      $spacing-sizes-fluid,
-      $value
+      (#{'spacing-size-' + $_index}: $value)
     );
-
-    $_custom-properties: map.merge(
-      $_custom-properties,
-      (
-        #{ 'spacing-size-' + $_index}: $value
-      )
-    )
-
   }
 
   $_custom-properties: map.merge(
     $_custom-properties,
     (
-      text-size-normal-base: $text-size-normal-base
+      text-size-normal-base: settings.$text-size-normal-base
     )
   );
 
-
-  @if $sizing-fluid != false {
-
+  @if settings.$sizing-fluid != false {
     $_custom-properties: map.merge(
       $_custom-properties,
       (
-        text-size-normal: $text-size-normal
+        text-size-normal: settings.$text-size-normal
       )
     );
-
   }
 
-  @each $value in $text-sizes-large {
-
-    $_index: list.index(
-      $text-sizes-large,
-      $value
-    );
+  @each $value in settings.$text-sizes-large {
+    $_index: list.index(settings.$text-sizes-large, $value);
 
     $_custom-properties: map.merge(
       $_custom-properties,
-      (
-        #{ 'text-size-large-' + $_index + '-base'}: $value,
-      )
-    )
-
+      (#{'text-size-large-' + $_index + '-base'}: $value)
+    );
   }
 
-  @each $value in $text-sizes-large {
+  @each $value in settings.$text-sizes-large {
+    $_index: list.index(settings.$text-sizes-large, $value);
 
-    $_index: list.index(
-      $text-sizes-large,
-      $value
-    );
-
-    @if $sizing-fluid != false {
-
+    @if settings.$sizing-fluid != false {
       $_custom-properties: map.merge(
         $_custom-properties,
         (
-          #{ 'text-size-large-' + $_index }: list.nth(
-            $text-sizes-large-fluid, $_index
-          )
+          #{'text-size-large-' +
+            $_index}:
+            list.nth(
+              settings.$text-sizes-large-fluid,
+              $_index
+            )
         )
-      )
+      );
     }
-
   }
 
-  @each $value in $text-sizes-small {
-
-    $_index: list.index(
-      $text-sizes-small,
-      $value
-    );
+  @each $value in settings.$text-sizes-small {
+    $_index: list.index(settings.$text-sizes-small, $value);
 
     $_custom-properties: map.merge(
       $_custom-properties,
-      (
-        #{ 'text-size-small-' + $_index + '-base'}: $value
-      )
+      (#{'text-size-small-' + $_index + '-base'}: $value)
     );
-
   }
 
-  @each $value in $text-sizes-small {
+  @each $value in settings.$text-sizes-small {
+    $_index: list.index(settings.$text-sizes-small, $value);
 
-    $_index: list.index(
-      $text-sizes-small,
-      $value
-    );
-
-    @if $sizing-fluid != false {
-
+    @if settings.$sizing-fluid != false {
       $_custom-properties: map.merge(
         $_custom-properties,
         (
-          #{ 'text-size-small-' + $_index }: list.nth(
-            $text-sizes-small-fluid, $_index
-          )
+          #{'text-size-small-' +
+            $_index}:
+            list.nth(
+              settings.$text-sizes-small-fluid,
+              $_index
+            )
         )
-      )
+      );
     }
-
   }
 
   $_custom-properties: map.merge(
     $_custom-properties,
     (
-      line-height-normal: $line-height-normal,
-      line-height-large:  $line-height-large
+      line-height-normal: settings.$line-height-normal,
+      line-height-large: settings.$line-height-large
     )
   );
 
-
-  @if meta.type-of($custom-properties) == map {
-
+  @if meta.type-of(settings.$custom-properties) == map {
     $_custom-properties: map.merge(
       $_custom-properties,
-      $custom-properties
+      settings.$custom-properties
     );
 
     $custom-properties: true;
-
   }
 
+  $custom-properties: settings.$custom-properties;
 
   @if $custom-properties == true {
-
     $custom-properties: $_custom-properties;
 
     :root {
-
       @each $key, $value in $custom-properties {
-        #{ '--' + $key }: #{ $value };
+        #{ '--' + $key }: #{$value};
       }
-
     }
-
   }
-
 }

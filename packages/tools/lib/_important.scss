@@ -2,22 +2,12 @@
 //  Tools - Core - String Replace
 //
 
-
 // Function to insert '!important' from a boolean
 
-
-@function important( $is-important ) {
-
+@function important($is-important) {
   @if $is-important {
-
-    @return ' !important'
-
+    @return ' !important';
+  } @else {
+    @return '';
   }
-
-  @else { 
-  
-    @return ''
-  
-  }
-
 }

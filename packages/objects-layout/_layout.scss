@@ -5,12 +5,10 @@
 // Object to place any image and text-like content
 // side-by-side
 
-
 @use 'sass:list';
 @use 'sass:map';
 @use '../settings';
 @use '../tools';
-
 
 $spacing-sizes: settings.$spacing-sizes !default;
 
@@ -24,23 +22,17 @@ $namespaces: () !default;
 
 $namespaces: map.merge(
   (
-    main: #{
-      map-get(settings.$layer-namespaces, objects) +
-      'layout'
-    },
+    main: #{map-get(settings.$layer-namespaces, objects) +
+      'layout'},
     cell: 'cell'
   ),
   $namespaces
 );
 
+$_class: map.get($namespaces, main);
 
-$_class: map.get( $namespaces, main );
-
-$_cell-class: #{
-  $_class +
-  $element-separator +
-  map.get( $namespaces, cell )
-};
+$_cell-class: #{$_class + $element-separator +
+  map.get($namespaces, cell)};
 
 $_alignment-values: (
   top: 'flex-start',
@@ -58,7 +50,6 @@ $_justify-values: (
   around: 'space-around'
 );
 
-
 // Base
 
 .#{ $_class } {
@@ -73,104 +64,68 @@ $_justify-values: (
   width: 100%;
 }
 
-
 // Gutters
 
 @each $size-value in $spacing-sizes {
+  $index: list.index($spacing-sizes, $size-value);
 
   .#{
-    $_class +
-    $modifier-separator +
-    $spacing-prefix +
-    list.index(
-      $spacing-sizes,
-      $size-value
-    )
-  } {
-
-    @include tools.spacing(
-      'all', $size-value, 'padding'
-    );
-
+    $_class
+    + $modifier-separator
+    + $spacing-prefix
+    + $index} {
+    @include tools.spacing('all', $size-value, 'padding');
   }
-
 }
-
 
 // Automatic Width
 
 .#{ $_class }--auto {
-
-  & > .#{ $_cell-class } {
-      flex: 1 0 0;
+  > .#{ $_cell-class } {
+    flex: 1 0 0;
   }
-
 }
-
 
 // Horizontal Alignment
 
 @each $namespace, $value in $_justify-values {
-
   .#{ $_class + $modifier-separator + $namespace } {
-
-      justify-content: #{$value};
-
+    justify-content: #{$value};
   }
-
 }
-
 
 // Pull Behavior
 
 .#{ $_class + $modifier-separator + 'pull-right' } {
-
   margin-right: auto;
-
 }
 
-.#{ $_class + $modifier-separator + 'pull-right' } {
-
+.#{ $_class + $modifier-separator + 'pull-left' } {
   margin-left: auto;
-
 }
-
 
 // Vertical Alignment
 
 @each $namespace, $value in $_alignment-values {
-
   .#{ $_class + $modifier-separator + $namespace } {
-
     align-items: #{$value};
-
   }
 
   .#{ $_cell-class + $modifier-separator + $namespace } {
-
     align-self: #{$value};
-
   }
-
 }
-
 
 // Content Distribution
 
 .#{ $_class + $modifier-separator + 'reverse' } {
-
   flex-direction: row-reverse;
-
 }
 
 .#{ $_class + $modifier-separator + 'column' } {
-
   flex-direction: column;
-
 }
 
 .#{ $_class + $modifier-separator + 'column-reverse' } {
-
   flex-direction: column-reverse;
-
 }

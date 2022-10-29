@@ -9,19 +9,19 @@
 @use 'calculate-rem' as *;
 @use 'strip-units' as *;
 
-
 @function fluid(
   $min-size,
   $max-size,
   $min-breakpoint,
-  $max-breakpoint,
+  $max-breakpoint
 ) {
-  $slope: math.div($max-size - $min-size, $max-breakpoint - $min-breakpoint);
+  $slope: math.div(
+    $max-size - $min-size,
+    $max-breakpoint - $min-breakpoint
+  );
   $slope-to-unit: strip(round($slope * 100, 2));
   $intercept-rem: round(
-    calculate-rem(
-      $min-size - $slope * $min-breakpoint
-    ),
+    calculate-rem($min-size - $slope * $min-breakpoint),
     2
   );
   $min-size-rem: round(calculate-rem($min-size), 2);

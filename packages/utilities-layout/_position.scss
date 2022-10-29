@@ -2,12 +2,10 @@
  *  Utilities - Layout - Position
  */
 
-
 @use 'sass:map';
 @use 'core' as *;
 @use '../settings';
 @use '../tools';
-
 
 $_positionProps: (
   absolute,
@@ -16,28 +14,20 @@ $_positionProps: (
   sticky
 ) !default;
 
-
 @each $prop in $_positionProps {
-
-  .#{
-    map.get($namespaces, position) + $prop
-  } {
+  .#{ map.get($namespaces, position) + $prop } {
     position: $prop !important;
+
     @if $prop == 'sticky' {
       top: 0;
     }
   }
-
 }
 
-.#{
-  map.get($namespaces, top) + '0'
-} {
+.#{ map.get($namespaces, top) + '0' } {
   top: 0;
 }
 
-.#{
-  map.get($namespaces, inset) + '0'
-} {
+.#{ map.get($namespaces, inset) + '0' } {
   inset: 0;
 }

@@ -4,34 +4,22 @@
 
 // Simple wrapper object.
 
-
 @use 'sass:list';
 @use 'sass:map';
 @use '../settings';
 @use '../tools';
 
-
-$spacing: list.nth(
-  settings.$spacing-sizes, 3
-) !default;
+$spacing: list.nth(settings.$spacing-sizes, 3) !default;
 
 $width: 1200px !default;
 
-$namespace: #{
-  map.get( settings.$layer-namespaces, 'objects' ) +
-  'wrapper'
-} !default;
-
+$namespace: #{map.get(settings.$layer-namespaces, 'objects') +
+  'wrapper'} !default;
 
 .#{ $namespace } {
-
   @include tools.clearfix();
-  @include tools.spacing(
-    horizontal, $spacing, padding
-  );
-
+  @include tools.spacing(horizontal, $spacing, padding);
+  margin-left: auto;
   margin-right: auto;
-  margin-left:  auto;
   max-width: $width;
-
 }

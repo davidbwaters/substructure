@@ -8,14 +8,13 @@
 @use 'core' as *;
 @use '../settings/core' as *;
 
-@mixin spacing (
+@mixin spacing(
   $direction,
   $size-value,
   $rule: margin,
   $important: false,
   $sizing-fluid: $sizing-fluid
 ) {
-
   $size-value-fluid: fluid-scale($size-value);
   $size-index: list.index($spacing-sizes, $size-value);
 
@@ -25,149 +24,71 @@
   }
 
   @if $direction == 'all' {
-
-    #{$rule + '-'}bottom:
-      #{
-        $size-value + important($important)
-      };
+    #{$rule + '-'}bottom: #{$size-value +
+      important($important)};
 
     @if $sizing-fluid != false {
-
-      #{$rule + '-'}bottom:
-        #{
-          $size-value-fluid
-          + important($important)
-        };
+      #{$rule + '-'}bottom: #{$size-value-fluid +
+        important($important)};
     }
-
-    #{$rule + '-'}left:
-      #{
-        $size-value + important($important)
-      };
+    #{$rule + '-'}left: #{$size-value +
+      important($important)};
 
     @if $sizing-fluid != false {
-
-      #{$rule + '-'}left:
-        #{
-          $size-value-fluid
-          + important($important)
-        };
+      #{$rule + '-'}left: #{$size-value-fluid +
+        important($important)};
     }
-
-    #{$rule + '-'}right:
-      #{
-        $size-value + important($important)
-      };
+    #{$rule + '-'}right: #{$size-value +
+      important($important)};
 
     @if $sizing-fluid != false {
-
-      #{$rule + '-'}right:
-        #{
-          $size-value-fluid
-          + important($important)
-        };
+      #{$rule + '-'}right: #{$size-value-fluid +
+        important($important)};
     }
-
-    #{$rule + '-'}top:
-      #{
-        $size-value + important($important)
-      };
+    #{$rule + '-'}top: #{$size-value +
+      important($important)};
 
     @if $sizing-fluid != false {
-
-      #{$rule + '-'}top:
-        #{
-          $size-value-fluid
-          + important($important)
-        };
+      #{$rule + '-'}top: #{$size-value-fluid +
+        important($important)};
     }
+  } @else if $direction == 'vertical' {
+    #{$rule + '-'}bottom: #{$size-value +
+      important($important)};
 
+    @if $sizing-fluid != false {
+      #{$rule + '-'}bottom: #{$size-value-fluid +
+        important($important)};
+    }
+    #{$rule + '-'}top: #{$size-value +
+      important($important)};
+
+    @if $sizing-fluid != false {
+      #{$rule + '-'}top: #{$size-value-fluid +
+        important($important)};
+    }
+  } @else if $direction == 'horizontal' {
+    #{$rule + '-'}left: #{$size-value +
+      important($important)};
+
+    @if $sizing-fluid != false {
+      #{$rule + '-'}left: #{$size-value-fluid +
+        important($important)};
+    }
+    #{$rule + '-'}right: #{$size-value +
+      important($important)};
+
+    @if $sizing-fluid != false {
+      #{$rule + '-'}right: #{$size-value-fluid +
+        important($important)};
+    }
+  } @else {
+    #{$rule + '-'}#{$direction}: #{$size-value +
+      important($important)};
+
+    @if $sizing-fluid != false {
+      #{$rule + '-'}#{$direction}: #{$size-value-fluid +
+        important($important)};
+    }
   }
-
-  @else if $direction == 'vertical' {
-
-    #{$rule + '-'}bottom:
-      #{
-        $size-value + important($important)
-      };
-
-    @if $sizing-fluid != false {
-
-      #{$rule + '-'}bottom:
-        #{
-          $size-value-fluid
-          + important($important)
-        };
-    }
-
-    #{$rule + '-'}top:
-      #{
-        $size-value + important($important)
-      };
-
-    @if $sizing-fluid != false {
-
-      #{$rule + '-'}top:
-        #{
-          $size-value-fluid
-          + important($important)
-        };
-    }
-
-  }
-
-  @else if $direction == 'horizontal' {
-
-    #{$rule + '-'}left:
-      #{
-        $size-value + important($important)
-      };
-
-    @if $sizing-fluid != false {
-
-      #{$rule + '-'}left:
-        #{
-          $size-value-fluid
-          + important($important)
-        };
-    }
-
-    #{$rule + '-'}right:
-      #{
-        $size-value + important($important)
-      };
-
-    @if $sizing-fluid != false {
-
-
-      #{$rule + '-'}right:
-        #{
-          $size-value-fluid
-          + important($important)
-        };
-
-    }
-
-  }
-
-  @else {
-
-    #{$rule + '-'}#{$direction}:
-      #{
-          $size-value + important($important)
-      };
-
-    @if $sizing-fluid != false {
-
-
-      #{$rule + '-'}#{$direction}:
-        #{
-          $size-value-fluid
-          + important($important)
-        };
-
-    }
-
-  }
-
 }

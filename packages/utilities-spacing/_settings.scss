@@ -1,0 +1,51 @@
+//
+//  Utilities - Spacing - Settings
+//
+
+// Generate responsive spacing utility classes.
+
+@use 'sass:list';
+@use 'sass:map';
+@use '../settings';
+
+$directions: () !default;
+
+$directions: map.merge(
+  (
+    all: '',
+    vertical: 'vertical-',
+    horizontal: 'horizontal-',
+    top: 'top-',
+    bottom: 'bottom-',
+    left: 'left-',
+    right: 'right-'
+  ),
+  $directions
+);
+
+$padding: true !default;
+
+$spacing-sizes: list.join(
+  (0),
+  settings.$spacing-sizes
+) !default;
+
+$responsive: settings.$responsive !default;
+
+$breakpoints: settings.$breakpoints !default;
+
+$breakpoint-separator: settings.$breakpoint-separator !default;
+
+$namespaces: () !default;
+
+$namespaces: map.merge(
+  (
+    margin: #{map.get(settings.$layer-namespaces, utilities) +
+      'margin-'},
+    padding: #{map.get(
+        settings.$layer-namespaces,
+        utilities
+      ) + 'padding-'}
+  ),
+  $namespaces
+);

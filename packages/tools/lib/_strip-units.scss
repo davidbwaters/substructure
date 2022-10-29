@@ -2,18 +2,21 @@
 //  Tools - Core - Strip Units
 //
 
-
 @use 'sass:math';
 @use 'sass:meta';
 
-
 @function strip($value) {
-    @if meta.type-of($value) != 'number' {
-        @debug($value);
-        @error 'Invalid `#{meta.type-of($value)}` type. Choose a number type instead.';
-    } @else if meta.type-of($value) == 'number' and not math.is-unitless($value) {
-        @return math.div($value, ($value * 0 + 1));
-    }
+  @if meta.type-of($value) != 'number' {
+    @debug ($value);
 
-    @return $value;
+    @error "Invalid `#{meta.type-of($value)}` type. Choose a number type instead.";
+  } @else if
+    meta.type-of($value) ==
+    'number' and not
+    math.is-unitless($value)
+  {
+    @return math.div($value, ($value * 0 + 1));
+  }
+
+  @return $value;
 }

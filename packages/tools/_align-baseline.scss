@@ -4,17 +4,12 @@
 
 // Mixin to offset text in pixels for baseline alignment.
 
-
-@mixin align-baseline( $offset: 0 ) {
-
+@mixin align-baseline($offset: 0) {
   @if ($offset == 0) {
     margin-bottom: 0;
     padding-top: 0;
-  }
-  
-  @else {
+  } @else {
     margin-bottom: $offset * -1px;
     padding-top: $offset * 1px;
   }
-
 }

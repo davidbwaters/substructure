@@ -2,10 +2,8 @@
  *  Utilities - Layout - Core
  */
 
-
 @use 'sass:map';
 @use '../settings';
-
 
 $responsive: settings.$responsive !default;
 
@@ -19,40 +17,32 @@ $class-names: () !default;
 
 $namespaces: map.merge(
   (
-    position: #{
-      map.get( settings.$layer-namespaces, utilities ) +
-      'position-'
-    },
-    top: #{
-      map.get( settings.$layer-namespaces, utilities ) +
-      'top-'
-    },
-    inset: #{
-      map.get( settings.$layer-namespaces, utilities ) +
-      'inset-'
-    },
-    display: #{
-      map.get( settings.$layer-namespaces, utilities ) +
-      'display-'
-    },
-    list: #{
-      map.get( settings.$layer-namespaces, utilities ) +
-      'list-'
-    }
+    position: #{map.get(
+        settings.$layer-namespaces,
+        utilities
+      ) + 'position-'},
+    top: #{map.get(settings.$layer-namespaces, utilities) +
+      'top-'},
+    inset: #{map.get(settings.$layer-namespaces, utilities) +
+      'inset-'},
+    display: #{map.get(
+        settings.$layer-namespaces,
+        utilities
+      ) + 'display-'},
+    list: #{map.get(settings.$layer-namespaces, utilities) +
+      'list-'}
   ),
   $namespaces
 );
 
 $class-names: map.merge(
   (
-    hidden: #{
-      map.get( settings.$layer-namespaces, utilities ) +
-      'hidden'
-    },
-    transparent: #{
-      map.get( settings.$layer-namespaces, utilities ) +
-      'transparent'
-    }
+    hidden: #{map.get(settings.$layer-namespaces, utilities) +
+      'hidden'},
+    transparent: #{map.get(
+        settings.$layer-namespaces,
+        utilities
+      ) + 'transparent'}
   ),
   $class-names
 );

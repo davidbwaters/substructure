@@ -4,16 +4,12 @@
 
 // Object to box off content.
 
-
 @use 'sass:list';
 @use 'sass:map';
 @use '../settings';
 @use '../tools';
 
-
-$spacing: list.nth(
-  settings.$spacing-sizes, 2
-) !default;
+$spacing: list.nth(settings.$spacing-sizes, 2) !default;
 
 $spacing-sizes: settings.$spacing-sizes !default;
 
@@ -25,18 +21,14 @@ $namespaces: () !default;
 
 $namespaces: map.merge(
   (
-    main: #{
-      map.get(settings.$layer-namespaces, objects) +
-      'box'
-    },
+    main: #{map.get(settings.$layer-namespaces, objects) +
+      'box'},
     flush: 'flush'
   ),
   $namespaces
 );
 
-
-$_class: map.get( $namespaces, main ) !default;
-
+$_class: map.get($namespaces, main) !default;
 
 // Base
 
@@ -48,43 +40,29 @@ $_class: map.get( $namespaces, main ) !default;
   > :last-child {
     margin-bottom: 0;
   }
-
 }
-
 
 // Variants
 
 .#{
-  $_class +
-  $modifier-separator +
-  map.get( $namespaces, flush )
-} {
-
-  @include tools.spacing(
-    all, 0, padding
-  )
-
+  $_class
+  + $modifier-separator
+  + map.get( $namespaces, flush )
+  } {
+  @include tools.spacing(all, 0, padding);
 }
 
 @each $size-value in $spacing-sizes {
-
   @if $size-value != $spacing {
-
     .#{
-      $_class +
-      $modifier-separator +
-      list.index(
-        $spacing-sizes,
-        $size-value
-      )
-    } {
-
-      @include tools.spacing(
-        all, $size-value, padding
-      )
-
+      $_class
+      + $modifier-separator
+      + list.index(
+    $spacing-sizes,
+    $size-value
+  )
+      } {
+      @include tools.spacing(all, $size-value, padding);
     }
-
   }
-
 }

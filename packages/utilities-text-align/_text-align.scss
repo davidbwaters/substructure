@@ -2,17 +2,12 @@
  *  Utilities - Text Sizing
  */
 
-
 @use 'sass:list';
 @use 'sass:map';
 @use '../settings';
 
-
-$namespace: #{
-  map.get( settings.$layer-namespaces, utilities ) +
-  'text-align-'
-} !default;
-
+$namespace: #{map.get(settings.$layer-namespaces, utilities) +
+  'text-align-'} !default;
 
 $alignments: (
   left: 'left',
@@ -21,13 +16,8 @@ $alignments: (
   justify: 'justify'
 ) !default;
 
-
 @each $key, $value in $alignments {
-
   .#{ $namespace }#{ $value } {
-
-    text-align: #{ $key } !important;
-
+    text-align: #{$key} !important;
   }
-
 }

@@ -2,40 +2,30 @@
 //  Settings - Generate Breakpoints
 //
 
-
-@use 'sass:map';
 @use 'sass:list';
+@use 'sass:map';
 @use 'core' as *;
-
 
 $breakpoints: ();
 
 @each $bp-name, $bp-size in $breakpoint-sizes {
+  $_bp-value: #{'screen and ( min-width: ' +
+    $bp-size +
+    ' )'};
 
-  $_bp-value: #{
-    'screen and ( min-width: ' + $bp-size + ' )'
-  };
-
-  $_bp-value-max: #{
-    'screen and ( max-width: ' + ($bp-size - 1px) + ' )'
-  };
+  $_bp-value-max: #{'screen and ( max-width: ' +
+    ($bp-size - 1px) +
+    ' )'};
 
   $breakpoints: map.merge(
-    (
-      #{ $bp-name }: $_bp-value
-    ),
+    (#{$bp-name}: $_bp-value),
     $breakpoints
   );
 
   @if $max-breakpoints != false {
-
     $breakpoints: map.merge(
-      (
-        #{ $bp-name + '-max' }: $_bp-value-max
-      ),
+      (#{$bp-name + '-max'}: $_bp-value-max),
       $breakpoints
     );
-
   }
-
 }

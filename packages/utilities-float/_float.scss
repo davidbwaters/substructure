@@ -2,67 +2,40 @@
  *  Utilities - Float
  */
 
-
 @use 'sass:map';
 @use '../settings';
 @use '../tools';
-
 
 $responsive: settings.$responsive !default;
 
 $breakpoints: settings.$breakpoints !default;
 
-$breakpoint-separator:
-  settings.$breakpoint-separator
-!default;
+$breakpoint-separator: settings.$breakpoint-separator !default;
 
-$namespace: #{
-  map.get( settings.$layer-namespaces, utilities ) +
-  'float-'
-} !default;
+$namespace: #{map.get(settings.$layer-namespaces, utilities) +
+  'float-'} !default;
 
-
-$_directions: (
-  'left',
-  'right'
-);
-
+$_directions: ('left', 'right');
 
 @each $direction in $_directions {
-
-  .#{
-    $namespace + $direction
-  } {
+  .#{ $namespace + $direction } {
     float: $direction !important;
   }
-
 }
 
 @if $responsive {
-
   @each $breakpoint, $breakpoint-value in $breakpoints {
-
-    @include tools.respond-to(
-      $breakpoint, $breakpoints
-    ) {
-
+    @include tools.respond-to($breakpoint, $breakpoints) {
       @each $direction in $_directions {
-
         .#{
-          $namespace +
-          $direction +
-          $breakpoint-separator +
-          $breakpoint
-        } {
-
+          $namespace
+          + $direction
+          + $breakpoint-separator
+          + $breakpoint
+          } {
           float: $direction !important;
-
         }
-
       }
-
     }
-
   }
-
 }

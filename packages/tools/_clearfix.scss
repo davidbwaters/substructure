@@ -4,13 +4,10 @@
 
 // Mixin with a micro-clearfix.
 
-
 @mixin clearfix() {
-
   &:after {
-    content: "" !important;
-    display: block !important;
     clear: both !important;
+    content: '' !important;
+    display: block !important;
   }
-
 }

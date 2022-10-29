@@ -1,0 +1,81 @@
+//
+//  Tools - Sizing
+//
+
+// Mixin to generate sizing.
+
+@use 'sass:map';
+@use 'sass:math';
+@use '../settings';
+@use 'core';
+@use 'respond-to';
+
+$namespaces: (
+  width: #{map.get(settings.$layer-namespaces, utilities) +
+    ''},
+  height: #{map.get(settings.$layer-namespaces, utilities) +
+    'height-'},
+  push: #{map.get(settings.$layer-namespaces, utilities) +
+    'push-'},
+  pull: #{map.get(settings.$layer-namespaces, utilities) +
+    'pull-'}
+);
+
+@mixin sizing(
+  $type,
+  $height: true,
+  $push: true,
+  $pull: true,
+  $responsive: settings.$responsive,
+  $factors: settings.$sizing-factors,
+  $separator: settings.$sizing-separator,
+  $breakpoints: settings.$breakpoints,
+  $breakpoint-separator: settings.$breakpoint-separator,
+  $namespaces: $namespaces
+) {
+  @each $factor in $factors {
+    @for $count from 1 through $factor {
+      $class: #{map.get($namespaces, $type) +
+        $count +
+        $separator +
+        $factor};
+
+      $size-value: core.round(
+        math.div($count, $factor) * 100%,
+        4
+      );
+
+      @if $type == push {
+        .#{ $class } {
+          margin-left: #{$size-value} !important;
+        }
+      }
+
+      @if $type == pull {
+        .#{ $class } {
+          margin-left: #{$size-value * -1} !important;
+        }
+      }
+
+      @if $type != pull and $type != push {
+        .#{ $class } {
+          #{ $type }: #{$size-value} !important;
+        }
+
+        @if $responsive == true {
+          @each $breakpoint in $breakpoints {
+            @include respond-to.respond-to($breakpoint) {
+              #{
+                $class
+                + $breakpoint-separator
+                + $breakpoint
+                } {
+                #{ $type }: #{$size-value} !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

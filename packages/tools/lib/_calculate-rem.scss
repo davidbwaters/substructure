@@ -2,22 +2,17 @@
 //  Tools - Core - Calculate REM
 //
 
-
 // Function to calculate REM values from pixel values.
 
 @use 'sass:math';
 @use 'strip-units' as *;
 @use '../../settings/core' as *;
 
-
 @function calculate-rem(
-  $value, $sizing-root: $sizing-root
+  $value,
+  $sizing-root: $sizing-root
 ) {
-
   $sizing-root: math.div($sizing-root, 1px);
 
-  @return strip(
-    math.div($value, $sizing-root)
-  ) * 1rem
-
+  @return strip(math.div($value, $sizing-root)) * 1rem;
 }

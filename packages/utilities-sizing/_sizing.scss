@@ -2,13 +2,10 @@
  *  Utilities - Sizing
  */
 
-
-@use "sass:math";
-
 @use 'sass:map';
+@use 'sass:math';
 @use '../settings';
 @use '../tools';
-
 
 $height: true !default;
 
@@ -24,117 +21,65 @@ $separator: settings.$sizing-separator !default;
 
 $breakpoints: settings.$breakpoints !default;
 
-$breakpoint-separator:
-  settings.$breakpoint-separator
-!default;
+$breakpoint-separator: settings.$breakpoint-separator !default;
 
 $namespaces: () !default;
 
 $namespaces: map.merge(
   (
-    width: #{
-      map.get( settings.$layer-namespaces, utilities ) +
-      ''
-    },
-    height: #{
-      map.get( settings.$layer-namespaces, utilities ) +
-      'height-'
-    },
-    push: #{
-      map.get( settings.$layer-namespaces, utilities ) +
-      'push-'
-    },
-    pull: #{
-      map.get( settings.$layer-namespaces, utilities ) +
-      'pull-'
-    }
+    width: #{map.get(settings.$layer-namespaces, utilities) +
+      ''},
+    height: #{map.get(settings.$layer-namespaces, utilities) +
+      'height-'},
+    push: #{map.get(settings.$layer-namespaces, utilities) +
+      'push-'},
+    pull: #{map.get(settings.$layer-namespaces, utilities) +
+      'pull-'}
   ),
   $namespaces
 );
 
-
-@mixin _sizing( $type ) {
-
-  @each $factor in $factors {
-
-    @for $count from 1 through $factor {
-
-      $class: #{
-        map.get( $namespaces, $type ) +
-        $count +
-        $separator +
-        $factor
-      };
-
-      $property: $type;
-      $size-value: math.div($count, $factor) * 100%;
-
-      @if $type == push {
-
-        .#{ $class } {
-          margin-left: #{ $size-value } !important;
-        }
-
-      }
-
-      @if $type == pull {
-
-        .#{ $class } {
-          margin-left: #{
-            math.div($count, $factor) * 100% * -1
-          } !important;
-        }
-
-      };
-
-      @if $type != pull and $type != push {
-
-        .#{ $class } {
-
-          #{ $property }: #{ $size-value } !important;
-
-        }
-
-        @if $responsive == true {
-
-          @each $breakpoint in $breakpoints {
-
-            @include tools.respond-to( $breakpoint ) {
-
-              #{
-                $class +
-                $breakpoint-separator +
-                $breakpoint
-              } {
-
-                #{ $property }: #{ $size-value } !important;
-
-              }
-
-            }
-
-          }
-
-        }
-
-      }
-
-    }
-
-  }
-
+@if ($height == true) {
+  @include tools.sizing(
+    height,
+    $height,
+    $push,
+    $pull,
+    $responsive,
+    $factors,
+    $separator,
+    $breakpoints,
+    $breakpoint-separator,
+    $namespaces
+  );
 }
 
-@include _sizing( width );
-
-@if ( $height == true ) {
-  @include _sizing( height );
+@if ($push == true) {
+  @include tools.sizing(
+    push,
+    $height,
+    $push,
+    $pull,
+    $responsive,
+    $factors,
+    $separator,
+    $breakpoints,
+    $breakpoint-separator,
+    $namespaces
+  );
 }
 
-@if ( $push == true ) {
-  @include _sizing( push );
-}
-
-@if ( $pull == true ) {
-  @include _sizing( pull );
+@if ($pull == true) {
+  @include tools.sizing(
+    pull,
+    $height,
+    $push,
+    $pull,
+    $responsive,
+    $factors,
+    $separator,
+    $breakpoints,
+    $breakpoint-separator,
+    $namespaces
+  );
 }

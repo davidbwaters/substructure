@@ -5,8 +5,8 @@
 // Mixin to generate REM-based text sizes with vertical
 // rhythm based on the sizing units.
 
-@use "sass:math";
 @use 'sass:map';
+@use 'sass:math';
 @use 'strip-units' as *;
 @use 'fluid' as *;
 @use '../../settings/core' as *;
@@ -16,36 +16,48 @@
   $setting: text,
   $sizing-fluid: $sizing-fluid
 ) {
-
   @if $sizing-fluid != false {
-
     $vw-min: map.get($sizing-fluid, viewport-min);
     $vw-max: map.get($sizing-fluid, viewport-max);
 
     $scale-min: map.get($sizing-fluid, spacing-scale-min);
     $scale-max: map.get($sizing-fluid, spacing-scale-max);
-    $size-min: strip(map.get($sizing-fluid, spacing-size-normal-min));
-    $size-max: strip(map.get($sizing-fluid, spacing-size-normal-max));
+    $size-min: strip(
+      map.get($sizing-fluid, spacing-size-normal-min)
+    );
+    $size-max: strip(
+      map.get($sizing-fluid, spacing-size-normal-max)
+    );
 
     $target: strip($target);
 
     @if $setting == text {
       $scale-min: map.get($sizing-fluid, text-scale-min);
       $scale-max: map.get($sizing-fluid, text-scale-max);
-      $size-min: strip(map.get($sizing-fluid, text-size-normal-min));
-      $size-max: strip(map.get($sizing-fluid, text-size-normal-max));
+      $size-min: strip(
+        map.get($sizing-fluid, text-size-normal-min)
+      );
+      $size-max: strip(
+        map.get($sizing-fluid, text-size-normal-max)
+      );
     }
 
-    $step: math.log(math.div($target, $size-min), $scale-min);
+    $step: math.log(
+      math.div($target, $size-min),
+      $scale-min
+    );
 
     $size-min: $target;
     $size-max: $size-max * math.pow($scale-max, $step);
-    $size-fluid: fluid($size-min, $size-max, $vw-min, $vw-max);
+    $size-fluid: fluid(
+      $size-min,
+      $size-max,
+      $vw-min,
+      $vw-max
+    );
 
     @return $size-fluid;
-
   }
 
-  @return ''
-
+  @return '';
 }

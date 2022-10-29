@@ -3,14 +3,21 @@
   "version": "0.4.3",
   "main": "main.scss",
   "scripts": {
-    "test": "lerna bootstrap && node test/test.js",
-    "deploy": "lerna publish"
+    "test": "lerna bootstrap && node test/test.js && yarn format:test",
+    "deploy": "lerna publish",
+    "format": "yarn stylelint ./packages/**/*.scss --fix && yarn prettier -w ./packages ",
+    "format:test": "yarn prettier -w ./test && yarn stylelint ./test/**/*.css --fix && yarn prettier -w ./test"
   },
   "repository": "https://github.com/davidbwaters/substructure.git",
   "author": "David B. Waters <mrdavidbwaters@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@davidbwaters/prettier-config": "^1.2.3",
+    "@davidbwaters/stylelint-config": "^1.0.21",
     "lerna": "^6.0.1",
-    "sass": "^1.34.1"
-  }
+    "prettier": "^2.7.1",
+    "sass": "^1.34.1",
+    "stylelint": "^14.14.0"
+  },
+  "dependencies": {}
 }

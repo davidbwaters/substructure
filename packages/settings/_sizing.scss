@@ -2,7 +2,6 @@
 //  Settings - Sizing Fluid
 //
 
-
 // Defines the default fluid sizes text and spacing.
 // Order from smallest to largest.
 
@@ -13,7 +12,9 @@
 @use '../tools/core' as *;
 
 $text-size-normal: fluid-scale($text-size-normal-base);
-$text-size-normal-base: calculate-rem($text-size-normal-base);
+$text-size-normal-base: calculate-rem(
+  $text-size-normal-base
+);
 $text-sizes-large-fluid: ();
 $text-sizes-small-fluid: ();
 $text-sizes-large-rem: ();
@@ -22,7 +23,6 @@ $spacing-sizes-fluid: ();
 $spacing-sizes-rem: ();
 
 @if $sizing-fluid != false {
-
   $text-sizes-large-length: list.length($text-sizes-large);
 
   $fs-min: map.get($sizing-fluid, text-size-normal-min);
@@ -33,59 +33,40 @@ $spacing-sizes-rem: ();
   $scale-max: map.get($sizing-fluid, text-scale-max);
 
   @each $size in $text-sizes-large {
-
     $text-sizes-large-rem: list.join(
       $text-sizes-large-rem,
-      (
-        round(calculate-rem($size), 2)
-      )
+      (round(calculate-rem($size), 2))
     );
 
     $text-sizes-large-fluid: list.join(
       $text-sizes-large-fluid,
-      (
-        fluid-scale($size)
-      )
+      (fluid-scale($size))
     );
-
   }
 
   @each $size in $text-sizes-small {
-
     $text-sizes-small-rem: list.join(
       $text-sizes-small-rem,
-      (
-        round(calculate-rem($size), 2)
-      )
+      (round(calculate-rem($size), 2))
     );
 
     $text-sizes-small-fluid: list.join(
       $text-sizes-small-fluid,
-      (
-        fluid-scale($size)
-      )
+      (fluid-scale($size))
     );
-
   }
 
   @each $size in $spacing-sizes {
-
     $spacing-sizes-rem: list.join(
       $spacing-sizes-rem,
-      (
-        round(calculate-rem($size), 2)
-      )
+      (round(calculate-rem($size), 2))
     );
 
     $spacing-sizes-fluid: list.join(
       $spacing-sizes-fluid,
-      (
-        fluid-scale($size)
-      )
+      (fluid-scale($size))
     );
-
   }
-
 }
 
 $text-sizes-large: $text-sizes-large-rem;

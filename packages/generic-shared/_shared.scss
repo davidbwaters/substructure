@@ -2,30 +2,27 @@
  *  Generic - Shared
  */
 
-
 // Shared declarations for certain elements.
 
-
 @use 'sass:list';
-@use 'sass:map';
 @use '../settings';
 @use '../tools';
 
-
 address,
-blockquote, p, pre,
-dl, ol, ul,
+blockquote,
+p,
+pre,
+dl,
+ol,
+ul,
 figure,
 hr,
 table,
 fieldset {
-
   margin-top: 0;
+
   @include tools.spacing(
     bottom,
-    list.nth(
-      settings.$spacing-sizes, 1
-    )
+    list.nth(settings.$spacing-sizes, 1)
   );
-
 }

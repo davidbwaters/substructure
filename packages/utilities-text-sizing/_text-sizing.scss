@@ -2,12 +2,11 @@
  *  Utilities - Text Sizing
  */
 
-
 @use 'sass:list';
 @use 'sass:map';
 @use '../settings';
 @use '../tools';
-
+@use '../utilities-spacing/settings' as spacing;
 
 $text-size-normal-base: settings.$text-size-normal-base !default;
 
@@ -23,32 +22,24 @@ $namespaces: () !default;
 
 $namespaces: map.merge(
   (
-    normal: #{
-      map.get( settings.$layer-namespaces, utilities ) +
-      'text-normal'
-    },
-    large: #{
-      map.get( settings.$layer-namespaces, utilities ) +
-      'text-large-'
-    },
-    small: #{
-      map.get( settings.$layer-namespaces, utilities ) +
-      'text-small-'
-    }
+    normal: #{map.get(settings.$layer-namespaces, utilities) +
+      'text-normal'},
+    large: #{map.get(settings.$layer-namespaces, utilities) +
+      'text-large-'},
+    small: #{map.get(settings.$layer-namespaces, utilities) +
+      'text-small-'}
   ),
   $namespaces
 );
 
-
 .#{ map.get( $namespaces, normal ) } {
-
   @if settings.$custom-properties {
-    font-size:  var(--text-size-normal-base) !important;
+    font-size: var(--text-size-normal-base) !important;
+
     @if settings.$sizing-fluid != false {
       font-size: var(--text-size-normal) !important;
     }
-  }
-  @else {
+  } @else {
     font-size: $text-size-normal-base !important;
 
     @if settings.$sizing-fluid != false {
@@ -56,87 +47,125 @@ $namespaces: map.merge(
     }
   }
   line-height: $line-height-normal !important;
+}
+
+$_size-classes-large-combined: ();
+$_size-classes-large-combined-0-margin: ();
+
+@each $size-value in $text-sizes-large {
+  $_length: list.length($text-sizes-large);
+
+  $_index: list.index($text-sizes-large, $size-value);
+
+  $_size-classes-large-combined: list.append(
+    $_size-classes-large-combined,
+    #{'.' + map.get($namespaces, large)}#{$_index},
+    $separator: comma
+  );
+
+  $_size-classes-large-combined-0-margin: list.append(
+    $_size-classes-large-combined-0-margin,
+    #{'.' + map.get($namespaces, large)}#{$_index+ '.' + map.get(spacing.$namespaces, margin) + 0},
+    $separator: comma
+  );
 
 }
 
+#{ $_size-classes-large-combined } {
+  line-height: $line-height-large !important;
+
+  @include tools.spacing(
+    bottom,
+    list.nth(settings.$spacing-sizes, 2),
+    margin,
+    true
+  );
+}
+
+#{$_size-classes-large-combined-0-margin} {
+  margin-bottom: 0 !important;
+}
+
 @each $size-value in $text-sizes-large {
+  $_length: list.length($text-sizes-large);
 
-  $_length: list.length($text-sizes-large );
-
-  $_index: list.index($text-sizes-large, $size-value );
+  $_index: list.index($text-sizes-large, $size-value);
 
   .#{ map.get( $namespaces, large ) }#{ $_index} {
-
     @if settings.$custom-properties {
-      font-size: var(--text-size-large-#{$_index}-base) !important;
-    }
-
-    @else {
+      font-size: var(
+        --text-size-large-#{$_index}-base
+      ) !important;
+    } @else {
       font-size: $size-value !important;
     }
 
     @if settings.$sizing-fluid !=false {
       @if settings.$custom-properties {
-        font-size: var(--text-size-large-#{$_index}) !important;
+        font-size: var(
+          --text-size-large-#{$_index}
+        ) !important;
+      } @else {
+        font-size: list.nth(
+          $text-sizes-large-fluid,
+          $_index
+        ) !important;
       }
-
-      @else {
-        font-size: list.nth($text-sizes-large-fluid,
-            $_index ) !important;
-
-      }
-
     }
-
-    @include tools.spacing(bottom,
-      list.nth(settings.$spacing-sizes, 2),
-      margin,
-      true
-    );
-
-    line-height: $line-height-large !important;
-
   }
+}
 
+$_size-classes-small-combined: ();
+
+$_size-classes-small-combined-0-margin: ();
+
+@each $size-value in $text-sizes-small {
+  $_index: list.index($text-sizes-small, $size-value);
+
+  $_size-classes-small-combined: list.append(
+    $_size-classes-small-combined,
+    #{'.' + map.get($namespaces, small)}#{$_index},
+    $separator: comma
+  );
+
+  $_size-classes-small-combined-0-margin: list.append(
+    $_size-classes-large-combined-0-margin,
+    #{'.' + map.get($namespaces, small)}#{$_index+ '.' + map.get(spacing.$namespaces, margin) + 0},
+    $separator: comma
+  );
+}
+
+#{ $_size-classes-small-combined } {
+  line-height: $line-height-normal !important;
+}
+
+#{$_size-classes-small-combined-0-margin} {
+  margin-bottom: 0 !important;
 }
 
 @each $size-value in $text-sizes-small {
-
-  $_index: list.index(
-    $text-sizes-small, $size-value
-  );
+  $_index: list.index($text-sizes-small, $size-value);
 
   .#{ map.get( $namespaces, small ) }#{ $_index } {
-
     @if settings.$custom-properties {
-      font-size:  var(--text-size-small-#{$_index}-base) !important;
-    }
-    @else {
+      font-size: var(
+        --text-size-small-#{$_index}-base
+      ) !important;
+    } @else {
       font-size: $size-value !important;
     }
 
     @if settings.$sizing-fluid != false {
       @if settings.$custom-properties {
-        font-size: var(--text-size-small-#{$_index}) !important;
-      }
-      @else {
+        font-size: var(
+          --text-size-small-#{$_index}
+        ) !important;
+      } @else {
         font-size: list.nth(
-          $text-sizes-large-fluid,
+          $text-sizes-small-fluid,
           $_index
         ) !important;
-
       }
-
     }
-
-    @include tools.spacing(bottom,
-      list.nth(settings.$spacing-sizes, 2),
-      margin,
-      true
-    );
-
-    line-height: $line-height-normal !important;
-
   }
-
 }

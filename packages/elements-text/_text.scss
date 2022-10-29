@@ -4,71 +4,70 @@
 
 // Text elements based on core settings.
 
-
 @use 'sass:list';
-@use 'sass:map';
 @use '../settings';
 @use '../tools';
 
-
-$text-sizes-large: settings.$text-sizes-large !default;
-$text-sizes-small: settings.$text-sizes-small !default;
-
-
-$_text-sizes-large-length: list.length(
-  $text-sizes-large
-);
-
-$_text-sizes-small-length: list.length(
-  $text-sizes-small
-);
-
-h1, h2, h3, h4, h5, h6 {
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: settings.$line-height-large;
   margin-top: 0;
 
-  @include tools.spacing(bottom,
-    list.nth(settings.$spacing-sizes, 2),
+  @include tools.spacing(
+    bottom,
+    list.nth(settings.$spacing-sizes, 1),
     margin
   );
-
-  line-height: settings.$line-height-large;
-
 }
+
 @for $i from 6 through 1 {
-
   h#{$i} {
-
     @if settings.$custom-properties != false {
       font-size: var(--text-size-large-#{6 + 1 - $i}-base);
-    }
-
-    @else {
-      font-size: $size-value;
+    } @else {
+      font-size: list.nth(
+        settings.$text-sizes-large,
+        6 + 1 - $i
+      );
     }
 
     @if settings.$sizing-fluid !=false {
       @if settings.$custom-properties != false {
         font-size: var(--text-size-large-#{6 + 1 - $i});
+      } @else {
+        font-size: list.nth(
+          settings.$text-sizes-large-fluid,
+          6 + 1 - $i
+        );
       }
-
-      @else {
-        font-size: list.nth($text-sizes-large-fluid,
-            6 + 1 - $i );
-
-      }
-
     }
-
   }
-
 }
 
 small {
+  @if settings.$custom-properties != false {
+    font-size: var(--text-size-small-1-base);
+  } @else {
+    font-size: list.nth(settings.$text-sizes-small, 1);
+  }
 
-  font-size: tools.sizing(
-    -1
-  );
-  line-height: settings.$line-height-normal
-
+  @if settings.$sizing-fluid !=false {
+    @if settings.$custom-properties != false {
+      font-size: var(--text-size-small-1);
+    } @else {
+      font-size: list.nth(
+        settings.$text-sizes-small-fluid,
+        1
+      );
+    }
+    font-size: list.nth(
+      settings.$text-sizes-small-fluid,
+      1
+    );
+    line-height: settings.$line-height-normal;
+  }
 }

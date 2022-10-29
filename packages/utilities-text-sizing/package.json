@@ -15,7 +15,8 @@
   "license": "MIT",
   "dependencies": {
     "@substructure/settings": "^0.3.2",
-    "@substructure/tools": "^0.3.2"
+    "@substructure/tools": "^0.3.2",
+    "@substructure/utilities-spacing": "^0.3.2"
   },
   "publishConfig": {
     "access": "public"

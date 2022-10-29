@@ -4,25 +4,18 @@
 
 // Mixin to generate media queries.
 
-
 @use 'sass:map';
 @use '../settings';
 @use 'core';
 
-
-@mixin respond-to (
+@mixin respond-to(
   $breakpoint,
   $breakpoints: settings.$breakpoints,
   $max: false
 ) {
-
   @if map-has-key($breakpoints, $breakpoint) {
-
-    @media #{map-get($breakpoints, $breakpoint)}
-     {
+    @media #{map-get($breakpoints, $breakpoint)} {
       @content;
     }
-
   }
-
 }

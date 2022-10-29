@@ -4,59 +4,36 @@
 
 // Object for lists without bullets.
 
-
 @use 'sass:list';
 @use 'sass:map';
 @use '../settings';
 @use '../tools';
 
-
-$spacing: list.nth(
-  settings.$spacing-sizes, 2
-) !default;
+$spacing: list.nth(settings.$spacing-sizes, 2) !default;
 
 $element-separator: settings.$element-separator !default;
 
 $modifier-separator: settings.$modifier-separator !default;
 
-$namespace: #{
-  map.get( settings.$layer-namespaces, 'objects' ) +
-  'list'
-} !default;
+$namespace: #{map.get(settings.$layer-namespaces, 'objects') +
+  'list'} !default;
 
+$_class-item: #{$namespace + $element-separator + 'item'};
 
-$_class-item: #{
-  $namespace +
-  $element-separator +
-  'item'
-};
-
-$_class-inline: #{
-  $namespace +
-  $modifier-separator +
-  'inline'
-};
-
+$_class-inline: #{$namespace + $modifier-separator +
+  'inline'};
 
 .#{ $namespace } {
-
   list-style: none;
   margin-left: 0;
-
 }
 
 .#{ $_class-inline } {
-
   > #{ $_class-item } {
     display: inline-block;
   }
 
   > #{ $_class-item }:not(:last-child) {
-
-    @include tools.spacing(
-      right, $spacing
-    )
-
+    @include tools.spacing(right, $spacing);
   }
-
 }

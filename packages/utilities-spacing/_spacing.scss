@@ -4,211 +4,129 @@
 
 // Generate responsive spacing utility classes.
 
-
 @use 'sass:list';
 @use 'sass:map';
 @use 'sass:string';
-@use '../settings';
 @use '../tools';
+@use 'settings';
 
 
-$directions: () !default;
 
-$directions: map.merge(
-  (
-    all        : '',
-    vertical   : 'vertical-',
-    horizontal : 'horizontal-',
-    top        : 'top-',
-    bottom     : 'bottom-',
-    left       : 'left-',
-    right      : 'right-'
-  ),
-  $directions
-);
-
-$padding: true !default;
-
-$spacing-sizes: list.join(
-  (0),
-  settings.$spacing-sizes
- ) !default;
-
-$responsive: settings.$responsive !default;
-
-$breakpoints: settings.$breakpoints !default;
-
-$breakpoint-separator:
-  settings.$breakpoint-separator
-!default;
-
-$namespaces: () !default;
-
-$namespaces: map.merge(
-  (
-    margin: #{
-      map.get( settings.$layer-namespaces, utilities ) +
-      'margin-'
-    },
-    padding: #{
-      map.get( settings.$layer-namespaces, utilities ) +
-      'padding-'
-    }
-  ),
-  $namespaces
-);
-
-
-@if map.has-key( $directions, horizontal ) {
-
-  $_margin-auto-class: #{
-    map.get( $namespaces, margin ) +
-    map.get( $directions, horizontal ) +
-    'auto'
-  };
+@if map.has-key(settings.$directions, horizontal) {
+  $_margin-auto-class: #{map.get(settings.$namespaces, margin) +
+    map.get(settings.$directions, horizontal) +
+    'auto'};
 
   .#{ $_margin-auto-class } {
     margin-left: auto !important;
     margin-right: auto !important;
   }
 
-  @if $responsive {
-
-    @each $breakpoint, $breakpoint-value in $breakpoints {
-
-      @include tools.respond-to(
-        $breakpoint, $breakpoints
-      ) {
-
+  @if settings.$responsive {
+    @each $breakpoint, $breakpoint-value in settings.$breakpoints {
+      @include tools.respond-to($breakpoint, settings.$breakpoints) {
         .#{
-          $_margin-auto-class +
-          $breakpoint-separator +
-          $breakpoint
-        } {
+          $_margin-auto-class
+          + settings.$breakpoint-separator
+          + $breakpoint
+          } {
           margin-left: auto !important;
           margin-right: auto !important;
         }
-
       }
-
     }
-
   }
-
 }
 
-@each $direction, $direction-namespace in $directions {
-
-  @each $spacing-size-value in $spacing-sizes {
-
-    $_suffix: #{
-      list.index(
-        $spacing-sizes,
+@each $direction, $direction-namespace in settings.$directions {
+  @each $spacing-size-value in settings.$spacing-sizes {
+    $_suffix: #{list.index(
+        settings.$spacing-sizes,
         $spacing-size-value
-      ) - 1
-    };
+      ) -
+      1};
 
-    $_margin-class: #{
-      map.get( $namespaces, margin ) +
+    $_margin-class: #{map.get(settings.$namespaces, margin) +
       $direction-namespace +
-      $_suffix
-    };
+      $_suffix};
 
-    .#{
-      $_margin-class
-    } {
-
+    .#{ $_margin-class } {
       @include tools.spacing(
-        $direction, $spacing-size-value, margin, true
-      )
-
+        $direction,
+        $spacing-size-value,
+        margin,
+        true
+      );
     }
 
-    @if $responsive {
-
-      @each $breakpoint, $breakpoint-value in $breakpoints {
-
+    @if settings.$responsive {
+      @each $breakpoint, $breakpoint-value in settings.$breakpoints {
         @include tools.respond-to(
-          $breakpoint, $breakpoints
+          $breakpoint,
+          settings.$breakpoints
         ) {
-
           .#{
-            $_margin-class +
-            $breakpoint-separator +
-            $breakpoint
-          } {
-
+            $_margin-class
+            + settings.$breakpoint-separator
+            + $breakpoint
+            } {
             @include tools.spacing(
-              $direction, $spacing-size-value, margin, true
-            )
-
+              $direction,
+              $spacing-size-value,
+              margin,
+              true
+            );
           }
-
         }
-
       }
-
     }
-
   }
-
 }
 
-@each $direction, $direction-namespace in $directions {
-
-  @each $spacing-size-value in $spacing-sizes {
-
-    @if $padding == true {
-
-      $_suffix: #{
-        list.index(
-          $spacing-sizes,
+@each $direction, $direction-namespace in settings.$directions {
+  @each $spacing-size-value in settings.$spacing-sizes {
+    @if settings.$padding == true {
+      $_suffix: #{list.index(
+          settings.$spacing-sizes,
           $spacing-size-value
-        ) - 1
-      };
+        ) -
+        1};
 
-      $_padding-class: #{
-        map.get( $namespaces, padding ) +
+      $_padding-class: #{map.get(settings.$namespaces, padding) +
         $direction-namespace +
-        $_suffix
-      };
+        $_suffix};
 
       .#{$_padding-class} {
-
         @include tools.spacing(
-          $direction, $spacing-size-value, padding, true
-        )
-
+          $direction,
+          $spacing-size-value,
+          padding,
+          true
+        );
       }
 
-      @if $responsive {
-
-        @each $breakpoint, $breakpoint-value in $breakpoints {
-
+      @if settings.$responsive {
+        @each $breakpoint, $breakpoint-value in settings.$breakpoints
+        {
           @include tools.respond-to(
-            $breakpoint, $breakpoints
+            $breakpoint,
+            settings.$breakpoints
           ) {
-
             .#{
-              $_padding-class +
-              $breakpoint-separator +
-              $breakpoint
-            } {
-
+              $_padding-class
+              + settings.$breakpoint-separator
+              + $breakpoint
+              } {
               @include tools.spacing(
-                $direction, $spacing-size-value, padding, true
-              )
-
+                $direction,
+                $spacing-size-value,
+                padding,
+                true
+              );
             }
-
           }
-
         }
-
       }
-
     }
-
   }
-
 }
