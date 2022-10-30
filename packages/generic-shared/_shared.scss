@@ -18,7 +18,8 @@ ul,
 figure,
 hr,
 table,
-fieldset {
+fieldset,
+article > * + * {
   margin-top: 0;
 
   @include tools.spacing(
