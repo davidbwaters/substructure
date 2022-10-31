@@ -27,7 +27,8 @@ $namespaces: map.merge(
     large: #{map.get(settings.$layer-namespaces, utilities) +
       'text-large-'},
     small: #{map.get(settings.$layer-namespaces, utilities) +
-      'text-small-'}
+      'text-small-'},
+    fixed: #{'fixed-'}
   ),
   $namespaces
 );
@@ -106,13 +107,6 @@ $_size-classes-large-combined-0-margin: ();
   $_index: list.index($text-sizes-large, $size-value);
 
   .#{ map.get( $namespaces, large ) }#{ $_index} {
-    @if settings.$custom-properties {
-      font-size: var(
-        --text-size-large-#{$_index}-base
-      ) !important;
-    } @else {
-      font-size: $size-value !important;
-    }
 
     @if settings.$sizing-fluid !=false {
       @if settings.$custom-properties {
@@ -127,6 +121,17 @@ $_size-classes-large-combined-0-margin: ();
       }
     }
   }
+
+  #{map.get( $namespaces, large ) + map.get( $namespaces, fixed ) + $_index} {
+    @if settings.$custom-properties {
+      font-size: var(
+        --text-size-large-#{$_index}-base
+      ) !important;
+    } @else {
+      font-size: $size-value !important;
+    }
+  }
+
 }
 
 $_size-classes-small-combined: ();
@@ -186,6 +191,16 @@ $_size-classes-small-combined-0-margin: ();
           $text-sizes-small-fluid,
           $_index
         ) !important;
+      }
+    }
+
+    .#{ map.get( $namespaces, small ) + map.get( $namespaces, fixed ) + $_index} {
+      @if settings.$custom-properties {
+        font-size: var(
+          --text-size-small-#{$_index}-base
+        ) !important;
+      } @else {
+        font-size: $size-value !important;
       }
     }
   }
