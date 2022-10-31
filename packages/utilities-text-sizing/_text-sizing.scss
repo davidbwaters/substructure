@@ -49,7 +49,12 @@ $_margin-bottom-0-class: #{'.' + map.get(spacing.$type-namespaces, margin) + map
       font-size: $text-size-normal !important;
     }
   }
-  line-height: $line-height-normal !important;
+  @if ( settings.$custom-properties != false) {
+    line-height: var(--line-height-normal) !important;
+  }
+  @else {
+    line-height: $line-height-normal !important;
+  }
 }
 
 $_size-classes-large-combined: ();
@@ -76,7 +81,12 @@ $_size-classes-large-combined-0-margin: ();
 }
 
 #{ $_size-classes-large-combined } {
-  line-height: $line-height-large !important;
+  @if ( settings.$custom-properties != false) {
+    line-height: var(--line-height-margin) !important;
+  }
+  @else {
+    line-height: $line-height-margin !important;
+  }
 
   @include tools.spacing(
     bottom,
@@ -142,7 +152,12 @@ $_size-classes-small-combined-0-margin: ();
 }
 
 #{ $_size-classes-small-combined } {
-  line-height: $line-height-normal !important;
+  @if ( settings.$custom-properties != false) {
+    line-height: var(--line-height-normal) !important;
+  }
+  @else {
+    line-height: $line-height-normal !important;
+  }
 }
 
 #{$_size-classes-small-combined-0-margin} {
