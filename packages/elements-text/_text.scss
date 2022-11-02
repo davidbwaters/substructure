@@ -14,14 +14,20 @@ h3,
 h4,
 h5,
 h6 {
-  line-height: settings.$line-height-large;
   margin-top: 0;
+
+  @if settings.$custom-properties != false {
+    line-height: var(--line-height-large);
+  } @else {
+    line-height: settings.$line-height-large;
+  }
 
   @include tools.spacing(
     bottom,
     list.nth(settings.$spacing-sizes, 1),
     margin
   );
+
 }
 
 @for $i from 6 through 1 {
@@ -51,8 +57,10 @@ h6 {
 small {
   @if settings.$custom-properties != false {
     font-size: var(--text-size-small-1-base);
+    line-height: var(--line-height-normal);
   } @else {
     font-size: list.nth(settings.$text-sizes-small, 1);
+    line-height: settings.$line-height-normal;
   }
 
   @if settings.$sizing-fluid !=false {
@@ -68,6 +76,5 @@ small {
       settings.$text-sizes-small-fluid,
       1
     );
-    line-height: settings.$line-height-normal;
   }
 }
