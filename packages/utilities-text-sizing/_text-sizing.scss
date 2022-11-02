@@ -122,7 +122,7 @@ $_size-classes-large-combined-0-margin: ();
     }
   }
 
-  #{map.get( $namespaces, large ) + map.get( $namespaces, fixed ) + $_index} {
+  .#{map.get( $namespaces, large ) + map.get( $namespaces, fixed ) + $_index} {
     @if settings.$custom-properties {
       font-size: var(
         --text-size-large-#{$_index}-base
