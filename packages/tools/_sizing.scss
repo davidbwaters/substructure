@@ -19,7 +19,7 @@ $namespaces: (
     'push-'},
   pull: #{map.get(settings.$layer-namespaces, utilities) +
     'pull-'}
-);
+) !default;
 
 @mixin sizing(
   $type,
@@ -33,44 +33,54 @@ $namespaces: (
   $breakpoint-separator: settings.$breakpoint-separator,
   $namespaces: $namespaces
 ) {
+
+  @if $type != pull and $type != push {
+    .#{map.get($namespaces, $type) + 'fill'} {
+      #{$type}: 100%;
+    }
+  }
+
   @each $factor in $factors {
     @for $count from 1 through $factor {
-      $class: #{map.get($namespaces, $type) +
-        $count +
-        $separator +
-        $factor};
 
-      $size-value: core.round(
-        math.div($count, $factor) * 100%,
-        4
-      );
+      @if $count != $factor {
+        $class: #{map.get($namespaces, $type) +
+          $count +
+          $separator +
+          $factor};
 
-      @if $type == push {
-        .#{ $class } {
-          margin-left: #{$size-value} !important;
-        }
-      }
+        $size-value: core.round(
+          math.div($count, $factor) * 100%,
+          4
+        );
 
-      @if $type == pull {
-        .#{ $class } {
-          margin-left: #{$size-value * -1} !important;
-        }
-      }
-
-      @if $type != pull and $type != push {
-        .#{ $class } {
-          #{ $type }: #{$size-value} !important;
+        @if $type == push {
+          .#{ $class } {
+            margin-left: #{$size-value} !important;
+          }
         }
 
-        @if $responsive == true {
-          @each $breakpoint in $breakpoints {
-            @include respond-to.respond-to($breakpoint) {
-              #{
-                $class
-                + $breakpoint-separator
-                + $breakpoint
-                } {
-                #{ $type }: #{$size-value} !important;
+        @if $type == pull {
+          .#{ $class } {
+            margin-left: #{$size-value * -1} !important;
+          }
+        }
+
+        @if $type != pull and $type != push {
+          .#{ $class } {
+            #{ $type }: #{$size-value} !important;
+          }
+
+          @if $responsive == true {
+            @each $breakpoint in $breakpoints {
+              @include respond-to.respond-to($breakpoint) {
+                #{
+                  $class
+                  + $breakpoint-separator
+                  + $breakpoint
+                  } {
+                  #{ $type }: #{$size-value} !important;
+                }
               }
             }
           }
@@ -78,4 +88,6 @@ $namespaces: (
       }
     }
   }
+
+
 }
