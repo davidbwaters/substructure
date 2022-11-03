@@ -7,16 +7,6 @@
 @use '../settings';
 @use '../tools';
 
-$_displayProps: (
-  'inline',
-  'block',
-  'inline-block',
-  'grid',
-  'inline-grid',
-  'flex',
-  'inline-flex'
-) !default;
-
 .#{ map.get(core.$class-names, hidden) } {
   display: none !important;
   visibility: hidden !important;

@@ -1,5 +1,5 @@
 /*
- *  Utilities - Layout - Hidden
+ *  Utilities - Layout - Object Fit
  */
 
 @use 'sass:map';
@@ -8,10 +8,10 @@
 @use '../tools';
 
 $_object-fit-props: (
-  'contain',
-  'cover',
-  'fill',
-  'scale-down'
+  contain,
+  cover,
+  fill,
+  scale-down
 ) !default;
 
 @each $prop in $_object-fit-props {

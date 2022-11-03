@@ -8,13 +8,13 @@
 @use '../tools';
 
 $_display-props: (
-  'inline',
-  'block',
-  'inline-block',
-  'grid',
-  'inline-grid',
-  'flex',
-  'inline-flex'
+  inline,
+  block,
+  inline-block,
+  grid,
+  inline-grid,
+  flex,
+  inline-flex
 ) !default;
 
 @each $prop in $_display-props {
