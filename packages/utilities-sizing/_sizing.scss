@@ -28,7 +28,7 @@ $namespaces: () !default;
 $namespaces: map.merge(
   (
     width: #{map.get(settings.$layer-namespaces, utilities) +
-      ''},
+      'width-'},
     height: #{map.get(settings.$layer-namespaces, utilities) +
       'height-'},
     push: #{map.get(settings.$layer-namespaces, utilities) +
@@ -36,6 +36,20 @@ $namespaces: map.merge(
     pull: #{map.get(settings.$layer-namespaces, utilities) +
       'pull-'}
   ),
+  $namespaces
+);
+
+
+@include tools.sizing(
+  width,
+  $height,
+  $push,
+  $pull,
+  $responsive,
+  $factors,
+  $separator,
+  $breakpoints,
+  $breakpoint-separator,
   $namespaces
 );
 

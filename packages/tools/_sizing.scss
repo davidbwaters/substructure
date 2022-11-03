@@ -12,7 +12,7 @@
 
 $namespaces: (
   width: #{map.get(settings.$layer-namespaces, utilities) +
-    ''},
+    'width-'},
   height: #{map.get(settings.$layer-namespaces, utilities) +
     'height-'},
   push: #{map.get(settings.$layer-namespaces, utilities) +
