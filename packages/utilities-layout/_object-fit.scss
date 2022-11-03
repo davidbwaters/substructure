@@ -1,0 +1,22 @@
+/*
+ *  Utilities - Layout - Hidden
+ */
+
+@use 'sass:map';
+@use 'core';
+@use '../settings';
+@use '../tools';
+
+$_object-fit-props: (
+  'contain',
+  'cover',
+  'fill',
+  'scale-down'
+) !default;
+
+@each $prop in $_object-fit-props {
+
+  .#{ map.get(core.$class-names, object-fit) $prop} {
+    object-fit: $prop !important;
+  }
+}

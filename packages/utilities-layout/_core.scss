@@ -21,16 +21,19 @@ $namespaces: map.merge(
         settings.$layer-namespaces,
         utilities
       ) + 'position-'},
-    top: #{map.get(settings.$layer-namespaces, utilities) +
-      'top-'},
-    inset: #{map.get(settings.$layer-namespaces, utilities) +
-      'inset-'},
     display: #{map.get(
         settings.$layer-namespaces,
         utilities
       ) + 'display-'},
     list: #{map.get(settings.$layer-namespaces, utilities) +
-      'list-'}
+      'list-'},
+    top: #{map.get(settings.$layer-namespaces, utilities) +
+      'top-'},
+    inset: #{map.get(settings.$layer-namespaces, utilities) +
+      'inset-'},
+    object-fit: #{map.get(settings.$layer-namespaces, utilities) +
+      'object-fit-'},
+
   ),
   $namespaces
 );

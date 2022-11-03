@@ -7,7 +7,7 @@
 @use '../settings';
 @use '../tools';
 
-$_displayProps: (
+$_display-props: (
   'inline',
   'block',
   'inline-block',
@@ -17,7 +17,7 @@ $_displayProps: (
   'inline-flex'
 ) !default;
 
-@each $prop in $_displayProps {
+@each $prop in $_display-props {
   .#{ map.get(core.$namespaces, display) + $prop } {
     display: $prop !important;
   }
@@ -30,7 +30,7 @@ $_displayProps: (
       $breakpoint,
       core.$breakpoints
     ) {
-      @each $prop in $_displayProps {
+      @each $prop in $_display-props {
         .#{
           map.get(core.$namespaces, display)
           + $prop
