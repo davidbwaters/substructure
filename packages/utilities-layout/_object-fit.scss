@@ -16,7 +16,8 @@ $_object-fit-props: (
 
 @each $prop in $_object-fit-props {
 
-  .#{ map.get(core.$class-names, object-fit) $prop} {
+  .#{ map.get(core.$namespaces, 'object-fit') + $prop} {
     object-fit: $prop !important;
   }
+
 }

@@ -1,6 +1,6 @@
-/*
- *  Utilities - Layout - Core
- */
+//
+//  Utilities - Layout - Core
+//
 
 @use 'sass:map';
 @use '../settings';
@@ -33,7 +33,6 @@ $namespaces: map.merge(
       'inset-'},
     object-fit: #{map.get(settings.$layer-namespaces, utilities) +
       'object-fit-'},
-
   ),
   $namespaces
 );

@@ -33,10 +33,10 @@
   resolved "https://registry.yarnpkg.com/@davidbwaters/prettier-config/-/prettier-config-1.2.6.tgz#89a8e4b640887087ebc2247c75086c49dc7ed40f"
   integrity sha512-JfKc+0q4rdZ4MQgCtQuGdqKyeret9PxO5ygRUfTy+WWvwFDebAj72EwY5zJMhMXI8tSQsVLtnjTKLUhxrScMHw==
 
-"@davidbwaters/stylelint-config@^1.0.21":
-  version "1.0.21"
-  resolved "https://registry.yarnpkg.com/@davidbwaters/stylelint-config/-/stylelint-config-1.0.21.tgz#c54e570301e6ecd0edbb2653d07aa52f9fad4008"
-  integrity sha512-SJNAZ/MrWwR1U8hDeossPTVODMRtVJDQ7RGJEGW0ktTyYQOvBOk+o3EdhG8bgoDwMHTrpVTQEUYMOZxY606pRg==
+"@davidbwaters/stylelint-config@^1.0.22":
+  version "1.0.22"
+  resolved "https://registry.yarnpkg.com/@davidbwaters/stylelint-config/-/stylelint-config-1.0.22.tgz#e6a1c893cf7aff96c5480d3f55999752271bb6cc"
+  integrity sha512-/mnRGFkFT3H4VoB37wVCJQ4fPcSLn+pdB7j1OGVYise7+kHg8dtH6Jna19FeD1BuJJKwU6pJfvNqusAJ+NYwAA==
   dependencies:
     postcss-scss "^4.0.5"
     stylelint "^14.14.0"
