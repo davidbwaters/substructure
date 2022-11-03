@@ -1,6 +1,6 @@
 {
   "name": "@substructure/objects-list",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Simple list object.",
   "main": "_index.scss",
   "repository": "https://github.com/davidbwaters/substructure",
@@ -15,7 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "@substructure/settings": "^0.3.4",
-    "@substructure/tools": "^0.3.4"
+    "@substructure/tools": "^0.3.5"
   },
   "publishConfig": {
     "access": "public"
