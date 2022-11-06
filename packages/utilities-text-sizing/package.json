@@ -1,6 +1,6 @@
 {
   "name": "@substructure/utilities-text-sizing",
-  "version": "0.3.9",
+  "version": "0.3.10",
   "description": "Generates text sizing utility classes.",
   "main": "_index.scss",
   "repository": "https://github.com/davidbwaters/substructure",
