@@ -137,7 +137,7 @@
 
   $_custom-properties: map.merge(
     $_custom-properties,
-    (
+      (
       line-height-normal: settings.$line-height-normal,
       line-height-large: settings.$line-height-large
     )
