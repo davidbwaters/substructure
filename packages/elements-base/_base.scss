@@ -23,9 +23,10 @@ body {
   @if settings.$custom-properties {
     font-size: var(--text-size-normal-base);
     font-size: var(--text-size-normal);
+    line-height: var(--line-height-normal);
   } @else {
     font-size: settings.$font-size-normal-base;
     font-size: tools.sizing();
+    line-height: settings.$line-height-normal;
   }
-  line-height: settings.$line-height-normal;
 }
