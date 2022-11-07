@@ -23,12 +23,31 @@
       $breakpoint,
       core.$breakpoints
     ) {
-      .#{ map.get(core.$class-names, hidden) } {
+      .#{
+        map.get(core.$class-names, hidden) +
+        core.$breakpoint-separator +
+        $breakpoint
+      } {
         display: none !important;
         visibility: hidden !important;
       }
 
-      .#{ map.get(core.$class-names, transparent) } {
+    }
+  }
+}
+
+
+@if core.$responsive {
+  @each $breakpoint, $breakpoint-value in core.$breakpoints
+  {
+    @include tools.respond-to(
+      $breakpoint,
+      core.$breakpoints
+    ) {
+      .#{ map.get(core.$class-names, transparent)  +
+        core.$breakpoint-separator +
+        $breakpoint
+      } {
         opacity: 0 !important;
       }
     }
