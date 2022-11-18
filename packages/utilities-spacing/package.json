@@ -1,6 +1,6 @@
 {
   "name": "@substructure/utilities-spacing",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "Generate responsive spacing utility classes.",
   "main": "_index.scss",
   "repository": "https://github.com/davidbwaters/substructure",
@@ -14,8 +14,8 @@
   "author": "David B. Waters <mrdavidbwaters@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@substructure/settings": "^0.3.4",
-    "@substructure/tools": "^0.3.6"
+    "@substructure/settings": "^0.3.5",
+    "@substructure/tools": "^0.3.7"
   },
   "publishConfig": {
     "access": "public"

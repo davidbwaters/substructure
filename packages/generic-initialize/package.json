@@ -1,6 +1,6 @@
 {
   "name": "@substructure/generic-initialize",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Sets initial values for consistency and compatibility.",
   "main": "_index.scss",
   "repository": "https://github.com/davidbwaters/substructure",
