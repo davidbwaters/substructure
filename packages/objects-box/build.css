@@ -1,0 +1,92 @@
+/*
+ *  Objects - Box
+ */
+.o-box {
+  display: block;
+  padding: 0.88rem;
+}
+.o-box:after {
+  clear: both !important;
+  content: "" !important;
+  display: block !important;
+}
+.o-box > :last-child {
+  margin-bottom: 0;
+}
+
+.o-box--flush {
+  padding-bottom: 0;
+  padding-bottom: clamp( 0rem, 0vw + 0rem, 0rem );
+  padding-left: 0;
+  padding-left: clamp( 0rem, 0vw + 0rem, 0rem );
+  padding-right: 0;
+  padding-right: clamp( 0rem, 0vw + 0rem, 0rem );
+  padding-top: 0;
+  padding-top: clamp( 0rem, 0vw + 0rem, 0rem );
+}
+
+.o-box--1 {
+  padding-bottom: var(--spacing-size-1-base);
+  padding-bottom: var(--spacing-size-1);
+  padding-left: var(--spacing-size-1-base);
+  padding-left: var(--spacing-size-1);
+  padding-right: var(--spacing-size-1-base);
+  padding-right: var(--spacing-size-1);
+  padding-top: var(--spacing-size-1-base);
+  padding-top: var(--spacing-size-1);
+}
+
+.o-box--3 {
+  padding-bottom: var(--spacing-size-3-base);
+  padding-bottom: var(--spacing-size-3);
+  padding-left: var(--spacing-size-3-base);
+  padding-left: var(--spacing-size-3);
+  padding-right: var(--spacing-size-3-base);
+  padding-right: var(--spacing-size-3);
+  padding-top: var(--spacing-size-3-base);
+  padding-top: var(--spacing-size-3);
+}
+
+.o-box--4 {
+  padding-bottom: var(--spacing-size-4-base);
+  padding-bottom: var(--spacing-size-4);
+  padding-left: var(--spacing-size-4-base);
+  padding-left: var(--spacing-size-4);
+  padding-right: var(--spacing-size-4-base);
+  padding-right: var(--spacing-size-4);
+  padding-top: var(--spacing-size-4-base);
+  padding-top: var(--spacing-size-4);
+}
+
+.o-box--5 {
+  padding-bottom: var(--spacing-size-5-base);
+  padding-bottom: var(--spacing-size-5);
+  padding-left: var(--spacing-size-5-base);
+  padding-left: var(--spacing-size-5);
+  padding-right: var(--spacing-size-5-base);
+  padding-right: var(--spacing-size-5);
+  padding-top: var(--spacing-size-5-base);
+  padding-top: var(--spacing-size-5);
+}
+
+.o-box--6 {
+  padding-bottom: var(--spacing-size-6-base);
+  padding-bottom: var(--spacing-size-6);
+  padding-left: var(--spacing-size-6-base);
+  padding-left: var(--spacing-size-6);
+  padding-right: var(--spacing-size-6-base);
+  padding-right: var(--spacing-size-6);
+  padding-top: var(--spacing-size-6-base);
+  padding-top: var(--spacing-size-6);
+}
+
+.o-box--7 {
+  padding-bottom: var(--spacing-size-7-base);
+  padding-bottom: var(--spacing-size-7);
+  padding-left: var(--spacing-size-7-base);
+  padding-left: var(--spacing-size-7);
+  padding-right: var(--spacing-size-7-base);
+  padding-right: var(--spacing-size-7);
+  padding-top: var(--spacing-size-7-base);
+  padding-top: var(--spacing-size-7);
+}

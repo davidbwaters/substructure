@@ -1,0 +1,120 @@
+/*
+ *  Utilities - Layout - Display
+ */
+.u-display-inline {
+  display: inline !important;
+}
+
+.u-display-block {
+  display: block !important;
+}
+
+.u-display-inline-block {
+  display: inline-block !important;
+}
+
+.u-display-grid {
+  display: grid !important;
+}
+
+.u-display-inline-grid {
+  display: inline-grid !important;
+}
+
+.u-display-flex {
+  display: flex !important;
+}
+
+.u-display-inline-flex {
+  display: inline-flex !important;
+}
+
+/*
+ *  Utilities - Layout - Hidden
+ */
+.u-hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+@media screen and ( min-width: 1600px ) {
+  .u-hidden\@wide {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+@media screen and ( min-width: 1200px ) {
+  .u-hidden\@desktop {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+@media screen and ( min-width: 768px ) {
+  .u-hidden\@tablet {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+@media screen and ( min-width: 480px ) {
+  .u-hidden\@mobile {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+.u-transparent {
+  opacity: 0 !important;
+}
+
+/*
+ *  Utilities - Layout - Position
+ */
+.u-position-absolute {
+  position: absolute !important;
+}
+
+.u-position-relative {
+  position: relative !important;
+}
+
+.u-position-fixed {
+  position: fixed !important;
+}
+
+.u-position-sticky {
+  position: sticky !important;
+  top: 0;
+}
+
+.u-top-0 {
+  top: 0;
+}
+
+.u-inset-0 {
+  inset: 0;
+}
+
+/*
+ *  Utilities - Layout - List
+ */
+.u-list-inline li {
+  display: inline-block;
+}
+
+/*
+ *  Utilities - Layout - Object Fit
+ */
+.u-object-fit-contain {
+  object-fit: contain !important;
+}
+
+.u-object-fit-cover {
+  object-fit: cover !important;
+}
+
+.u-object-fit-fill {
+  object-fit: fill !important;
+}
+
+.u-object-fit-scale-down {
+  object-fit: scale-down !important;
+}

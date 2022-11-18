@@ -12,10 +12,6 @@
   visibility: hidden !important;
 }
 
-.#{ map.get(core.$class-names, transparent) } {
-  opacity: 0 !important;
-}
-
 @if core.$responsive {
   @each $breakpoint, $breakpoint-value in core.$breakpoints
   {
@@ -36,20 +32,6 @@
   }
 }
 
-
-@if core.$responsive {
-  @each $breakpoint, $breakpoint-value in core.$breakpoints
-  {
-    @include tools.respond-to(
-      $breakpoint,
-      core.$breakpoints
-    ) {
-      .#{ map.get(core.$class-names, transparent)  +
-        core.$breakpoint-separator +
-        $breakpoint
-      } {
-        opacity: 0 !important;
-      }
-    }
-  }
+.#{ map.get(core.$class-names, transparent) } {
+  opacity: 0 !important;
 }

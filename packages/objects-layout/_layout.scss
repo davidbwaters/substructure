@@ -1,9 +1,8 @@
 /*
- *  Objects - Media
+ *  Objects - Layout
  */
 
-// Object to place any image and text-like content
-// side-by-side
+// Object layout content
 
 @use 'sass:list';
 @use 'sass:map';
@@ -13,6 +12,8 @@
 $spacing-sizes: settings.$spacing-sizes !default;
 
 $spacing-prefix: 'spacing-' !default;
+
+$gap-prefix: 'gap-' !default;
 
 $element-separator: settings.$element-separator !default;
 
@@ -35,32 +36,33 @@ $_cell-class: #{$_class + $element-separator +
   map.get($namespaces, cell)};
 
 $_alignment-values: (
-  top: 'flex-start',
+  top: 'start',
   middle: 'center',
-  bottom: 'flex-end',
-  baseline: 'baseline',
-  stretch: 'stretch'
+  bottom: 'end',
+  y-between: 'space-between',
+  y-around: 'space-around',
+  y-stretch: 'stretch'
 );
 
 $_justify-values: (
-  left: 'flex-start',
+  left: 'start',
   center: 'center',
-  right: 'flex-end',
-  between: 'space-between',
-  around: 'space-around'
+  right: 'end',
+  x-between: 'space-between',
+  x-around: 'space-around',
+  x-stretch: 'stretch'
 );
 
 // Base
 
 .#{ $_class } {
-  display: flex;
-  flex-flow: row wrap;
+  display: grid;
+  grid-auto-flow: row;
   list-style: none;
   padding: 0;
 }
 
 .#{ $_cell-class } {
-  flex: 0 1 auto;
   width: 100%;
 }
 
@@ -73,9 +75,20 @@ $_justify-values: (
     $_class
     + $modifier-separator
     + $spacing-prefix
-    + $index} {
+    + $index
+  } {
     @include tools.spacing('all', $size-value, 'padding');
   }
+
+  .#{
+    $_class
+    + $modifier-separator
+    + $gap-prefix
+    + $index
+  } {
+    gap: $size-value;
+  }
+
 }
 
 // Automatic Width
@@ -118,14 +131,11 @@ $_justify-values: (
 
 // Content Distribution
 
-.#{ $_class + $modifier-separator + 'reverse' } {
-  flex-direction: row-reverse;
-}
-
 .#{ $_class + $modifier-separator + 'column' } {
-  flex-direction: column;
+  grid-auto-flow: column;
 }
 
-.#{ $_class + $modifier-separator + 'column-reverse' } {
-  flex-direction: column-reverse;
+
+.#{ $_class + $modifier-separator + 'dense' } {
+  grid-auto-flow: dense;
 }

@@ -1,0 +1,90 @@
+/*
+ *  Utilities - Text Sizing
+ */
+.u-text-size-normal {
+  font-size: var(--text-size-normal-base) !important;
+  font-size: var(--text-size-normal) !important;
+  line-height: var(--line-height-normal) !important;
+}
+
+.u-text-large-1, .u-text-large-2, .u-text-large-3, .u-text-large-4, .u-text-large-5, .u-text-large-6 {
+  line-height: var(--line-height-large) !important;
+  margin-bottom: var(--spacing-size-2-base) !important;
+  margin-bottom: var(--spacing-size-2) !important;
+}
+
+.u-text-large-1.u-margin-0, .u-text-large-1.u-margin-bottom-0, .u-text-large-2.u-margin-0, .u-text-large-2.u-margin-bottom-0, .u-text-large-3.u-margin-0, .u-text-large-3.u-margin-bottom-0, .u-text-large-4.u-margin-0, .u-text-large-4.u-margin-bottom-0, .u-text-large-5.u-margin-0, .u-text-large-5.u-margin-bottom-0, .u-text-large-6.u-margin-0, .u-text-large-6.u-margin-bottom-0 {
+  margin-bottom: 0 !important;
+}
+
+.u-text-large-1 {
+  font-size: var(--text-size-large-1) !important;
+}
+
+.u-text-large-fixed-1 {
+  font-size: var(--text-size-large-1-base) !important;
+}
+
+.u-text-large-2 {
+  font-size: var(--text-size-large-2) !important;
+}
+
+.u-text-large-fixed-2 {
+  font-size: var(--text-size-large-2-base) !important;
+}
+
+.u-text-large-3 {
+  font-size: var(--text-size-large-3) !important;
+}
+
+.u-text-large-fixed-3 {
+  font-size: var(--text-size-large-3-base) !important;
+}
+
+.u-text-large-4 {
+  font-size: var(--text-size-large-4) !important;
+}
+
+.u-text-large-fixed-4 {
+  font-size: var(--text-size-large-4-base) !important;
+}
+
+.u-text-large-5 {
+  font-size: var(--text-size-large-5) !important;
+}
+
+.u-text-large-fixed-5 {
+  font-size: var(--text-size-large-5-base) !important;
+}
+
+.u-text-large-6 {
+  font-size: var(--text-size-large-6) !important;
+}
+
+.u-text-large-fixed-6 {
+  font-size: var(--text-size-large-6-base) !important;
+}
+
+.u-text-small-1, .u-text-small-2 {
+  line-height: var(--line-height-normal) !important;
+}
+
+.u-text-large-1.u-margin-0, .u-text-large-1.u-margin-bottom-0, .u-text-large-2.u-margin-0, .u-text-large-2.u-margin-bottom-0, .u-text-large-3.u-margin-0, .u-text-large-3.u-margin-bottom-0, .u-text-large-4.u-margin-0, .u-text-large-4.u-margin-bottom-0, .u-text-large-5.u-margin-0, .u-text-large-5.u-margin-bottom-0, .u-text-large-6.u-margin-0, .u-text-large-6.u-margin-bottom-0, .u-text-small-2.u-margin-0, .u-text-small-2.u-margin-bottom-0 {
+  margin-bottom: 0 !important;
+}
+
+.u-text-small-1 {
+  font-size: var(--text-size-small-1-base) !important;
+  font-size: var(--text-size-small-1) !important;
+}
+.u-text-small-1 .u-text-small-fixed-1 {
+  font-size: var(--text-size-small-1-base) !important;
+}
+
+.u-text-small-2 {
+  font-size: var(--text-size-small-2-base) !important;
+  font-size: var(--text-size-small-2) !important;
+}
+.u-text-small-2 .u-text-small-fixed-2 {
+  font-size: var(--text-size-small-2-base) !important;
+}

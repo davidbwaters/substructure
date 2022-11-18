@@ -1,0 +1,15 @@
+/*
+ *  Objects - List
+ */
+.o-list {
+  list-style: none;
+  margin-left: 0;
+}
+
+.o-list--inline > o-list__item {
+  display: inline-block;
+}
+.o-list--inline > o-list__item:not(:last-child) {
+  margin-right: var(--spacing-size-2-base);
+  margin-right: var(--spacing-size-2);
+}

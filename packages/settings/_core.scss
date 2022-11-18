@@ -20,7 +20,8 @@ $max-breakpoints: false !default;
 $breakpoint-sizes: (
   mobile: 480px,
   tablet: 768px,
-  desktop: 1200px
+  desktop: 1200px,
+  wide: 1600px,
 ) !default;
 
 // Defines the default breakpoint separator.
@@ -39,7 +40,7 @@ $sizing-unit: 8px !default;
 
 // Defines the default sizing factors for sizing utilities.
 
-$sizing-factors: (2, 3, 4, 5, 8) !default;
+$sizing-factors: (2, 3, 4, 5, 8,) !default;
 
 // Defines the default separator for sizing utilities.
 
@@ -58,7 +59,7 @@ $spacing-sizes: (
   $sizing-unit * math.pow($spacing-scale, 4),
   $sizing-unit * math.pow($spacing-scale, 5),
   $sizing-unit * math.pow($spacing-scale, 6),
-  $sizing-unit * math.pow($spacing-scale, 7)
+  $sizing-unit * math.pow($spacing-scale, 7),
 ) !default;
 
 // Defines the default text size in pixels.
@@ -94,18 +95,21 @@ $text-sizes-large: (
   $text-size-normal-base * math.pow($text-sizing-scale, 3),
   $text-size-normal-base * math.pow($text-sizing-scale, 4),
   $text-size-normal-base * math.pow($text-sizing-scale, 5),
-  $text-size-normal-base * math.pow($text-sizing-scale, 6)
+  $text-size-normal-base * math.pow($text-sizing-scale, 6),
 ) !default;
 
 // Defines the default sizes for small text.
 // Order from largest to smallest.
 
 $text-sizes-small: (
-  math.div($text-size-normal-base, $text-sizing-scale),
+  math.div(
+    $text-size-normal-base,
+    $text-sizing-scale
+  ),
   math.div(
     $text-size-normal-base,
     math.pow($text-sizing-scale, 2)
-  )
+  ),
 ) !default;
 
 // Defines the default target line height as a unitless
@@ -130,7 +134,7 @@ $modifier-separator: '--' !default;
 $layer-namespaces: (
   objects: 'o-',
   utilities: 'u-',
-  components: 'c-'
+  components: 'c-',
 ) !default;
 
 // Defines custom properties to set in CSS.

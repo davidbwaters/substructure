@@ -1,0 +1,19 @@
+/*
+ *  Generic - Shared
+ */
+address,
+blockquote,
+p,
+pre,
+dl,
+ol,
+ul,
+figure,
+hr,
+table,
+fieldset,
+article > * + * {
+  margin-top: 0;
+  margin-bottom: var(--spacing-size-1-base);
+  margin-bottom: var(--spacing-size-1);
+}

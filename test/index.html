@@ -28,19 +28,24 @@
       @import 'build/objects-media.css';
       @import 'build/objects-wrapper.css';
 
-      body > *,
-      body > * > * {
-        outline-offset: -1.5px;
-        outline: solid 3px hsl(0, 0%, 90%);
-      }
 
       body {
-        color: hsl(0, 0%, 40%);
+        color: hsl(0, 0%, 00%);
         font-family: 'Inter', sans-serif;
         font-weight: 400;
       }
 
-      .u-bg-header {
+      .u-outlines,
+      .u-outlines > * {
+        outline-offset: -1px;
+        outline: solid 2px hsl(0, 0%, 87.5%);
+      }
+
+      hr {
+        border-top: none;
+        border-bottom: solid 2px hsl(0, 0%, 87.5%);
+      }
+      .u-header {
         background-color: rgba(255, 255, 255, 0.9);
         backdrop-filter: blur(0.05em);
       }
@@ -51,56 +56,102 @@
       h4,
       h5,
       h6 {
+        font-weight: 700;
         color: black;
-        font-weight: 500;
       }
     </style>
   </head>
 
   <body>
-    <h1
-      class="u-text-align-center u-margin-0 u-position-sticky u-bg-header"
-    >
-      SUB<br />STRUCTURE
-    </h1>
-    <div class="o-wrapper">
-      <div class="o-layout o-layout--spacing-2">
+    <div class="u-position-sticky">
+      <h1
+        class="u-text-align-center u-margin-bottom-3 u-header u-outlines"
+      >
+        SUBSTRUCTURE
+      </h1>
+    </div>
+    <div class="o-wrapper u-outlines">
+      <div
+        class="o-layout o-layout--center o-layout--gap-6 o-layout--column o-layout--middle u-margin-bottom-3 u-padding-1 u-text-align-center"
+      >
         <div class="o-layout__cell">
           <h1>One</h1>
         </div>
-      </div>
-
-      <div class="o-layout o-layout--spacing-3">
         <div class="o-layout__cell">
           <h2>Two</h2>
         </div>
-      </div>
-
-      <div class="o-layout o-layout--spacing-4">
         <div class="o-layout__cell">
           <h3>Three</h3>
         </div>
-      </div>
-
-      <div class="o-layout o-layout--spacing-5">
         <div class="o-layout__cell">
           <h4>Four</h4>
-          <p>Lorem ipsum dolor lomor amir.</p>
-          <p>Lorem ipsum dolor lomor amir.</p>
         </div>
-      </div>
-
-      <div class="o-layout o-layout--spacing-6">
         <div class="o-layout__cell">
           <h5>Five</h5>
         </div>
-      </div>
-
-      <div class="o-layout o-layout--spacing-7">
         <div class="o-layout__cell">
           <h6>Six</h6>
         </div>
       </div>
     </div>
+
+    <div class="o-wrapper u-outlines u-margin-bottom-3">
+      <div class="o-layout o-layout--spacing-1 u-outlines">
+        <div class="o-layout__cell">
+          <p class="u-padding-2 u-margin-0 u-text-small-1">
+            .o-layout .o-layout--spacing-1
+          </p>
+        </div>
+      </div>
+
+      <div class="o-layout o-layout--spacing-2 u-outlines">
+        <div class="o-layout__cell">
+          <p class="u-padding-2 u-margin-0 u-text-small-1">
+            .o-layout .o-layout--spacing-2
+          </p>
+        </div>
+      </div>
+
+      <div class="o-layout o-layout--spacing-3 u-outlines">
+        <div class="o-layout__cell">
+          <p class="u-padding-2 u-margin-0 u-text-small-1">
+            .o-layout .o-layout--spacing-3
+          </p>
+        </div>
+      </div>
+
+      <div class="o-layout o-layout--spacing-4 u-outlines">
+        <div class="o-layout__cell">
+          <p class="u-padding-2 u-margin-0 u-text-small-1">
+            .o-layout .o-layout--spacing-4
+          </p>
+        </div>
+      </div>
+
+      <div class="o-layout o-layout--spacing-5 u-outlines">
+        <div class="o-layout__cell">
+          <p class="u-padding-2 u-margin-0 u-text-small-1">
+            .o-layout .o-layout--spacing-5
+          </p>
+        </div>
+      </div>
+
+      <div class="o-layout o-layout--spacing-6 u-outlines">
+        <div class="o-layout__cell">
+          <p class="u-padding-2 u-margin-0 u-text-small-1">
+            .o-layout .o-layout--spacing-6
+          </p>
+        </div>
+      </div>
+
+      <div class="o-layout o-layout--spacing-7 u-outlines">
+        <div class="o-layout__cell">
+          <p class="u-padding-2 u-margin-0 u-text-small-1">
+            .o-layout .o-layout--spacing-7
+          </p>
+        </div>
+      </div>
+    </div>
+    <hr/
   </body>
 </html>

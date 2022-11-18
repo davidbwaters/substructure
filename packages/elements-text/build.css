@@ -1,0 +1,55 @@
+/*
+ *  Elements - Text
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  line-height: var(--line-height-large);
+  margin-bottom: var(--spacing-size-1-base);
+  margin-bottom: var(--spacing-size-1);
+}
+
+h6 {
+  font-size: var(--text-size-large-1-base);
+  font-size: var(--text-size-large-1);
+}
+
+h5 {
+  font-size: var(--text-size-large-2-base);
+  font-size: var(--text-size-large-2);
+}
+
+h4 {
+  font-size: var(--text-size-large-3-base);
+  font-size: var(--text-size-large-3);
+}
+
+h3 {
+  font-size: var(--text-size-large-4-base);
+  font-size: var(--text-size-large-4);
+}
+
+h2 {
+  font-size: var(--text-size-large-5-base);
+  font-size: var(--text-size-large-5);
+}
+
+h1 {
+  font-size: var(--text-size-large-6-base);
+  font-size: var(--text-size-large-6);
+}
+
+small {
+  font-size: var(--text-size-small-1-base);
+  line-height: var(--line-height-normal);
+  font-size: var(--text-size-small-1);
+  font-size: clamp(
+    0.83rem,
+    0.15vw + 0.79rem,
+    0.94rem
+  );
+}

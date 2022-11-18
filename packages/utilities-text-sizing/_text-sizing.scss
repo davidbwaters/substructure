@@ -18,12 +18,13 @@ $line-height-normal: settings.$line-height-normal !default;
 
 $line-height-large: settings.$line-height-large !default;
 
+$class-normal: #{map.get(settings.$layer-namespaces, utilities) +
+  'text-size-normal'};
+
 $namespaces: () !default;
 
 $namespaces: map.merge(
   (
-    normal: #{map.get(settings.$layer-namespaces, utilities) +
-      'text-normal'},
     large: #{map.get(settings.$layer-namespaces, utilities) +
       'text-large-'},
     small: #{map.get(settings.$layer-namespaces, utilities) +
@@ -36,7 +37,7 @@ $namespaces: map.merge(
 $_margin-0-class: #{'.' + map.get(spacing.$type-namespaces, margin) + 0};
 $_margin-bottom-0-class: #{'.' + map.get(spacing.$type-namespaces, margin) + map.get(spacing.$direction-namespaces, bottom) + 0};
 
-.#{ map.get( $namespaces, normal ) } {
+.#{ $class-normal } {
   @if settings.$custom-properties {
     font-size: var(--text-size-normal-base) !important;
 

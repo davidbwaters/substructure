@@ -1,0 +1,210 @@
+/*
+ *  Objects - Layout
+ */
+.o-layout {
+  display: grid;
+  grid-auto-flow: row;
+  list-style: none;
+  padding: 0;
+}
+
+.o-layout__cell {
+  width: 100%;
+}
+
+.o-layout--spacing-1 {
+  padding-bottom: var(--spacing-size-1-base);
+  padding-bottom: var(--spacing-size-1);
+  padding-left: var(--spacing-size-1-base);
+  padding-left: var(--spacing-size-1);
+  padding-right: var(--spacing-size-1-base);
+  padding-right: var(--spacing-size-1);
+  padding-top: var(--spacing-size-1-base);
+  padding-top: var(--spacing-size-1);
+}
+
+.o-layout--gap-1 {
+  gap: 0.5rem;
+}
+
+.o-layout--spacing-2 {
+  padding-bottom: var(--spacing-size-2-base);
+  padding-bottom: var(--spacing-size-2);
+  padding-left: var(--spacing-size-2-base);
+  padding-left: var(--spacing-size-2);
+  padding-right: var(--spacing-size-2-base);
+  padding-right: var(--spacing-size-2);
+  padding-top: var(--spacing-size-2-base);
+  padding-top: var(--spacing-size-2);
+}
+
+.o-layout--gap-2 {
+  gap: 0.88rem;
+}
+
+.o-layout--spacing-3 {
+  padding-bottom: var(--spacing-size-3-base);
+  padding-bottom: var(--spacing-size-3);
+  padding-left: var(--spacing-size-3-base);
+  padding-left: var(--spacing-size-3);
+  padding-right: var(--spacing-size-3-base);
+  padding-right: var(--spacing-size-3);
+  padding-top: var(--spacing-size-3-base);
+  padding-top: var(--spacing-size-3);
+}
+
+.o-layout--gap-3 {
+  gap: 1.18rem;
+}
+
+.o-layout--spacing-4 {
+  padding-bottom: var(--spacing-size-4-base);
+  padding-bottom: var(--spacing-size-4);
+  padding-left: var(--spacing-size-4-base);
+  padding-left: var(--spacing-size-4);
+  padding-right: var(--spacing-size-4-base);
+  padding-right: var(--spacing-size-4);
+  padding-top: var(--spacing-size-4-base);
+  padding-top: var(--spacing-size-4);
+}
+
+.o-layout--gap-4 {
+  gap: 1.56rem;
+}
+
+.o-layout--spacing-5 {
+  padding-bottom: var(--spacing-size-5-base);
+  padding-bottom: var(--spacing-size-5);
+  padding-left: var(--spacing-size-5-base);
+  padding-left: var(--spacing-size-5);
+  padding-right: var(--spacing-size-5-base);
+  padding-right: var(--spacing-size-5);
+  padding-top: var(--spacing-size-5-base);
+  padding-top: var(--spacing-size-5);
+}
+
+.o-layout--gap-5 {
+  gap: 2.08rem;
+}
+
+.o-layout--spacing-6 {
+  padding-bottom: var(--spacing-size-6-base);
+  padding-bottom: var(--spacing-size-6);
+  padding-left: var(--spacing-size-6-base);
+  padding-left: var(--spacing-size-6);
+  padding-right: var(--spacing-size-6-base);
+  padding-right: var(--spacing-size-6);
+  padding-top: var(--spacing-size-6-base);
+  padding-top: var(--spacing-size-6);
+}
+
+.o-layout--gap-6 {
+  gap: 2.77rem;
+}
+
+.o-layout--spacing-7 {
+  padding-bottom: var(--spacing-size-7-base);
+  padding-bottom: var(--spacing-size-7);
+  padding-left: var(--spacing-size-7-base);
+  padding-left: var(--spacing-size-7);
+  padding-right: var(--spacing-size-7-base);
+  padding-right: var(--spacing-size-7);
+  padding-top: var(--spacing-size-7-base);
+  padding-top: var(--spacing-size-7);
+}
+
+.o-layout--gap-7 {
+  gap: 3.68rem;
+}
+
+.o-layout--auto > .o-layout__cell {
+  flex: 1 0 0;
+}
+
+.o-layout--left {
+  justify-content: start;
+}
+
+.o-layout--center {
+  justify-content: center;
+}
+
+.o-layout--right {
+  justify-content: end;
+}
+
+.o-layout--x-between {
+  justify-content: space-between;
+}
+
+.o-layout--x-around {
+  justify-content: space-around;
+}
+
+.o-layout--x-stretch {
+  justify-content: stretch;
+}
+
+.o-layout--pull-right {
+  margin-right: auto;
+}
+
+.o-layout--pull-left {
+  margin-left: auto;
+}
+
+.o-layout--top {
+  align-items: start;
+}
+
+.o-layout__cell--top {
+  align-self: start;
+}
+
+.o-layout--middle {
+  align-items: center;
+}
+
+.o-layout__cell--middle {
+  align-self: center;
+}
+
+.o-layout--bottom {
+  align-items: end;
+}
+
+.o-layout__cell--bottom {
+  align-self: end;
+}
+
+.o-layout--y-between {
+  align-items: space-between;
+}
+
+.o-layout__cell--y-between {
+  align-self: space-between;
+}
+
+.o-layout--y-around {
+  align-items: space-around;
+}
+
+.o-layout__cell--y-around {
+  align-self: space-around;
+}
+
+.o-layout--y-stretch {
+  align-items: stretch;
+}
+
+.o-layout__cell--y-stretch {
+  align-self: stretch;
+}
+
+.o-layout--column {
+  grid-auto-flow: column;
+}
+
+.o-layout--dense {
+  grid-auto-flow: dense;
+}

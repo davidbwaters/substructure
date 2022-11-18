@@ -1,0 +1,61 @@
+@charset "UTF-8";
+/*
+ *  Elements - Root Propertiesß
+ */
+:root {
+  --breakpoint-size-mobile: 480px;
+  --breakpoint-size-tablet: 768px;
+  --breakpoint-size-desktop: 1200px;
+  --breakpoint-size-wide: 1600px;
+  --sizing-root: 16px;
+  --sizing-unit: 8px;
+  --sizing-fluid-spacing-scale-min: 1.33;
+  --sizing-fluid-spacing-scale-max: 1.5;
+  --sizing-fluid-spacing-size-normal-min: 8px;
+  --sizing-fluid-spacing-size-normal-max: 10.64px;
+  --sizing-fluid-text-scale-min: 1.2;
+  --sizing-fluid-text-scale-max: 1.33;
+  --sizing-fluid-text-size-normal-min: 16px;
+  --sizing-fluid-text-size-normal-max: 20px;
+  --sizing-fluid-viewport-min: 480;
+  --sizing-fluid-viewport-max: 1600;
+  --sizing-factor-1: 2;
+  --sizing-factor-2: 3;
+  --sizing-factor-3: 4;
+  --sizing-factor-4: 5;
+  --sizing-factor-5: 8;
+  --spacing-size-1-base: 0.5rem;
+  --spacing-size-2-base: 0.88rem;
+  --spacing-size-3-base: 1.18rem;
+  --spacing-size-4-base: 1.56rem;
+  --spacing-size-5-base: 2.08rem;
+  --spacing-size-6-base: 2.77rem;
+  --spacing-size-7-base: 3.68rem;
+  --spacing-size-1: clamp( 0.5rem, -0.11vw + 0.53rem, 0.42rem );
+  --spacing-size-2: clamp( 0.88rem, 0.21vw + 0.82rem, 1.03rem );
+  --spacing-size-3: clamp( 1.18rem, 0.62vw + 0.99rem, 1.61rem );
+  --spacing-size-4: clamp( 1.56rem, 1.36vw + 1.16rem, 2.52rem );
+  --spacing-size-5: clamp( 2.08rem, 2.65vw + 1.29rem, 3.93rem );
+  --spacing-size-6: clamp( 2.77rem, 4.82vw + 1.32rem, 6.14rem );
+  --spacing-size-7: clamp( 3.68rem, 8.45vw + 1.15rem, 9.6rem );
+  --text-size-normal-base: 1rem;
+  --text-size-normal: clamp( 1rem, 0.36vw + 0.89rem, 1.25rem );
+  --text-size-large-1-base: 1.2rem;
+  --text-size-large-2-base: 1.44rem;
+  --text-size-large-3-base: 1.73rem;
+  --text-size-large-4-base: 2.07rem;
+  --text-size-large-5-base: 2.49rem;
+  --text-size-large-6-base: 2.99rem;
+  --text-size-large-1: clamp( 1.2rem, 0.66vw + 1rem, 1.66rem );
+  --text-size-large-2: clamp( 1.44rem, 1.1vw + 1.11rem, 2.21rem );
+  --text-size-large-3: clamp( 1.73rem, 1.73vw + 1.21rem, 2.94rem );
+  --text-size-large-4: clamp( 2.07rem, 2.63vw + 1.29rem, 3.91rem );
+  --text-size-large-5: clamp( 2.49rem, 3.88vw + 1.33rem, 5.2rem );
+  --text-size-large-6: clamp( 2.99rem, 5.62vw + 1.3rem, 6.92rem );
+  --text-size-small-1-base: 0.83rem;
+  --text-size-small-2-base: 0.69rem;
+  --text-size-small-1: clamp( 0.83rem, 0.15vw + 0.79rem, 0.94rem );
+  --text-size-small-2: clamp( 0.69rem, 0.02vw + 0.69rem, 0.71rem );
+  --line-height-normal: 1.5;
+  --line-height-large: 1.3;
+}

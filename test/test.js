@@ -26,6 +26,12 @@ const build = package => {
       result.css,
       error => {}
     )
+
+    fs.writeFile(
+      'packages/' + package + '/build.css',
+      result.css,
+      error => {}
+    )
   }
 }
 

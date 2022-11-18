@@ -22,24 +22,3 @@ $_display-props: (
     display: $prop !important;
   }
 }
-
-@if core.$responsive {
-  @each $breakpoint, $breakpoint-value in core.$breakpoints
-  {
-    @include tools.respond-to(
-      $breakpoint,
-      core.$breakpoints
-    ) {
-      @each $prop in $_display-props {
-        .#{
-          map.get(core.$namespaces, display)
-          + $prop
-          + core.$breakpoint-separator
-          + $breakpoint
-          } {
-          display: $prop !important;
-        }
-      }
-    }
-  }
-}

@@ -1,0 +1,43 @@
+/*
+ *  Utilities - Float
+ */
+.u-float-left {
+  float: "left" !important;
+}
+
+.u-float-right {
+  float: "right" !important;
+}
+
+@media screen and ( min-width: 1600px ) {
+  .u-float-left\@wide {
+    float: "left" !important;
+  }
+  .u-float-right\@wide {
+    float: "right" !important;
+  }
+}
+@media screen and ( min-width: 1200px ) {
+  .u-float-left\@desktop {
+    float: "left" !important;
+  }
+  .u-float-right\@desktop {
+    float: "right" !important;
+  }
+}
+@media screen and ( min-width: 768px ) {
+  .u-float-left\@tablet {
+    float: "left" !important;
+  }
+  .u-float-right\@tablet {
+    float: "right" !important;
+  }
+}
+@media screen and ( min-width: 480px ) {
+  .u-float-left\@mobile {
+    float: "left" !important;
+  }
+  .u-float-right\@mobile {
+    float: "right" !important;
+  }
+}
